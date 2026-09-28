@@ -1,0 +1,3 @@
+# Mentoria GB
+
+Página geral do @mentoriagb (link da bio): um link, dois caminhos, para a série *Fazer já é o resultado* e para a coleção *Filho meu*.
