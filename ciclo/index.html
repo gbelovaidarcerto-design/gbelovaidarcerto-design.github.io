@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A folha do ciclo · @mentoriagb</title>
+<meta name="description" content="Material gratuito de Gullit Belo para quem estuda para concursos: a folha do ciclo de estudos e o registro do feito, em PDF para imprimir.">
+<meta property="og:title" content="A folha do ciclo · grátis">
+<meta property="og:description" content="Um plano de estudo que não quebra quando o dia dá errado. PDF para imprimir.">
+<meta property="og:image" content="https://gbelovaidarcerto-design.github.io/ciclo/previa-1.png">
+<meta property="og:url" content="https://gbelovaidarcerto-design.github.io/ciclo/">
+<meta name="theme-color" content="#162436">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23162436'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23F4EEE3' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<!--
+  ISCA GRATUITA DE CONCURSOS: "A folha do ciclo"
+  O PDF é gerado no repositório privado do livro (conteudo/isca/gerar.mjs) e copiado para esta pasta.
+  Para capturar nome e e-mail antes do download, dá para ligar um Formulário Google,
+  do mesmo jeito que a página do Filho meu faz com a Semana 1.
+-->
+<style>
+:root{
+  color-scheme:light;
+  --papel:#F6F1E7;--tinta:#17212B;--suave:#5A6470;--linha:#E2D7C3;
+  --noite:#162436;--noite2:#1D3048;--creme:#F4EEE3;--creme-suave:#C8D1DA;--ouro:#C99A5B;--terra:#A94A28;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--papel:#0F1720;--tinta:#EFE8DB;--suave:#A3ADB8;--linha:#253240;--terra:#E08A64}
+}
+:root[data-theme="dark"]{color-scheme:dark;--papel:#0F1720;--tinta:#EFE8DB;--suave:#A3ADB8;--linha:#253240;--terra:#E08A64}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2{margin:0;font-weight:400;text-wrap:balance}
+p{margin:0}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+.w{width:100%;max-width:1000px;margin:0 auto;padding-inline:18px}
+
+.topo{background:radial-gradient(120% 80% at 90% 0%,var(--noite2) 0%,var(--noite) 62%);color:var(--creme);padding-bottom:40px}
+.perfil{display:flex;align-items:center;gap:12px;padding-top:max(22px,env(safe-area-inset-top));text-decoration:none}
+.selo{width:44px;height:44px;border-radius:50%;background:var(--creme);color:var(--noite);display:grid;place-items:center;font-family:var(--serif);font-size:20px;flex:none}
+.perfil b{display:block;font-size:15px}
+.perfil span{font-size:13.5px;color:var(--creme-suave)}
+.hero{display:grid;gap:30px;padding-top:34px}
+.gratis{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro)}
+.hero h1{font-family:var(--serif);font-size:clamp(52px,14vw,96px);line-height:.92;letter-spacing:-.018em;margin-top:12px}
+.hero h1 i{color:var(--ouro)}
+.hero .sub{font-size:18px;color:var(--creme-suave);max-width:34ch;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-height:56px;padding:0 22px 0 24px;border-radius:999px;background:var(--creme);color:var(--noite);font-weight:700;font-size:16.5px;text-decoration:none;margin-top:26px;transition:transform .18s ease,box-shadow .18s}
+.btn:hover{box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+.btn:active{transform:scale(.985)}
+.nota{font-size:13.5px;color:var(--creme-suave);margin-top:12px}
+.folhas{position:relative;height:clamp(300px,90vw,440px);width:min(100%,420px);margin-inline:auto}
+.folhas img{position:absolute;width:74%;border-radius:4px;box-shadow:0 26px 40px -20px rgba(0,0,0,.7),0 0 0 1px rgba(244,238,227,.14)}
+.folhas .f1{left:0;top:0;transform:rotate(-4deg);z-index:2}
+.folhas .f2{right:0;top:8%;transform:rotate(5deg)}
+
+.dentro{padding-block:40px 10px}
+.dentro h2{font-family:var(--serif);font-size:clamp(34px,8vw,46px);line-height:1}
+.itens{display:grid;gap:14px;margin-top:22px;padding:0;list-style:none}
+.itens li{border-left:2px solid var(--ouro);padding:2px 0 2px 16px}
+.itens b{display:block;font-size:16.5px}
+.itens span{color:var(--suave);font-size:15.5px}
+
+.mais{padding-block:34px}
+.cartao{border:1px solid var(--linha);border-radius:22px;padding:24px}
+.cartao .k{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--terra)}
+.cartao h2{font-family:var(--serif);font-size:34px;line-height:1.02;margin-top:8px}
+.cartao p{color:var(--suave);margin-top:10px}
+.cartao a.cta{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 20px;border-radius:999px;margin-top:18px;font-weight:700;text-decoration:none;box-shadow:inset 0 0 0 1.5px var(--tinta)}
+.cartao a.cta:hover{background:var(--tinta);color:var(--papel)}
+
+footer{padding-block:20px calc(34px + env(safe-area-inset-bottom));text-align:center}
+footer .verso{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.25;max-width:30ch;margin:0 auto}
+footer .ref{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:8px}
+footer a{display:inline-flex;margin-top:18px;font-size:14px;color:var(--suave);text-underline-offset:4px}
+
+@media (min-width:860px){
+  .w{padding-inline:32px}
+  .hero{grid-template-columns:1.1fr 1fr;align-items:center;padding-top:56px;gap:40px}
+  .itens{grid-template-columns:1fr 1fr;gap:18px 28px}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="w">
+    <a class="perfil" href="https://gbelovaidarcerto-design.github.io/?utm_source=ciclo"><div class="selo" aria-hidden="true">GB</div><div><b>Gullit Belo</b><span>@mentoriagb</span></div></a>
+    <div class="hero">
+      <div>
+        <p class="gratis">Material gratuito · PDF para imprimir</p>
+        <h1>A folha do <i>ciclo</i></h1>
+        <p class="sub">Um plano de estudo que não quebra quando o dia dá errado. Todas as disciplinas numa sequência, blocos do mesmo tamanho, e amanhã você continua de onde parou.</p>
+        <a class="btn" href="folha-do-ciclo.pdf" download>Baixar a folha do ciclo
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v11m-5-5 5 5 5-5M4 17h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="nota">Duas páginas, A4. Imprima frente e verso e use a lápis.</p>
+      </div>
+      <div class="folhas" aria-hidden="true">
+        <img class="f2" src="previa-2.png" alt="" width="794" height="1123">
+        <img class="f1" src="previa-1.png" alt="" width="794" height="1123">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="w dentro" aria-labelledby="t-dentro">
+    <h2 id="t-dentro">O que vem na folha</h2>
+    <ul class="itens">
+      <li><b>O ciclo em 6 passos</b><span>Da lista de disciplinas à seta que anda, sem cronograma rígido e sem matéria preferida.</span></li>
+      <li><b>A sua folha do ciclo</b><span>Dez posições para preencher, com as voltas e o ponto onde você parou em cada disciplina.</span></li>
+      <li><b>O registro do feito</b><span>Dois a três minutos por dia, de segunda a sábado. O domingo é do Senhor.</span></li>
+      <li><b>A revisão do sábado</b><span>O roteiro de 20 a 30 minutos para fechar a semana com um ajuste só.</span></li>
+    </ul>
+  </section>
+
+  <section class="w mais">
+    <div class="cartao">
+      <p class="k">Para ir além</p>
+      <h2>O essencial do método</h2>
+      <p>A série Fazer já é o resultado resumida em 15 páginas: os 12 princípios, o ciclo que gira, a sessão A.E.R.R., o acervo da banca com inteligência artificial, a Revisão 1-7-30 e as quatro trilhas.</p>
+      <a class="cta" href="https://pay.kiwify.com.br/DaNx34t?src=folha-do-ciclo" target="_blank" rel="noopener">Quero o essencial · R$ 19,90</a>
+    </div>
+  </section>
+</main>
+
+<footer class="w">
+  <p class="verso">“O cavalo prepara-se para o dia da batalha, mas a vitória vem do Senhor.”</p>
+  <p class="ref">Provérbios 21.31</p>
+  <a href="https://www.instagram.com/mentoriagb/" target="_blank" rel="noopener">@mentoriagb no Instagram</a>
+</footer>
+
+</body>
+</html>
