@@ -161,6 +161,30 @@ footer .rede{display:inline-flex;margin-top:18px;font-size:14px;color:var(--suav
   .mais{grid-template-columns:1fr 1fr;gap:20px}
 }
 </style>
+<!-- Pixel da Meta (o mesmo da Filho meu, 2146801305916148) + repasse de UTM para a Kiwify. Instalado em 01/10/2026. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2146801305916148');
+fbq('track','PageView');
+document.addEventListener('DOMContentLoaded',function(){
+  // Repassa utm_* e src da página para os botões da Kiwify, para a venda aparecer com a origem certa.
+  var q=new URLSearchParams(location.search),keep=new URLSearchParams();
+  q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
+  document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
+    var u=new URL(a.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
+    a.addEventListener('click',function(){fbq('track','InitiateCheckout',{content_name:(a.textContent||'').trim().slice(0,60)})});
+  });
+  // Baixar a folha do ciclo conta como cadastro (Lead).
+  document.querySelectorAll('a[href$="folha-do-ciclo.pdf"]').forEach(function(a){
+    a.addEventListener('click',function(){fbq('track','Lead',{content_name:'Folha do ciclo'})});
+  });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2146801305916148&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -266,6 +290,7 @@ footer .rede{display:inline-flex;margin-top:18px;font-size:14px;color:var(--suav
   <p class="verso">“O cavalo prepara-se para o dia da batalha, mas a vitória vem do Senhor.”</p>
   <p class="ref">Provérbios 21.31</p>
   <a class="rede" href="https://www.instagram.com/mentoriagb/" target="_blank" rel="noopener">@mentoriagb no Instagram</a>
+  <p class="ref"><a href="privacidade/">Privacidade</a></p>
 </footer>
 
 </body>
