@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TRT 8 dia a dia · @mentoriagb</title>
+<meta name="description" content="Material diário para o concurso do TRT 8 (Edital nº 01/2026, FCC): Analista Judiciário e Oficial de Justiça, ou Técnico Judiciário. Cada dia traz três temas, a lei que cai, os julgados que a FCC cobra, seis afirmações para treinar e uma discursiva para escrever.">
+<meta property="og:title" content="TRT 8 dia a dia · Você abre o dia e já sabe o que estudar">
+<meta property="og:description" content="Material diário por cargo, feito para o Edital nº 01/2026 da FCC. Leia o Dia 1 grátis.">
+<meta property="og:image" content="https://gbelovaidarcerto-design.github.io/trt8/og.jpg">
+<meta property="og:url" content="https://gbelovaidarcerto-design.github.io/trt8/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2E6DA4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A3A5C'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23ffffff' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:wght@700&display=swap">
+<!--
+  PÁGINA DE VENDAS DO MATERIAL DO TRT 8 (Edital nº 01/2026, FCC)
+  Checkout Analista Judiciário e Oficial de Justiça: https://pay.kiwify.com.br/4hJyQ9s
+  Checkout Técnico Judiciário Área Administrativa:   https://pay.kiwify.com.br/08PurmK
+  O parâmetro src=trt8 separa nos relatórios da Kiwify as vendas vindas desta página.
+-->
+<style>
+:root{
+  color-scheme:light;
+  --azul:#2E6DA4;--azul-esc:#1A3A5C;--ambar:#F2B544;--ambar-esc:#B06F00;
+  --papel:#F5F8FB;--sup:#FFFFFF;--tinta:#1E2A36;--suave:#5B6B7B;--linha:#D7E1EB;
+  --verde:#2E6B4F;--vermelho:#A8201A;
+  --r:18px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--papel:#0F1822;--sup:#16222F;--tinta:#E8EEF4;--suave:#A3B1BF;--linha:#263546}
+}
+:root[data-theme="dark"]{color-scheme:dark;--papel:#0F1822;--sup:#16222F;--tinta:#E8EEF4;--suave:#A3B1BF;--linha:#263546}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:Lato,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+.w{width:100%;max-width:1040px;margin:0 auto;padding-inline:16px}
+.k{font-weight:900;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ambar-esc)}
+.serif{font-family:'Playfair Display',Georgia,serif}
+
+/* topo */
+.hero{background:var(--azul);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.07)}
+.perfil{display:flex;align-items:center;gap:12px;padding-top:max(20px,env(safe-area-inset-top))}
+.selo{width:44px;height:44px;border-radius:12px;background:var(--azul-esc);display:grid;place-items:center;font-family:'Playfair Display',Georgia,serif;font-size:20px}
+.perfil b{display:block;font-size:15px}.perfil span{font-size:13.5px;color:#D6E4F2}
+.hero-grid{display:grid;gap:28px;padding-block:34px 44px;position:relative;z-index:1}
+.hero .k{color:var(--ambar)}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(38px,9vw,64px);margin-top:12px}
+.hero .sub{font-size:18.5px;color:#E4EEF8;max-width:40ch;margin-top:16px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border-radius:999px;font-weight:900;font-size:16px;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.prim{background:var(--ambar);color:var(--azul-esc)}
+.btn.sec{border:2px solid rgba(255,255,255,.6);color:#fff}
+.hero-img{position:relative}
+.hero-grid>*,.dia>*,.rev>*,.cards>*,.numeros>*{min-width:0}
+.hero-img img{border-radius:8px;box-shadow:0 26px 50px rgba(0,0,0,.35);transform:rotate(2.5deg);max-width:min(420px,92%);margin-inline:auto}
+@media (min-width:860px){.hero-grid{grid-template-columns:1.1fr .9fr;align-items:center}.hero-img img{margin-right:0}}
+
+/* faixa de datas */
+.datas{background:var(--azul-esc);color:#fff}
+.datas ul{list-style:none;margin:0;padding:16px 0;display:grid;gap:10px}
+.datas li{display:flex;gap:10px;align-items:baseline;font-size:15.5px}
+.datas b{color:var(--ambar);min-width:9.5em;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+@media (min-width:860px){.datas ul{grid-template-columns:repeat(3,1fr)}}
+
+section{padding-block:56px}
+section h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,6vw,42px);margin-top:10px}
+.lead{font-size:18.5px;color:var(--suave);max-width:60ch;margin-top:14px}
+
+/* números da banca */
+.numeros{display:grid;gap:14px;margin-top:28px}
+.num{background:var(--sup);border:1px solid var(--linha);border-radius:var(--r);padding:20px}
+.num strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:40px;color:var(--azul);line-height:1}
+.num p{margin-top:8px;color:var(--suave);font-size:15.5px}
+@media (min-width:760px){.numeros{grid-template-columns:repeat(3,1fr)}}
+.nota{font-size:13.5px;color:var(--suave);margin-top:14px;max-width:70ch}
+
+/* dia */
+.dia{display:grid;gap:30px;margin-top:30px}
+.paginas{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.paginas figure{margin:0}
+.paginas img{border-radius:6px;border:1px solid var(--linha);box-shadow:0 8px 20px rgba(26,58,92,.12);background:#fff}
+.paginas figcaption{font-size:13px;color:var(--suave);margin-top:6px;text-align:center}
+.lista{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.lista li{background:var(--sup);border:1px solid var(--linha);border-radius:14px;padding:14px 16px}
+.lista b{display:block;color:var(--azul-esc)}
+:root[data-theme="dark"] .lista b{color:#9CC3E6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lista b{color:#9CC3E6}}
+.lista span{color:var(--suave);font-size:15.5px}
+@media (min-width:860px){.dia{grid-template-columns:1fr 1fr;align-items:start}.paginas{grid-template-columns:repeat(3,1fr)}}
+
+.rev{display:grid;gap:26px;margin-top:28px;align-items:center}
+.rev img{border-radius:8px;border:1px solid var(--linha);box-shadow:0 12px 28px rgba(26,58,92,.15);max-width:min(460px,100%);background:#fff}
+@media (min-width:860px){.rev{grid-template-columns:1fr 1fr}}
+
+/* oferta */
+.oferta{background:var(--sup);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.cards{display:grid;gap:18px;margin-top:30px}
+.card{border:2px solid var(--linha);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;background:var(--papel)}
+.card h3{font-family:'Playfair Display',Georgia,serif;font-size:26px}
+.card ul{margin:0;padding-left:20px;color:var(--suave);font-size:15.5px;display:grid;gap:6px}
+.preco{display:flex;align-items:baseline;gap:8px}
+.preco strong{font-size:44px;font-weight:900;color:var(--azul)}
+.preco span{color:var(--suave);font-size:14px}
+.card .btn{background:var(--azul);color:#fff;width:100%}
+.card .btn:hover{background:var(--azul-esc)}
+.card .det{font-size:13.5px;color:var(--suave)}
+@media (min-width:860px){.cards{grid-template-columns:1fr 1fr}}
+.garantia{margin-top:22px;display:flex;gap:14px;align-items:flex-start;background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:16px 18px;font-size:15.5px;color:var(--suave)}
+.garantia b{color:var(--tinta)}
+
+/* autor e perguntas */
+.autor{display:flex;gap:16px;align-items:flex-start;margin-top:22px}
+.autor .selo{width:58px;height:58px;font-size:26px;color:#fff;flex:none}
+details{background:var(--sup);border:1px solid var(--linha);border-radius:14px;padding:4px 18px;margin-top:12px}
+summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--azul);font-size:22px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{padding-bottom:16px;color:var(--suave);font-size:16px}
+.fim{background:var(--azul);color:#fff;text-align:center}
+.fim h2{color:#fff}
+.fim .ctas{justify-content:center}
+footer{padding:26px 0 40px;color:var(--suave);font-size:13.5px;text-align:center}
+footer a{color:var(--suave)}
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2146801305916148');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'TRT 8 · página de vendas'});
+document.addEventListener('DOMContentLoaded',function(){
+  // Repassa utm_* e src para os botões da Kiwify, para a venda aparecer com a origem certa.
+  var q=new URLSearchParams(location.search),keep=new URLSearchParams();
+  q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
+  document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
+    var u=new URL(a.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
+    a.addEventListener('click',function(){fbq('track','InitiateCheckout',{content_name:a.getAttribute('data-produto')||'TRT 8'})});
+  });
+});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2146801305916148&ev=PageView&noscript=1"></noscript>
+</head>
+<body>
+
+<header class="hero">
+  <div class="w">
+    <div class="perfil"><div class="selo">GB</div><div><b>Gullit Belo</b><span>@mentoriagb</span></div></div>
+    <div class="hero-grid">
+      <div>
+        <p class="k">TRT 8 dia a dia · prova em 17 de janeiro</p>
+        <h1>Você abre o dia e já sabe o que estudar.</h1>
+        <p class="sub">Preparei este material para o edital do TRT 8 que acabou de sair. Cada dia tem três temas, a lei que cai, os julgados que a FCC cobra, seis afirmações para treinar e uma discursiva para escrever. Até a prova, você só precisa seguir a ordem.</p>
+        <div class="ctas">
+          <a class="btn prim" href="#oferta">Escolher meu cargo</a>
+          <a class="btn sec" href="amostra/">Ler o Dia 1 grátis</a>
+        </div>
+      </div>
+      <div class="hero-img"><img src="amostra/ao/p2.webp" alt="Página de tema do Dia 1: Administração Pública, regime jurídico e princípios" width="1100" height="1556" fetchpriority="high"></div>
+    </div>
+  </div>
+</header>
+
+<div class="datas">
+  <div class="w">
+    <ul>
+      <li><b>Inscrições</b> 5 de outubro a 5 de novembro de 2026</li>
+      <li><b>Provas</b> 17 de janeiro de 2027</li>
+      <li><b>Nota final</b> objetivas (0 a 10) somadas à discursiva (0 a 10)</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+  <div class="w">
+    <p class="k">Por que este material</p>
+    <h2>A FCC cobra pouco o prazo seco.</h2>
+    <p class="lead">O que ela mais faz é pegar uma regra verdadeira e colar no instituto vizinho, ou trocar um "pode" por "não pode". Para ter certeza disso, conferi 31 provas recentes da banca, de tribunais, MPs e Defensoria, alternativa por alternativa: foram 5.677 alternativas erradas.</p>
+    <div class="numeros">
+      <div class="num"><strong>1 em 5</strong><p>alternativas erradas nas matérias jurídicas aplica a um instituto a regra verdadeira de outro parecido (20,5%).</p></div>
+      <div class="num"><strong>12,4%</strong><p>invertem a polaridade do texto da lei: pode no lugar de não pode, inclusive no lugar de exceto.</p></div>
+      <div class="num"><strong>14%</strong><p>é o que somam troca de prazo e troca de número. Quem treina só isso deixa de fora a maior parte do que a banca faz.</p></div>
+    </div>
+    <p class="nota">As afirmações do material foram escritas com essas técnicas, e cada uma diz ao aluno qual técnica foi usada. Nenhuma questão da banca é reproduzida: todo exercício é autoral.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="w">
+    <p class="k">Como é um dia</p>
+    <h2>Sete páginas, na ordem em que você estuda.</h2>
+    <div class="dia">
+      <ul class="lista">
+        <li><b>1. Roteiro com tempos</b><span>Os três temas do dia, o que fazer em cada etapa e quanto do edital você já cobriu.</span></li>
+        <li><b>2 a 4. Três páginas de tema</b><span>O que a banca cobra, em frases curtas e tabelas, com caixas de teses, de como o tema aparece na Justiça do Trabalho e das pegadinhas, cada uma com a técnica nomeada.</span></li>
+        <li><b>5. Lei seca do dia</b><span>Os dispositivos dos três temas, em texto literal, com os pontos que a banca troca marcados.</span></li>
+        <li><b>6. Jurisprudência, teses e treino</b><span>Súmulas e teses conferidas em fonte oficial e seis afirmações Certo ou Errado com gabarito comentado.</span></li>
+        <li><b>7. Discursiva todo dia</b><span>Estudo de caso (Analista e Oficial) ou redação (Técnico), com enunciado autoral, resposta-modelo e espelho. A discursiva é feita no mesmo dia das objetivas e vale metade da nota final.</span></li>
+      </ul>
+      <div class="paginas">
+        <figure><img src="amostra/ao/p1.webp" alt="Roteiro do dia" loading="lazy" width="1100" height="1556"><figcaption>Roteiro</figcaption></figure>
+        <figure><img src="amostra/ao/p3.webp" alt="Página de tema de Direito do Trabalho" loading="lazy" width="1100" height="1556"><figcaption>Tema</figcaption></figure>
+        <figure><img src="amostra/ao/p5.webp" alt="Lei seca do dia" loading="lazy" width="1100" height="1556"><figcaption>Lei seca</figcaption></figure>
+        <figure><img src="amostra/ao/p6.webp" alt="Jurisprudência, teses e treino do dia" loading="lazy" width="1100" height="1556"><figcaption>Treino</figcaption></figure>
+        <figure><img src="amostra/ao/p7.webp" alt="Discursiva: estudo de caso" loading="lazy" width="1100" height="1556"><figcaption>Estudo de caso</figcaption></figure>
+        <figure><img src="amostra/tec/p7.webp" alt="Discursiva do Técnico: redação" loading="lazy" width="1100" height="1556"><figcaption>Redação (Técnico)</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="w">
+    <div class="rev">
+      <div>
+        <p class="k">Toda semana</p>
+        <h2>Um dia de revisão com enfrentamento completo.</h2>
+        <p class="lead">36 afirmações sobre os temas da semana para julgar Certo ou Errado. Depois, cada uma destrinchada: o trecho certo, o trecho errado, a versão correta, o fundamento e o nome da pegadinha. É assim que você aprende a ler a prova da FCC, e não só o conteúdo.</p>
+      </div>
+      <img src="revisao.webp" alt="Página de enfrentamento das assertivas da revisão semanal" loading="lazy" width="1100" height="1556">
+    </div>
+  </div>
+</section>
+
+<section class="oferta" id="oferta">
+  <div class="w">
+    <p class="k">Escolha o seu cargo</p>
+    <h2>Um material para cada prova.</h2>
+    <p class="lead">Os dois cobrem todas as disciplinas do edital do cargo, inclusive Português, Raciocínio Lógico, Informática e Administração Pública.</p>
+    <div class="cards">
+      <div class="card">
+        <p class="k">Nível superior</p>
+        <h3>Analista Judiciário Área Judiciária e Oficial de Justiça</h3>
+        <ul>
+          <li>67 dias de estudo, cobrindo os 171 temas do edital</li>
+          <li>Estudo de caso todo dia, com resposta-modelo</li>
+          <li>Revisão semanal com enfrentamento completo</li>
+        </ul>
+        <div class="preco"><strong>R$ 97</strong><span>ou em até 12x no cartão</span></div>
+        <a class="btn" data-produto="TRT 8 · Analista e Oficial" href="https://pay.kiwify.com.br/4hJyQ9s?src=trt8">Quero o de Analista e Oficial</a>
+        <p class="det">Preço de lançamento até o fim das inscrições, 5 de novembro.</p>
+      </div>
+      <div class="card">
+        <p class="k">Nível médio</p>
+        <h3>Técnico Judiciário Área Administrativa</h3>
+        <ul>
+          <li>46 dias de estudo, cobrindo os 117 temas do edital</li>
+          <li>Redação todo dia, com redação-modelo e espelho</li>
+          <li>Revisão semanal com enfrentamento completo</li>
+        </ul>
+        <div class="preco"><strong>R$ 97</strong><span>ou em até 12x no cartão</span></div>
+        <a class="btn" data-produto="TRT 8 · Técnico" href="https://pay.kiwify.com.br/08PurmK?src=trt8">Quero o de Técnico</a>
+        <p class="det">Preço de lançamento até o fim das inscrições, 5 de novembro.</p>
+      </div>
+    </div>
+    <div class="garantia"><div><b>Garantia de 7 dias.</b> Entre, leia a semana 1 e, se não for para você, peça o reembolso pela Kiwify dentro de 7 dias da compra.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <p class="k">Como funciona</p>
+    <h2>Acesso e liberação</h2>
+    <ul class="lista" style="margin-top:24px">
+      <li><b>Na hora da compra</b><span>Você recebe o acesso por e-mail e a semana 1 já está liberada na área de membros da Kiwify.</span></li>
+      <li><b>Um módulo novo por semana</b><span>Às segundas-feiras, a partir de 12 de outubro, até completar o cronograma do seu cargo. Quem entra depois encontra todas as semanas já liberadas.</span></li>
+      <li><b>Leitura na plataforma</b><span>O material é lido na área de membros, no computador ou no celular. O acesso é individual.</span></li>
+    </ul>
+    <div class="autor">
+      <div class="selo">GB</div>
+      <div>
+        <b>Gullit Belo</b>
+        <p style="color:var(--suave)">Aprovado em concursos de tribunais, MP e AGU; hoje servidor no TRT. Criador do @mentoriagb e da série <i>Fazer já é o resultado</i>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="w">
+    <p class="k">Perguntas</p>
+    <h2>Antes de decidir</h2>
+    <details><summary>Qual dos dois eu compro?</summary><p>O de Analista e Oficial serve para Analista Judiciário Área Judiciária e para Oficial de Justiça, que têm o mesmo programa. O de Técnico é para Técnico Judiciário Área Administrativa. Cada um segue o conteúdo e a discursiva do seu cargo.</p></details>
+    <details><summary>Serve para outro concurso?</summary><p>O material foi feito para o edital do TRT 8 (Edital nº 01/2026, FCC): o cronograma, os temas e a discursiva seguem esse edital. Boa parte do conteúdo jurídico vale para outros tribunais, mas o produto não foi pensado para eles.</p></details>
+    <details><summary>Tem questões?</summary><p>Tem afirmações Certo ou Errado todos os dias e 36 por semana na revisão, escritas no estilo da FCC e com gabarito comentado. São autorais: nenhuma questão de prova é reproduzida.</p></details>
+    <details><summary>Quanto tempo por dia?</summary><p>O roteiro de cada dia indica o tempo de cada etapa, somando cerca de duas horas e meia, já com a discursiva.</p></details>
+    <details><summary>Posso baixar em PDF?</summary><p>Não. A leitura é na área de membros, no computador ou no celular. O acesso é individual e o compartilhamento é proibido.</p></details>
+    <details><summary>Estou começando tarde. Ainda vale?</summary><p>Vale. As semanas já liberadas ficam disponíveis na hora, e a prova é em 17 de janeiro de 2027. Você pode seguir no seu ritmo.</p></details>
+    <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pela Kiwify. Pediu dentro do prazo, recebe o valor de volta.</p></details>
+  </div>
+</section>
+
+<section class="fim">
+  <div class="w">
+    <h2>Comece pelo Dia 1.</h2>
+    <p class="lead" style="color:#E4EEF8;margin-inline:auto">Leia as sete páginas do primeiro dia, de graça, e decida depois.</p>
+    <div class="ctas">
+      <a class="btn prim" href="#oferta">Escolher meu cargo</a>
+      <a class="btn sec" href="amostra/">Ler o Dia 1 grátis</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w">
+    <p>Material independente, sem vínculo com o TRT 8 ou com a Fundação Carlos Chagas. Os dados do concurso seguem o Edital nº 01/2026.</p>
+    <p style="margin-top:8px"><a href="../">@mentoriagb</a> · <a href="../privacidade/">Privacidade</a></p>
+  </div>
+</footer>
+</body>
+</html>
