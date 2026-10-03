@@ -161,9 +161,18 @@ footer .rede{display:inline-flex;margin-top:18px;font-size:14px;color:var(--suav
   .mais{grid-template-columns:1fr 1fr;gap:20px}
 }
 
-/* faixa do lançamento TRT 8 */
-.faixa-trt8{display:block;background:#2E6DA4;color:#fff;text-align:center;font-weight:700;font-size:14.5px;line-height:1.4;padding:12px 16px;text-decoration:none}
-.faixa-trt8:hover{background:#1A3A5C}
+/* caminho 3 · concurso específico (TRT 8 dia a dia, 03/10/2026) */
+.c3{background:#2E6DA4;color:#fff}
+.c3 .para{color:#F2B544}
+.c3 h3{font-family:var(--serif);font-size:clamp(40px,11vw,56px)}
+.c3 .desc{color:#E4EEF8}
+.c3 .fatos li{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.c3 .pg3{width:72%;max-width:320px;margin:18px auto 0;border-radius:6px 6px 0 0;box-shadow:0 18px 30px -12px rgba(0,0,0,.45)}
+.c3 .btn{background:#F2B544;color:#1A3A5C}
+.c3 .btn:hover{box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.c3 .link2{color:#fff}
+.c3 .link2 em{color:#F2B544}
+@media (min-width:860px){.c3{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;align-items:end}.c3 .corpo{grid-column:1}.c3 .acoes{grid-column:1}.c3 .pg3{grid-column:2;grid-row:1/span 2;align-self:end;margin:30px auto 0}}
 </style>
 <!-- Pixel da Meta (o mesmo da Filho meu, 2146801305916148) + repasse de UTM para a Kiwify. Instalado em 01/10/2026. -->
 <script>
@@ -192,7 +201,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </head>
 <body>
 
-<a class="faixa-trt8" href="trt8/">TRT 8 dia a dia: o estudo diário para a prova de 17 de janeiro. Leia o Dia 1 grátis &rarr;</a>
 <header class="w">
   <div class="perfil sobe">
     <div class="selo" aria-hidden="true">GB</div>
@@ -263,6 +271,24 @@ document.addEventListener('DOMContentLoaded',function(){
           <a class="btn" href="https://gbelovaidarcerto-design.github.io/filho-meu/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral">Conhecer a coleção
             <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="link2" href="https://gbelovaidarcerto-design.github.io/filho-meu/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral#amostra"><span>Baixar a amostra: uma lição de cada livro</span><em>Grátis</em></a>
+        </div>
+      </article>
+
+      <!-- CAMINHO 3 · CONCURSO ESPECÍFICO -->
+      <article class="cam c3 sobe d4" aria-labelledby="t-c3">
+        <div class="corpo">
+          <p class="para">Para um concurso específico · Novo</p>
+          <h3 id="t-c3">TRT 8 dia a dia</h3>
+          <p class="desc">Estudo diário para a prova do TRT 8 de 17 de janeiro (FCC): três temas, a lei que cai, os julgados que a banca cobra, treino e uma discursiva por dia. Um material para cada cargo.</p>
+          <ul class="fatos">
+            <li>Analista e Oficial</li><li>Técnico</li><li>R$ 97 por cargo</li>
+          </ul>
+        </div>
+        <img class="pg3" src="trt8/amostra/ao/p2.webp" alt="Página de tema do TRT 8 dia a dia" width="1100" height="1556" loading="lazy">
+        <div class="acoes">
+          <a class="btn" href="trt8/?src=pagina-geral">Conhecer o material
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4.5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="link2" href="trt8/amostra/"><span>Ler o Dia 1</span><em>Grátis</em></a>
         </div>
       </article>
 
