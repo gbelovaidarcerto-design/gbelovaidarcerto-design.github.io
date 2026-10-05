@@ -130,9 +130,9 @@ a:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
 .cartao p{color:var(--suave);margin-top:10px;font-size:15.5px}
 .cartao .btn{margin-top:18px;background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta)}
 .cartao .btn:hover{background:var(--tinta);color:var(--papel)}
-.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;padding-top:16px;border-top:1px solid var(--linha)}
-.numeros b{display:block;font-family:var(--serif);font-size:30px;line-height:1;font-weight:400}
-.numeros span{font-size:12.5px;color:var(--suave);line-height:1.3;display:block;margin-top:4px}
+.feitos{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--linha);display:grid;gap:12px}
+.feitos li{font-size:14.5px;line-height:1.45;color:var(--suave)}
+.feitos b{display:block;font-family:var(--serif);font-size:21px;line-height:1.15;font-weight:400;color:var(--tinta);margin-bottom:2px}
 
 footer{padding-block:34px calc(34px + env(safe-area-inset-bottom));text-align:center}
 footer .verso{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.25;max-width:30ch;margin:0 auto}
@@ -299,12 +299,12 @@ document.addEventListener('DOMContentLoaded',function(){
     <div class="cartao sobe" aria-labelledby="t-autor">
       <p class="para">Quem escreve</p>
       <h3 id="t-autor">Gullit Belo</h3>
-      <p>Comecei a estudar para concursos ainda na escola. Passei na OAB quase um ano antes de me formar e terminei o curso já servidor público. Com a Gislaine, sou pai de quatro filhos. Nos livros está o que eu faço na mentoria, escrito para você usar.</p>
-      <div class="numeros">
-        <div><b>Quase 20</b><span>aprovações em provas</span></div>
-        <div><b>2</b><span>nomeações antes da formatura</span></div>
-        <div><b>4</b><span>filhos, e a mesa da família</span></div>
-      </div>
+      <p>Comecei a estudar para concursos ainda na escola. Passei na OAB quase um ano antes de me formar e terminei o curso já servidor público. Nos livros está o que eu faço na mentoria, escrito para você usar.</p>
+      <ul class="feitos">
+        <li><b>Quase vinte aprovações</b>em concursos de tribunais, do Ministério Público e da AGU.</li>
+        <li><b>Duas nomeações antes da formatura</b>ainda no curso de Direito; as outras vieram depois.</li>
+        <li><b>Pai de quatro filhos</b>e, com a Gislaine, autor da coleção Filho meu, de caligrafia, tabuada e leitura para crianças.</li>
+      </ul>
     </div>
 
     <div class="cartao sobe" aria-labelledby="t-mentoria">
