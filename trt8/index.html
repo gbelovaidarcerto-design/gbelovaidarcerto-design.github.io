@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded',function(){
   q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
   document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
     var u=new URL(a.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
-    a.addEventListener('click',function(){fbq('track','InitiateCheckout',{content_name:a.getAttribute('data-produto')||'TRT 8'})});
+    a.addEventListener('click',function(){fbq('trackCustom','CliqueComprar',{content_name:a.getAttribute('data-produto')||'TRT 8'})});
   });
 });
 </script>

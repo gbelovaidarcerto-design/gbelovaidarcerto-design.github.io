@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded',function(){
   q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
   document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){
     var u=new URL(a.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
-    a.addEventListener('click',function(){fbq('track','InitiateCheckout',{content_name:(a.textContent||'').trim().slice(0,60)})});
+    a.addEventListener('click',function(){fbq('trackCustom','CliqueComprar',{content_name:(a.textContent||'').trim().slice(0,60)})});
   });
   // Baixar a folha do ciclo conta como cadastro (Lead).
   document.querySelectorAll('a[href$="folha-do-ciclo.pdf"]').forEach(function(a){
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   <ul class="estante" aria-label="Materiais">
     <li class="livro" data-f="concursos" style="--i:0">
-      <div class="cv"><img src="img/essencial.webp" width="520" height="738" alt="Capa do guia O essencial do método"></div>
+      <div class="cv"><img src="img/essencial.webp" width="520" height="738" fetchpriority="high" alt="Capa do guia O essencial do método"></div>
       <h3><a href="https://gbelovaidarcerto-design.github.io/fazer-ja-e-o-resultado/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral&amp;utm_content=essencial">O essencial do método</a></h3>
       <p>O método da mentoria em 81 páginas, para aplicar a partir de hoje.</p>
       <p class="preco"><mark>R$ 47</mark> em PDF e EPUB</p>
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <span class="ver" aria-hidden="true">Ver o material</span>
     </li>
     <li class="livro" data-f="filhos" style="--i:4">
-      <div class="cv"><img src="img/filho-caligrafia.webp" width="700" height="933" alt="Livro de caligrafia da coleção Filho meu"></div>
+      <div class="cv"><img loading="lazy" src="img/filho-caligrafia.webp" width="700" height="933" alt="Livro de caligrafia da coleção Filho meu"></div>
       <h3><a href="https://gbelovaidarcerto-design.github.io/filho-meu/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral">Filho meu</a></h3>
       <p>Caligrafia, tabuada e leitura com Provérbios. A família à mesa, cada filho no seu nível.</p>
       <p class="preco"><mark>R$ 139</mark> os três livros, preço de fundador</p>
