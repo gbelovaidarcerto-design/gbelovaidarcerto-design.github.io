@@ -21,110 +21,7 @@
   Para trocar um destino, procure o href do produto na estante.
   O parâmetro "src" nos links da Kiwify separa nos relatórios as vendas vindas desta página.
 -->
-<style>
-:root{
-  --papel:#FCFCFA; --grafite:#23262D; --lapis:#626873; --caneta:#1F3F99;
-  --pauta:#D6DFEA; --marca:#FFE14D;
-  --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --gap:20px; --cv:214px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--papel);color:var(--grafite);font:400 17px/1.55 var(--sans);overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:var(--caneta);text-underline-offset:3px;text-decoration-thickness:1px}
-a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:3px solid var(--caneta);outline-offset:3px;border-radius:2px}
-mark{background:linear-gradient(transparent 12%,var(--marca) 12%,var(--marca) 88%,transparent 88%);color:inherit;padding:0 .18em;margin:0 -.04em}
-.w{max-width:1120px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left))}
-h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;margin:0}
-
-/* cabeçalho */
-.top{display:flex;align-items:center;gap:12px;padding-block:20px 8px}
-.gb{width:40px;height:40px;border-radius:10px;background:var(--caneta);color:var(--papel);display:grid;place-items:center;font:500 17px/1 var(--serif)}
-.top b{display:block;font-weight:600;font-size:16px;line-height:1.2}
-.top a{font-size:14px;color:var(--lapis);text-decoration:none}
-.top a:hover{text-decoration:underline}
-
-/* abertura */
-.intro{padding-block:26px 8px}
-.intro>h1,.intro>p{max-width:660px}
-.intro h1{font-size:clamp(34px,8.6vw,52px);line-height:1.06;text-wrap:balance}
-.intro p{margin:16px 0 0;color:var(--lapis);font-size:17px;max-width:56ch}
-
-/* filtros */
-.filtro{border:0;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.filtro legend{float:left;font-size:15px;color:var(--lapis);margin-right:4px}
-.filtro input{position:absolute;opacity:0;pointer-events:none}
-.filtro label{font:500 15px/1 var(--sans);padding:10px 14px;border:1px solid var(--pauta);border-radius:999px;cursor:pointer;color:var(--grafite);background:#fff;transition:background-color .15s,color .15s,border-color .15s}
-.filtro input:checked+label{background:var(--caneta);border-color:var(--caneta);color:var(--papel)}
-.filtro input:focus-visible+label{outline:3px solid var(--caneta);outline-offset:2px}
-
-/* estante */
-.estante{list-style:none;margin:26px 0 0;padding:0 max(20px,env(safe-area-inset-left)) 6px;display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:max(20px,env(safe-area-inset-left));scrollbar-width:none;overscroll-behavior-x:contain}
-.estante::-webkit-scrollbar{display:none}
-.livro{flex:0 0 auto;width:152px;scroll-snap-align:start;position:relative;display:flex;flex-direction:column}
-.cv{height:var(--cv);display:flex;align-items:flex-end;justify-content:center;border-bottom:7px solid var(--pauta);margin-inline:calc(var(--gap) / -2);padding-inline:calc(var(--gap) / 2)}
-.cv img{height:calc(100% - 14px);width:auto;object-fit:contain;border-radius:2px 4px 4px 2px;box-shadow:inset 3px 0 0 rgba(255,255,255,.22),0 1px 1px rgba(35,38,45,.12),0 10px 14px -6px rgba(35,38,45,.35);animation:sobe .7s cubic-bezier(.2,.75,.25,1) both;animation-delay:calc(var(--i,0) * 70ms)}
-.cv img.pagina{border-radius:1px;box-shadow:0 1px 1px rgba(35,38,45,.12),0 10px 14px -6px rgba(35,38,45,.3)}
-@keyframes sobe{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
-.livro h3{font-size:19px;line-height:1.2;margin-top:16px}
-.livro h3 a{color:var(--grafite);text-decoration:none}
-.livro h3 a::after{content:"";position:absolute;inset:0}
-.livro:hover h3 a{text-decoration:underline;text-decoration-thickness:1px}
-.livro p{margin:6px 0 0;font-size:15px;line-height:1.45;color:var(--lapis)}
-.livro .preco{color:var(--grafite);font-weight:500;margin-top:10px}
-.livro .prova{font-size:14px}
-.livro .ver{margin-top:auto;padding-top:12px;font:600 15px/1.2 var(--sans);color:var(--caneta);text-decoration:underline;text-underline-offset:3px}
-
-/* filtro sem JavaScript */
-body:has(#f-concursos:checked) .livro:not([data-f~="concursos"]),
-body:has(#f-edital:checked) .livro:not([data-f~="edital"]),
-body:has(#f-filhos:checked) .livro:not([data-f~="filhos"]){display:none}
-
-/* seções depois da estante */
-.secao{padding-block:56px 0}
-.secao h2{font-size:clamp(26px,5.6vw,34px);line-height:1.15}
-.secao>p{max-width:60ch;color:var(--lapis);margin:10px 0 0}
-.gratis{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--pauta)}
-.gratis li{border-bottom:1px solid var(--pauta)}
-.gratis a{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:16px 0;text-decoration:none;color:var(--grafite)}
-.gratis b{font-weight:600}
-.gratis span{grid-column:1;color:var(--lapis);font-size:15px}
-.gratis i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font:600 15px/1 var(--sans);color:var(--caneta);text-decoration:underline;text-underline-offset:3px}
-.gratis a:hover b{text-decoration:underline}
-
-.autor{display:grid;gap:28px}
-.autor dl{margin:0;display:grid;gap:18px}
-.autor dt{font:650 19px/1.25 var(--serif)}
-.autor dd{margin:4px 0 0;color:var(--lapis);font-size:16px;max-width:58ch}
-
-.mentoria{margin-top:56px;padding:28px 0;border-top:7px solid var(--pauta);display:grid;gap:14px;max-width:640px}
-.mentoria p{margin:0;color:var(--lapis)}
-.btn{justify-self:start;display:inline-block;background:var(--caneta);color:var(--papel);text-decoration:none;font:600 16px/1 var(--sans);padding:15px 22px;border-radius:8px}
-.btn:hover{background:#18327b}
-
-footer{padding-block:48px 40px;color:var(--lapis);font-size:15px}
-footer blockquote{margin:0 0 20px;font:500 19px/1.45 var(--serif);color:var(--grafite);max-width:34ch}
-footer cite{display:block;font:400 15px/1.4 var(--sans);font-style:normal;color:var(--lapis);margin-top:6px}
-footer nav{display:flex;gap:20px;flex-wrap:wrap}
-
-@media (min-width:900px){
-  :root{--cv:280px;--gap:28px}
-  .top{padding-block:28px 0}
-  .intro{padding-block:56px 0}
-  .estante{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;max-width:1120px;margin-inline:auto;padding-inline:20px}
-  body:has(#f-concursos:checked) .estante,
-  body:has(#f-edital:checked) .estante,
-  body:has(#f-filhos:checked) .estante{grid-template-columns:repeat(5,1fr)}
-  .livro{width:auto}
-  .autor{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:start}
-}
-@media (prefers-reduced-motion:reduce){
-  .cv img{animation:none}
-  .filtro label{transition:none}
-}
-</style>
+<link rel="stylesheet" href="estilo.css">
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -167,7 +64,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <main>
   <div class="w intro">
     <h1>Livros de estudo para concursos e para a educação dos filhos</h1>
-    <p>Sou servidor no TRT, fui aprovado em quase vinte concursos e tenho quatro filhos. Aqui estão os materiais que escrevi, cada um com preço e amostra grátis.</p>
+    <p>Sou servidor no TRT, fui aprovado em quase vinte concursos em tribunais, no Ministério Público e na AGU, e tenho quatro filhos. Aqui estão os materiais que escrevi, cada um com preço e amostra grátis.</p>
 
     <fieldset class="filtro">
       <legend>Mostrar</legend>
@@ -217,9 +114,17 @@ document.addEventListener('DOMContentLoaded',function(){
     </li>
   </ul>
 
+  <section class="w secao" aria-labelledby="t-frentes">
+    <h2 id="t-frentes">Por frente</h2>
+    <ul class="frentes">
+      <li><a href="https://gbelovaidarcerto-design.github.io/fazer-ja-e-o-resultado/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral"><b>Mentoria para concursos</b><span>O método da mentoria em livros, a folha do ciclo e a mentoria individual.</span><i>Abrir</i></a></li>
+      <li><a href="editais/?src=pagina-geral"><b>Materiais por edital</b><span>Material feito para um concurso com edital publicado. Hoje, o TRT 8.</span><i>Abrir</i></a></li>
+      <li><a href="https://gbelovaidarcerto-design.github.io/filho-meu/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=pagina-geral"><b>Filho meu</b><span>Caligrafia, tabuada e leitura para os filhos, com Provérbios.</span><i>Abrir</i></a></li>
+    </ul>
+  </section>
+
   <section class="w secao" aria-labelledby="t-gratis">
     <h2 id="t-gratis">Comece sem pagar</h2>
-    <p>Uma amostra completa de cada frente, para você ver o material por dentro antes de decidir.</p>
     <ul class="gratis">
       <li><a href="ciclo/?src=pagina-geral"><b>Folha do ciclo</b><span>O ciclo de estudos da mentoria numa folha para imprimir.</span><i>Baixar</i></a></li>
       <li><a href="trt8/amostra/?src=pagina-geral"><b>Dia 1 do TRT 8 dia a dia</b><span>As sete páginas de um dia de estudo, sem cortes.</span><i>Ler</i></a></li>
@@ -227,22 +132,10 @@ document.addEventListener('DOMContentLoaded',function(){
     </ul>
   </section>
 
-  <section class="w secao autor" aria-labelledby="t-autor">
-    <div>
-      <h2 id="t-autor">Quem escreve</h2>
-      <p class="muted" style="color:var(--lapis);margin:10px 0 0;max-width:46ch">Comecei a estudar para concursos ainda na escola. Passei na OAB quase um ano antes de me formar e terminei o curso já servidor público. Nos livros está o que eu faço na mentoria, escrito para você usar.</p>
-    </div>
-    <dl>
-      <div><dt>Quase vinte aprovações</dt><dd>Em concursos de tribunais (estaduais, federais, do trabalho e eleitorais), do Ministério Público, da AGU, do INSS e de universidades, além da OAB.</dd></div>
-      <div><dt>Nomeado duas vezes antes de me formar</dt><dd>Depois vieram outras nomeações, em universidades, na AGU e no TRT, onde sou servidor hoje.</dd></div>
-      <div><dt>Pai de quatro filhos</dt><dd>Com a Gislaine, escrevo a coleção Filho meu. Os três primeiros livros (caligrafia, tabuada e leitura) já estão à venda, e outros dez estão em preparação, de gramática e escrita a ciências, finanças e inglês.</dd></div>
-    </dl>
-  </section>
-
   <section class="w" aria-labelledby="t-mentoria">
     <div class="mentoria">
       <h2 id="t-mentoria" style="font-size:clamp(24px,5vw,30px)">Mentoria individual</h2>
-      <p>Para montar o seu ciclo, a sua trilha e a sua semana comigo, de perto. Conte no Direct qual é a sua prova e em que ponto você está.</p>
+      <p>Para montar o seu ciclo, a sua trilha e a sua semana comigo. Conte no Direct qual é a sua prova e em que ponto você está.</p>
       <a class="btn" href="https://ig.me/m/mentoriagb">Falar no Direct</a>
     </div>
   </section>

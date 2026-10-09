@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Materiais por edital · Gullit Belo</title>
+<meta name="description" content="Material de estudo feito para um concurso com edital publicado: o conteúdo, a banca e a data da prova daquele edital. Hoje, o TRT 8ª Região (FCC): TRT 8 dia a dia e Jurisprudência para o TRT 8ª Região.">
+<meta property="og:title" content="Materiais por edital · Gullit Belo">
+<meta property="og:description" content="Material feito para o edital publicado. Hoje, o TRT 8ª Região.">
+<meta property="og:image" content="https://gbelovaidarcerto-design.github.io/trt8/og.jpg">
+<meta property="og:url" content="https://gbelovaidarcerto-design.github.io/editais/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FCFCFA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3F99'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='27' fill='%23FCFCFA' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../estilo.css">
+<!--
+  MATERIAIS POR EDITAL. Um bloco <section class="concurso"> por concurso.
+  Concurso novo: copie o bloco do TRT 8, troque ficha, datas (data-prova) e produtos.
+-->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2146801305916148');
+fbq('track','PageView');
+document.addEventListener('DOMContentLoaded',function(){
+  // Leva utm_* e src desta página para as páginas de cada material.
+  var q=new URLSearchParams(location.search),keep=new URLSearchParams();
+  q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
+  if(!keep.has('src'))keep.set('src','editais');
+  document.querySelectorAll('a[data-origem]').forEach(function(a){
+    var u=new URL(a.href,location.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
+  });
+  // Dias até a prova de cada concurso (data-prova="AAAA-MM-DD").
+  var hoje=new Date(new Date().toDateString());
+  document.querySelectorAll('[data-prova]').forEach(function(el){
+    var p=el.getAttribute('data-prova').split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);
+    var n=Math.ceil((d-hoje)/864e5);
+    if(n>1)el.textContent=el.getAttribute('data-texto')+', daqui a '+n+' dias';
+    else if(n===1)el.textContent=el.getAttribute('data-texto')+', amanhã';
+  });
+});
+</script>
+</head>
+<body>
+
+<header class="w top">
+  <span class="gb" aria-hidden="true">GB</span>
+  <div><b>Gullit Belo</b><a href="https://www.instagram.com/mentoriagb/">@mentoriagb</a></div>
+  <a class="voltar" href="../">Todos os materiais</a>
+</header>
+
+<main>
+  <div class="w intro">
+    <h1>Materiais por edital</h1>
+    <p>Material escrito para um concurso com edital publicado: segue o conteúdo, a banca e a data da prova daquele edital, dia a dia, até a prova.</p>
+  </div>
+
+  <section class="w concurso" aria-labelledby="t-trt8">
+    <h2 id="t-trt8">TRT 8ª Região</h2>
+    <dl class="ficha">
+      <dt>Banca</dt><dd>FCC</dd>
+      <dt>Inscrições</dt><dd>até 5 de novembro de 2026</dd>
+      <dt>Prova</dt><dd data-prova="2027-01-17" data-texto="17 de janeiro de 2027">17 de janeiro de 2027</dd>
+      <dt>Cargos</dt><dd>Analista Judiciário (Área Judiciária), Oficial de Justiça e Técnico Judiciário (Área Administrativa)</dd>
+    </dl>
+  </section>
+
+  <ul class="estante tres" aria-label="Materiais do TRT 8ª Região">
+    <li class="livro" style="--i:0">
+      <div class="cv"><img class="pagina" src="../trt8/amostra/ao/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Analista e Oficial de Justiça"></div>
+      <h3><a data-origem href="../trt8/">TRT 8 dia a dia: Analista e Oficial</a></h3>
+      <p>67 dias de estudo para os 171 temas do edital, com estudo de caso todo dia.</p>
+      <p class="preco"><mark>R$ 97</mark> até 5 de novembro</p>
+      <span class="ver" aria-hidden="true">Ver o material</span>
+    </li>
+    <li class="livro" style="--i:1">
+      <div class="cv"><img class="pagina" src="../trt8/amostra/tec/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Técnico Judiciário"></div>
+      <h3><a data-origem href="../trt8/">TRT 8 dia a dia: Técnico</a></h3>
+      <p>46 dias de estudo para os 117 temas do edital, com redação todo dia.</p>
+      <p class="preco"><mark>R$ 97</mark> até 5 de novembro</p>
+      <span class="ver" aria-hidden="true">Ver o material</span>
+    </li>
+    <li class="livro" style="--i:2">
+      <div class="cv"><img class="pagina" src="../trt8/jurisprudencia/capa.webp" width="1100" height="1556" alt="Capa da Jurisprudência para o TRT 8ª Região"></div>
+      <h3><a data-origem href="../trt8/jurisprudencia/">Jurisprudência para o TRT 8ª Região</a></h3>
+      <p>Súmulas, OJs e teses do TST, do STF e do STJ que a FCC cobra, por disciplina e na ordem do edital.</p>
+      <p class="preco"><mark>R$ 97</mark>, ou R$ 67 junto com o dia a dia</p>
+      <span class="ver" aria-hidden="true">Ver o material</span>
+    </li>
+  </ul>
+
+  <section class="w secao" aria-labelledby="t-gratis">
+    <h2 id="t-gratis">Antes de comprar</h2>
+    <ul class="gratis">
+      <li><a data-origem href="../trt8/amostra/"><b>Dia 1 completo</b><span>As sete páginas de um dia de estudo, para Analista e Oficial e para Técnico.</span><i>Ler</i></a></li>
+      <li><a data-origem href="../trt8/jurisprudencia/#teste"><b>Teste de jurisprudência</b><span>Cinco afirmações do material para julgar Certo ou Errado, com comentário.</span><i>Fazer</i></a></li>
+    </ul>
+    <p class="nota">Quando sair o edital de outro concurso que eu acompanho, o material dele entra nesta página.</p>
+  </section>
+</main>
+
+<footer class="w">
+  <nav><a href="../">Todos os materiais</a><a href="https://www.instagram.com/mentoriagb/">@mentoriagb no Instagram</a><a href="../privacidade/">Privacidade</a></nav>
+</footer>
+
+</body>
+</html>
