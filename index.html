@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded',function(){
     var u=new URL(a.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
     a.addEventListener('click',function(){fbq('trackCustom','CliqueComprar',{content_name:(a.textContent||'').trim().slice(0,60)})});
   });
+  // Quem chega com origem própria (YouTube, anúncio) leva essa origem para as outras páginas, no lugar da origem fixa dos links.
+  if(keep.has('utm_source'))document.querySelectorAll('a[href]').forEach(function(a){
+    var u=new URL(a.href,location.href);if(u.hostname!==location.hostname||u.href.indexOf('.pdf')>-1)return;
+    if(u.pathname===location.pathname&&!u.search)return;
+    keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
+  });
   // Baixar a folha do ciclo conta como cadastro (Lead).
   document.querySelectorAll('a[href$="folha-do-ciclo.pdf"]').forEach(function(a){
     a.addEventListener('click',function(){fbq('track','Lead',{content_name:'Folha do ciclo'})});
