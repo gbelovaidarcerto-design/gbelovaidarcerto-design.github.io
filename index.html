@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded',function(){
   // Dias até a prova do TRT 8 (17/01/2027).
   var dias=Math.ceil((new Date(2027,0,17)-new Date(new Date().toDateString()))/864e5);
   document.querySelectorAll('[data-dias]').forEach(function(el){
-    el.textContent=dias>1?'Prova em 17 de janeiro, daqui a '+dias+' dias.':dias===1?'A prova é amanhã, 17 de janeiro.':'Prova em 17 de janeiro de 2027.';
+    el.textContent=dias>1?'Prova prevista para 17 de janeiro, daqui a '+dias+' dias.':dias===1?'Prova prevista para amanhã, 17 de janeiro.':'Prova prevista para 17 de janeiro de 2027.';
   });
   // Ao trocar o filtro, a estante volta para o primeiro livro.
   document.querySelectorAll('.filtro input').forEach(function(r){
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <h3><a href="trt8/?src=pagina-geral">TRT 8 dia a dia</a></h3>
       <p>Um dia de estudo por vez, do edital à discursiva. Para Analista e Oficial ou para Técnico.</p>
       <p class="preco"><mark>R$ 97</mark> por cargo até 5 de novembro</p>
-      <p class="prova" data-dias>Prova em 17 de janeiro de 2027.</p>
+      <p class="prova" data-dias>Prova prevista para 17 de janeiro de 2027.</p>
       <span class="ver" aria-hidden="true">Ver o material</span>
     </li>
     <li class="livro" data-f="concursos edital" style="--i:3">
