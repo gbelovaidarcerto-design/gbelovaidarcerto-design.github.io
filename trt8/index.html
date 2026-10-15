@@ -125,6 +125,13 @@ summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:fl
 summary::after{content:"+";color:var(--azul);font-size:22px;line-height:1}
 details[open] summary::after{content:"\2212"}
 details p{padding-bottom:16px;color:var(--suave);font-size:16px}
+.treino{background:var(--sup);border:1px solid var(--linha);border-left:6px solid var(--ambar);border-radius:10px;padding:22px 22px 20px}
+.treino h2{margin:6px 0 10px;font-size:clamp(22px,4.4vw,28px)}
+.treino p{margin:0 0 14px}
+.treino .btn{background:var(--azul);color:#fff}
+.treino .ctas-t{display:flex;gap:10px;flex-wrap:wrap}
+.treino .btn.sec2{background:transparent;border:2px solid var(--azul);color:var(--azul)}
+.treino .mini{font-size:14px;color:var(--suave);margin:12px 0 0}
 .fim{background:var(--azul);color:#fff;text-align:center}
 .fim h2{color:#fff}
 .fim .ctas{justify-content:center}
@@ -302,6 +309,21 @@ document.addEventListener('DOMContentLoaded',function(){
     <details><summary>Posso baixar em PDF?</summary><p>Pode, e é assim que o material é entregue: um PDF por semana, liberado na área de membros junto com o módulo. Dá para grifar e anotar no aplicativo que você preferir ou imprimir. O material é de uso individual e o compartilhamento é proibido.</p></details>
     <details><summary>Estou começando tarde. Ainda vale?</summary><p>Vale. As semanas já liberadas ficam disponíveis na hora, e a prova está prevista para 17 de janeiro de 2027. Você pode seguir no seu ritmo.</p></details>
     <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia pela Kiwify. Pediu dentro do prazo, recebe o valor de volta.</p></details>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="w">
+    <div class="treino">
+      <p class="k">Presente por mensagem</p>
+      <h2>Ainda não decidiu? Receba o Treino relâmpago.</h2>
+      <p>Quinze afirmações Certo ou Errado inéditas, no estilo da FCC, com o enfrentamento completo de cada uma. Elas não estão no material. Grátis, enviado por mensagem no Instagram.</p>
+      <div class="ctas-t">
+        <a class="btn" href="https://www.instagram.com/mentoriagb/" target="_blank" rel="noopener" onclick="try{fbq('trackCustom','TreinoClick',{via:'comentario'})}catch(e){}">Comentar TREINO no perfil</a>
+        <a class="btn sec2" href="https://ig.me/m/mentoriagb" target="_blank" rel="noopener" onclick="try{fbq('trackCustom','TreinoClick',{via:'direct'})}catch(e){}">Ou enviar TREINO no Direct</a>
+      </div>
+      <p class="mini">Escreva a palavra TREINO em qualquer publicação recente do @mentoriagb, ou mande no Direct. O envio é feito por mensagem, e a resposta pode levar algumas horas.</p>
+    </div>
   </div>
 </section>
 
