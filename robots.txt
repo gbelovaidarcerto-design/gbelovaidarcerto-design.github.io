@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /presentes/
+Disallow: /anamnese/

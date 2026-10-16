@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Anamnese da mentoria</title>
+<meta name="description" content="Apresentação pessoal e diagnóstico de partida para a mentoria individual de Gullit Belo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FCFCFA; --grafite:#23262D; --lapis:#626873; --caneta:#1F3F99;
+  --pauta:#D6DFEA; --marca:#FFE14D; --alerta:#9B2C1F; --alerta-fundo:#FBEDEA;
+  --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--grafite);font:400 17px/1.55 var(--sans);overflow-x:hidden}
+a{color:var(--caneta);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--caneta);outline-offset:3px;border-radius:2px}
+mark{background:linear-gradient(transparent 12%,var(--marca) 12%,var(--marca) 88%,transparent 88%);color:inherit;padding:0 .15em}
+h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;margin:0;text-wrap:balance}
+.w{max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left))}
+
+/* topo */
+.top{display:flex;align-items:center;gap:12px;padding-block:18px 6px}
+.gb{width:40px;height:40px;border-radius:10px;background:var(--caneta);color:var(--papel);display:grid;place-items:center;font:500 17px/1 var(--serif);flex:none}
+.top b{display:block;font-weight:600;font-size:16px;line-height:1.2}
+.top span{font-size:14px;color:var(--lapis)}
+.salvo{margin-left:auto;font-size:13px;color:var(--lapis);text-align:right}
+
+/* progresso */
+.prog{position:sticky;top:0;z-index:5;background:var(--papel);padding-block:12px 10px;border-bottom:1px solid var(--pauta)}
+.prog-linha{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--lapis);margin-bottom:8px}
+.prog-linha b{color:var(--grafite);font-weight:600}
+.barra{height:7px;background:var(--pauta);border-radius:4px;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--caneta);transition:width .3s}
+@media (prefers-reduced-motion:reduce){.barra i{transition:none}}
+
+/* etapa */
+.etapa{padding-block:28px 8px}
+.etapa h1{font-size:clamp(28px,7vw,40px);line-height:1.1}
+.etapa .intro{color:var(--lapis);margin:12px 0 0}
+.intro,.ajuda,.caixa p,.item p,.resumo dd,.rodape{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.campo{margin-top:28px}
+.campo>label,.campo>.rot{display:block;font-weight:600;line-height:1.35}
+.campo .ajuda{display:block;font-size:15px;color:var(--lapis);margin-top:4px;font-weight:400}
+input[type=text],input[type=number],input[type=email],input[type=tel],textarea,select{width:100%;margin-top:10px;font:400 17px/1.4 var(--sans);color:var(--grafite);background:#fff;border:1px solid #B9C4D2;border-radius:8px;padding:12px 14px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(31,63,153,.25);border-color:var(--caneta)}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opcoes label{position:relative}
+.opcoes input{position:absolute;opacity:0;pointer-events:none}
+.opcoes span{display:inline-block;font:500 15px/1.2 var(--sans);padding:10px 14px;border:1px solid #B9C4D2;border-radius:999px;background:#fff;cursor:pointer}
+.opcoes input:checked+span{background:var(--caneta);border-color:var(--caneta);color:var(--papel)}
+.opcoes input:focus-visible+span{outline:3px solid var(--caneta);outline-offset:2px}
+.lista-checks{display:grid;gap:10px;margin-top:12px}
+.lista-checks label{display:flex;gap:12px;align-items:flex-start;line-height:1.4;cursor:pointer}
+.lista-checks input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--caneta)}
+
+/* grupos (esferas, princípios, dias) */
+.grupo{margin-top:22px;border-top:1px solid var(--pauta)}
+.item{padding:18px 0;border-bottom:1px solid var(--pauta)}
+.item h3{font-size:19px;line-height:1.3}
+.item p{margin:4px 0 0;font-size:15px;color:var(--lapis)}
+.item textarea{min-height:70px}
+.item input[type=text]{margin-top:10px}
+.total{margin-top:18px;font-size:18px}
+.total b{font-family:var(--serif);font-size:28px}
+
+/* listas repetíveis */
+.rep{margin-top:12px;display:grid;gap:12px}
+.rep-linha{background:#fff;border:1px solid var(--pauta);border-radius:10px;padding:12px 14px;display:grid;gap:8px}
+.rep-linha input,.rep-linha select{margin-top:0}
+.rep-linha .tira{justify-self:end;background:none;border:0;color:var(--lapis);font:500 14px var(--sans);text-decoration:underline;cursor:pointer;padding:4px}
+.mais{margin-top:10px;background:none;border:1px dashed #9AA8BA;border-radius:8px;padding:11px 14px;font:600 15px var(--sans);color:var(--caneta);cursor:pointer;width:100%}
+
+/* caixas */
+.caixa{margin-top:24px;padding:16px 18px;border-left:5px solid var(--pauta);background:#fff;border-radius:0 8px 8px 0}
+.caixa p{margin:0}
+.caixa p+p{margin-top:8px}
+.alerta{border-left-color:var(--alerta);background:var(--alerta-fundo)}
+.alerta b{color:var(--alerta)}
+.oculto{display:none}
+
+/* navegação */
+.nav{display:flex;gap:12px;justify-content:space-between;align-items:center;padding-block:30px 40px}
+.btn{display:inline-block;background:var(--caneta);color:var(--papel);border:0;text-decoration:none;font:600 16px/1 var(--sans);padding:15px 22px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--caneta);border:1px solid var(--caneta)}
+.btn.zap{background:#1F7A4D}
+.acoes{display:grid;gap:12px;margin-top:22px}
+.acoes .btn{text-align:center}
+.etapas{margin-top:14px}.etapas summary{cursor:pointer;color:var(--caneta);font:600 15px var(--sans)}
+.mapa{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.mapa button{font:500 13px var(--sans);border:1px solid var(--pauta);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--lapis)}
+.mapa button.feita{border-color:var(--caneta);color:var(--caneta)}
+.mapa button.atual{background:var(--caneta);color:var(--papel);border-color:var(--caneta)}
+.resumo{margin-top:20px;font-size:15px}
+.resumo h3{font-size:18px;margin-top:22px}
+.resumo dl{margin:8px 0 0;display:grid;gap:6px}
+.resumo dt{color:var(--lapis)}
+.resumo dd{margin:0 0 6px;white-space:pre-wrap}
+.rodape{font-size:14px;color:var(--lapis);padding-block:20px 40px;border-top:1px solid var(--pauta)}
+</style>
+</head>
+<body>
+<div class="w">
+  <header class="top">
+    <div class="gb" aria-hidden="true">GB</div>
+    <div><b>Gullit Belo</b><span>Mentoria individual</span></div>
+    <div class="salvo" id="salvo" aria-live="polite"></div>
+  </header>
+</div>
+<div class="prog"><div class="w">
+  <div class="prog-linha"><span id="prog-nome"></span><b id="prog-num"></b></div>
+  <div class="barra" role="progressbar" aria-label="Progresso da anamnese" aria-valuemin="0" aria-valuemax="100" id="barra"><i></i></div>
+</div></div>
+<main class="w" id="app"></main>
+<div class="w"><p class="rodape">Suas respostas ficam guardadas só neste aparelho até você enviar o arquivo. Nada é enviado pela internet enquanto você preenche.</p></div>
+
+<script>
+/* Número de WhatsApp da mentoria, só dígitos com DDI e DDD (ex.: 5591999999999). */
+const WHATSAPP = '5584999196984';
+const VERSAO = '2026-10b';
+const CHAVE = 'anamnese-mentoria-v1';
+
+/* ---------- Quem é quem: as respostas que mudam o caminho ---------- */
+const COMECANDO = 'Estou começando agora: é a minha primeira preparação';
+const PAREI = 'Já estudei antes, mas parei';
+const ESTUDO = 'Estudo hoje';
+const comecando = d => d.experiencia === COMECANDO;
+const temExperiencia = d => d.experiencia === PAREI || d.experiencia === ESTUDO;
+const sabeAlvo = d => d.alvo_sabe === 'Já sei qual concurso quero';
+const temAlvo = d => d.alvo_sabe === 'Já sei qual concurso quero' || d.alvo_sabe === 'Tenho algumas opções';
+const casado = d => d.estado_civil === 'Casado(a) ou em união estável';
+const relacionamento = d => d.estado_civil === 'Namorando' || d.estado_civil === 'Noivo(a)';
+const temFilhos = d => d.tem_filhos === 'Sim';
+const sozinho = d => d.mora_com === 'Sozinho(a)';
+const trabalha = d => d.trabalho && d.trabalho !== 'Não trabalho no momento';
+
+/* ---------- As perguntas ----------
+   Tipos: texto, longo, numero, escolha (uma), varias (várias), checks (lista de caixas),
+   esferas, principios, dias, repetir (lista que cresce), aviso.
+   "se" decide se a etapa, a pergunta ou o item aparece; "controla" redesenha a etapa
+   quando a resposta muda; rótulos podem depender das respostas. */
+const NIVEL_VIDA = ['Em ordem', 'Precisa de atenção', 'Negligenciado', 'Não se aplica'];
+const ETAPAS = [
+  { id: 'inicio', titulo: 'Antes de começar', intro: 'Com as suas respostas, eu preparo uma orientação para a sua vida real. Leva de 20 a 40 minutos, conforme o seu caso. Você pode parar e voltar depois: tudo fica salvo neste aparelho.', campos: [
+    { tipo: 'aviso', html: '<p><b>Responda pela sua rotina real, não pela ideal.</b> Não há resposta certa nem nota. Se não souber alguma coisa, deixe em branco.</p>' },
+    { id: 'nome', tipo: 'texto', rotulo: 'Seu nome completo' },
+    { id: 'como_chamar', tipo: 'texto', rotulo: 'Como prefere ser chamado(a)?' },
+    { id: 'consentimento', tipo: 'checks', rotulo: 'Autorizações', ajuda: 'Algumas perguntas tratam de saúde e de fé. A lei de proteção de dados chama isso de dados sensíveis e pede uma autorização própria.', itens: [
+      'Autorizo o uso destas respostas só para preparar a minha mentoria com Gullit Belo. Elas não serão compartilhadas, e posso pedir a exclusão quando quiser.',
+      'Autorizo também as respostas sobre saúde, sono, emoções e fé, para a mesma finalidade.'
+    ] },
+    { tipo: 'aviso', html: '<p>Sem a segunda autorização, as partes de saúde, emoções e fé ficam fechadas, e você responde todo o resto.</p>' }
+  ] },
+  { id: 'partida', titulo: 'O seu ponto de partida', intro: 'Esta resposta decide quais perguntas aparecem para você.', campos: [
+    { id: 'experiencia', tipo: 'escolha', controla: true, rotulo: 'Você já estudou para concursos?', opcoes: [COMECANDO, PAREI, ESTUDO] },
+    { tipo: 'aviso', se: comecando, html: '<p>Ótimo. Vou pular as perguntas sobre provas anteriores e sobre o seu jeito de estudar. Começar do jeito certo é uma vantagem.</p>' },
+    { id: 'tempo_estudo', se: temExperiencia, tipo: 'escolha', rotulo: 'Por quanto tempo você estudou de forma regular, somando tudo?', opcoes: ['Menos de 6 meses', '6 meses a 1 ano e meio', '1 ano e meio a 3 anos', 'Mais de 3 anos'] },
+    { id: 'parou_quando', se: d => d.experiencia === PAREI, tipo: 'texto', rotulo: 'Quando parou, e por quê?' },
+    { id: 'fez_prova', se: temExperiencia, tipo: 'escolha', controla: true, rotulo: 'Já fez alguma prova de concurso?', opcoes: ['Sim', 'Ainda não'] },
+    { id: 'provas', se: d => temExperiencia(d) && d.fez_prova === 'Sim', tipo: 'repetir', rotulo: 'Quais provas, e como foi?', ajuda: 'Concurso, ano e o que lembrar do resultado.', colunas: [['concurso', 'Concurso e cargo'], ['ano', 'Ano'], ['resultado', 'Resultado']] },
+    { id: 'materiais_atuais', se: temExperiencia, tipo: 'texto', rotulo: 'Que cursos ou materiais você usa (ou usava)?' }
+  ] },
+  { id: 'voce', titulo: 'Quem é você', intro: 'O básico sobre você e sobre a sua rotina.', campos: [
+    { id: 'idade', tipo: 'numero', rotulo: 'Idade' },
+    { id: 'cidade', tipo: 'texto', rotulo: 'Cidade e estado' },
+    { id: 'formacao', tipo: 'texto', rotulo: 'Formação', ajuda: 'Ex.: Ensino médio; Direito, cursando; Administração, concluído.' },
+    { id: 'trabalho', tipo: 'escolha', controla: true, rotulo: 'Trabalho', opcoes: ['Tempo integral', 'Meio período', 'Escala ou plantões', 'Autônomo(a)', 'Não trabalho no momento'] },
+    { id: 'trabalho_desc', se: trabalha, tipo: 'texto', rotulo: 'O que você faz, e em que horário?', ajuda: 'Ex.: atendente, 8h às 17h, 40 minutos de ônibus.' },
+    { id: 'estado_civil', tipo: 'escolha', controla: true, rotulo: 'Estado civil', opcoes: ['Solteiro(a)', 'Namorando', 'Noivo(a)', 'Casado(a) ou em união estável', 'Separado(a) ou divorciado(a)', 'Viúvo(a)'] },
+    { id: 'tem_filhos', tipo: 'escolha', controla: true, rotulo: 'Tem filhos?', opcoes: ['Sim', 'Não'] },
+    { id: 'filhos', se: temFilhos, tipo: 'texto', rotulo: 'Quantos, e com que idades?' },
+    { id: 'mora_com', tipo: 'escolha', controla: true, rotulo: 'Com quem você mora?', opcoes: ['Sozinho(a)', 'Com cônjuge e/ou filhos', 'Com pais ou outros familiares', 'Com amigos ou colegas'] },
+    { id: 'cuida', tipo: 'escolha', controla: true, rotulo: 'Alguém depende dos seus cuidados (pais idosos, familiar doente)?', opcoes: ['Sim', 'Não'] },
+    { id: 'cuida_quem', se: d => d.cuida === 'Sim', tipo: 'texto', rotulo: 'Quem, e quanto tempo isso pede?' },
+    { id: 'materiais', tipo: 'varias', rotulo: 'Quais materiais da mentoria você já leu?', opcoes: ['O essencial do método', 'Volume 1', 'Volume 2', 'Volume 3', 'Volume 4', 'A folha do ciclo', 'Nenhum ainda'] }
+  ] },
+  { id: 'alvo', titulo: 'O seu alvo', intro: 'Aonde você quer chegar, e por quê.', campos: [
+    { id: 'alvo_sabe', tipo: 'escolha', controla: true, rotulo: 'Você já sabe qual concurso quer fazer?', opcoes: ['Já sei qual concurso quero', 'Tenho algumas opções', 'Ainda não sei'] },
+    { id: 'alvo_cargo', se: temAlvo, tipo: 'texto', rotulo: d => sabeAlvo(d) ? 'Qual cargo e qual órgão?' : 'Quais são as opções?', ajuda: 'Ex.: Técnico Judiciário do TRT da minha região.' },
+    { id: 'alvo_areas', se: d => d.alvo_sabe === 'Ainda não sei', tipo: 'varias', rotulo: 'Que áreas te atraem?', opcoes: ['Tribunais', 'Ministério Público e Defensoria', 'Polícias e segurança', 'Fiscal e tributária', 'Bancos', 'Saúde', 'Educação', 'Administração pública em geral', 'Ainda não sei'] },
+    { id: 'alvo_edital', se: sabeAlvo, tipo: 'escolha', controla: true, rotulo: 'O edital já saiu?', opcoes: ['Sim, já saiu', 'Ainda não', 'Não sei'] },
+    { id: 'alvo_prova', se: d => sabeAlvo(d) && d.alvo_edital === 'Sim, já saiu', tipo: 'texto', rotulo: 'Qual a data da prova?' },
+    { id: 'porque', tipo: 'longo', rotulo: 'Por que você quer passar num concurso? O que isso muda na sua vida?' },
+    { id: 'conselho', tipo: 'texto', rotulo: 'Já conversou com alguém sobre essa decisão? O que ouviu?' },
+    { id: 'orcamento', tipo: 'texto', rotulo: 'Quanto pode investir por mês na preparação, sem apertar as contas?' }
+  ] },
+  { id: 'habitos', se: temExperiencia, titulo: 'Como você estuda', intro: d => d.experiencia === PAREI ? 'Responda pensando na última fase em que estudava.' : 'Pense numa semana comum, e não no seu melhor dia.', campos: [
+    { id: 'distribuicao', tipo: 'escolha', rotulo: 'A maior parte do seu tempo de estudo vai para…', opcoes: ['Assistir aula e ler', 'Resumir e grifar', 'Fazer questões', 'Revisar', 'Um pouco de cada'] },
+    { id: 'copia_resumo', tipo: 'escolha', rotulo: 'Faz resumos copiando do material?', opcoes: ['Muito', 'Às vezes', 'Não'] },
+    { id: 'revisoes', tipo: 'escolha', rotulo: 'Revisa o que já estudou em datas marcadas?', opcoes: ['Sim', 'Às vezes', 'Não'] },
+    { id: 'cronograma', tipo: 'escolha', controla: true, rotulo: 'Segue um cronograma com matéria fixa por dia?', opcoes: ['Sim', 'Não', 'Uso ciclo de estudos'] },
+    { id: 'dia_falha', se: d => d.cronograma === 'Sim', tipo: 'texto', rotulo: 'E quando um dia falha, o que acontece?' },
+    { id: 'domingo_estudo', tipo: 'escolha', rotulo: 'Estuda no domingo?', opcoes: ['Nunca', 'Às vezes', 'Sempre'] },
+    { id: 'celular', tipo: 'escolha', rotulo: 'Enquanto estuda, o celular fica…', opcoes: ['Longe de mim', 'Na mesa', 'Na mão'] },
+    { id: 'ia', tipo: 'escolha', rotulo: 'Usa inteligência artificial para estudar?', opcoes: ['Não', 'Às vezes', 'Muito'] },
+    { id: 'erro_tipo', tipo: 'varias', rotulo: 'Quando erra uma questão, o que mais acontece?', opcoes: ['Não conhecia o conteúdo', 'Li errado', 'Caí numa pegadinha', 'Estudei, mas esqueci', 'Faltou tempo', 'Não sei dizer'] },
+    { id: 'gargalo', tipo: 'escolha', rotulo: 'O que mais te trava?', opcoes: ['Falta de tempo', 'O jeito de estudar', 'Constância', 'Cansaço', 'Ansiedade', 'Vida desorganizada', 'Não sei'] }
+  ] },
+  { id: 'principios', se: d => d.experiencia === ESTUDO, titulo: 'Os 12 princípios do método', intro: 'Como está o seu estudo hoje, em relação ao método. Para cada frase: 0 = quase nunca; 1 = às vezes; 2 = quase sempre.', campos: [
+    { id: 'p12', tipo: 'principios', itens: [
+      ['Vida antes da prova', 'O meu plano de estudo respeita os meus compromissos com Deus, a casa e o trabalho.'],
+      ['Fazer já é o resultado', 'Termino a maioria dos dias tendo feito o que dava, sem tarefa acumulada.'],
+      ['Eficiência', 'O meu tempo vai mais para praticar do que para reler, grifar ou copiar.'],
+      ['O ciclo gira', 'Sigo uma sequência de matérias, sem pular as de que não gosto.'],
+      ['Acervo da banca', 'Sei o que a minha banca mais cobra nos assuntos que estudo.'],
+      ['Recuperar', 'Termino o estudo tentando lembrar sem olhar o material.'],
+      ['Espaçar', 'Volto aos assuntos em datas espaçadas para revisar.'],
+      ['Escrever o compreendido', 'Escrevo o que entendi com as minhas palavras, sem copiar.'],
+      ['Muitas formas', 'Uso mais de um formato (vídeo, texto, áudio, esquema).'],
+      ['Erro', 'Anoto os meus erros e o que aprendi com eles.'],
+      ['Corpo e domingo', 'Durmo 7 horas ou mais, me movimento e não estudo no domingo.'],
+      ['Aprender sempre', 'Testei uma técnica ou ferramenta nova nos últimos três meses.']
+    ] }
+  ] },
+  { id: 'tempo', titulo: 'O seu tempo', intro: 'Quando você consegue estudar. A semana de estudo vai de segunda a sábado: o domingo fica de fora.', campos: [
+    { id: 'janelas', tipo: 'dias', rotulo: 'Horários livres em cada dia', ajuda: 'Inclua os curtos também, como o almoço ou o ônibus. Ex.: 6h–6h40 e 20h–21h30.' },
+    { id: 'deslocamento', se: trabalha, tipo: 'texto', rotulo: 'Quanto tempo passa no trânsito por dia, e como (carro, ônibus, a pé)?' },
+    { id: 'tela', tipo: 'texto', rotulo: 'Quanto tempo passa no celular por dia, fora o trabalho?', ajuda: 'O celular mostra isso nas configurações.' },
+    { id: 'energia_alta', tipo: 'varias', rotulo: 'Em que hora do dia a sua cabeça rende mais?', opcoes: ['Cedo, de manhã', 'Fim da manhã', 'Tarde', 'Noite', 'Tarde da noite'] },
+    { id: 'lugar', tipo: 'texto', rotulo: 'Onde você estuda (ou vai estudar)?' }
+  ] },
+  { id: 'disciplinas', se: temAlvo, titulo: 'As disciplinas', intro: d => comecando(d) ? 'Se já souber as matérias do seu concurso, liste aqui. Se não souber, pode seguir em frente: vemos isso juntos.' : 'Como você se sente em cada matéria do seu concurso. É uma primeira impressão.', campos: [
+    { id: 'disc', tipo: 'repetir', rotulo: 'Matérias', ajuda: 'Uma por linha.', colunas: [['nome', 'Matéria'], ['dominio', 'Como você está', ['Nunca estudei', 'Fraco(a)', 'Razoável', 'Bem']]], linhas: 3 },
+    { id: 'discursiva', tipo: 'escolha', rotulo: 'O seu concurso tem prova escrita (redação, discursiva ou estudo de caso)?', opcoes: ['Sim', 'Não', 'Não sei'] }
+  ] },
+  { id: 'vida', titulo: 'A vida em volta do estudo', intro: 'O concurso se encaixa na vida, e não o contrário. Diga como está cada parte. Se alguma não fizer sentido para você, marque "Não se aplica".', campos: [
+    { id: 'esferas', tipo: 'esferas', itens: [
+      ['deus', 'Vida com Deus', 'Oração, leitura da Bíblia, igreja, o domingo.', { fe: true }],
+      ['conjuge', 'Casamento', 'Tempo juntos, conversa, decisões em conjunto.', { se: casado }],
+      ['relacionamento', 'Namoro ou noivado', 'Tempo juntos e planos em comum.', { se: relacionamento }],
+      ['filhos', 'Filhos', 'Presença, cuidado, educação.', { se: temFilhos }],
+      ['pais', 'Pais e família', 'Convivência, cuidado, visitas.'],
+      ['casa', 'A casa e as contas', 'Organização, tarefas e finanças.'],
+      ['trabalho', 'Trabalho', 'Fazer bem o que se deve no trabalho.', { se: trabalha }],
+      ['igreja', 'Igreja e amizades', 'Comunhão, serviço, amigos.', { fe: true }],
+      ['civis', 'Documentos e obrigações', 'Impostos, documentos, compromissos legais.']
+    ] },
+    { id: 'familia_sabe', se: d => d.mora_com && !sozinho(d), tipo: 'escolha', rotulo: 'Quem mora com você sabe do seu plano de estudar e apoia?', opcoes: ['Sim, combinamos juntos', 'Sabe, mas não combinamos nada', 'Há tensão por causa disso', 'Ainda não contei'] },
+    { id: 'apoio', se: sozinho, tipo: 'texto', rotulo: 'Tem alguém que te apoia nessa decisão?' },
+    { id: 'fatores', tipo: 'repetir', rotulo: 'Algo importante previsto para os próximos 12 meses?', ajuda: 'Mudança, casamento, bebê, cirurgia, viagem, pico no trabalho. Deixe em branco se não houver.', colunas: [['fator', 'O que vai acontecer'], ['quando', 'Quando']] },
+    { id: 'financas', tipo: 'escolha', rotulo: 'As suas contas estão…', opcoes: ['Tranquilas', 'Apertadas, mas em dia', 'Atrasadas ou com dívidas', 'Prefiro não dizer'] }
+  ] },
+  { id: 'corpo', titulo: 'Sono e saúde', sensivel: true, intro: 'O corpo estuda junto. Sem julgamento: é só o ponto de partida.', campos: [
+    { id: 'sono', tipo: 'texto', rotulo: 'Em dias de semana, que horas você dorme e acorda?', ajuda: 'Ex.: 23h30 às 6h.' },
+    { id: 'sono_nota', tipo: 'escolha', rotulo: 'Como acorda, na maioria dos dias?', opcoes: ['Descansado(a)', 'Mais ou menos', 'Cansado(a)'] },
+    { id: 'sono_sinais', tipo: 'checks', rotulo: 'Marque o que acontece com você', itens: ['Ronco alto, ou alguém já viu pausas na minha respiração dormindo', 'Muito sono durante o dia, mesmo dormindo o suficiente', 'Dificuldade para dormir na maioria das noites, há semanas', 'Acordo várias vezes por noite', 'Uso o celular na cama antes de dormir'] },
+    { id: 'cafeina', tipo: 'texto', rotulo: 'Café ou energético: quanto por dia, e até que horas?' },
+    { id: 'exercicio', tipo: 'escolha', rotulo: 'Atividade física', opcoes: ['Não faço', '1 a 2 vezes por semana', '3 vezes ou mais por semana'] },
+    { id: 'alimentacao', tipo: 'escolha', rotulo: 'A sua alimentação, na maior parte dos dias…', opcoes: ['Refeições regulares e comida de verdade', 'Pulo refeições ou como correndo', 'Muito lanche, doce ou fast-food'] },
+    { id: 'consulta', tipo: 'escolha', rotulo: 'A última consulta médica de rotina foi…', opcoes: ['Há menos de 1 ano', 'Há mais de 1 ano', 'Não lembro'] },
+    { id: 'saude', tipo: 'texto', rotulo: 'Alguma questão de saúde, dor ou remédio que influencie o estudo? (opcional)' }
+  ] },
+  { id: 'mente', titulo: 'Emoções', sensivel: true, intro: 'Para cuidar de você, e não para dar diagnóstico. A mentoria não substitui psicólogo nem médico; ela ajuda a perceber quando procurar um.', campos: [
+    { id: 'ansiedade_prova', tipo: 'escolha', rotulo: 'Em provas e avaliações (escola, faculdade, seleções), a ansiedade costuma…', opcoes: ['Não atrapalhar', 'Atrapalhar um pouco', 'Atrapalhar muito'] },
+    { id: 'mente_sinais', tipo: 'checks', rotulo: 'Nas últimas semanas, você tem sentido…', itens: ['Cansaço que não passa com descanso', 'Irritação fácil', 'A cabeça presa nas mesmas preocupações', 'Comparação constante com outras pessoas', 'Medo de que não vai dar certo', 'Tristeza que não passa, ou perda de interesse pelo que gostava', 'Ansiedade que atrapalha a rotina', 'Mudança forte no apetite ou no sono', 'Pensamentos de desistir da vida'] },
+    { id: 'alerta_vida', tipo: 'aviso', classe: 'alerta oculto', html: '<p><b>Obrigado por contar.</b> Isso é sério e tem cuidado. Fale hoje com alguém de confiança e procure ajuda: <b>CVV 188</b> (ligação gratuita, 24 horas, também por chat em cvv.org.br) ou <b>SAMU 192</b>, se houver risco agora. A UBS e o CAPS da sua cidade também atendem.</p><p>Nenhuma prova vale a sua vida. A mentoria continua, no seu tempo.</p>' },
+    { id: 'acompanhamento', tipo: 'escolha', rotulo: 'Faz acompanhamento com psicólogo ou psiquiatra?', opcoes: ['Sim', 'Já fiz', 'Não', 'Prefiro não dizer'] },
+    { id: 'o_que_ajuda', tipo: 'texto', rotulo: 'O que te ajuda num dia ruim?' }
+  ] },
+  { id: 'fe', titulo: 'Fé', sensivel: true, intro: 'O método nasce de uma fé cristã, assumida abertamente. Aqui você diz como quer que ela entre na sua mentoria. Tudo é opcional.', campos: [
+    { id: 'fe_vida', tipo: 'texto', rotulo: 'Como está a sua vida de fé hoje?' },
+    { id: 'domingo', tipo: 'escolha', rotulo: 'O seu domingo hoje é…', opcoes: ['Dia de descanso, igreja e família', 'Às vezes descanso, às vezes não', 'Um dia como os outros'] },
+    { id: 'fe_mentoria', tipo: 'escolha', rotulo: 'Na mentoria, você prefere que a fé apareça…', opcoes: ['Abertamente: oração, Bíblia e conselho', 'Com discrição', 'Prefiro que fique de fora'] }
+  ] },
+  { id: 'situacoes', titulo: 'Situações especiais', intro: 'Marque o que vale para você. Cada situação muda alguma coisa no plano.', campos: [
+    { id: 'situacoes', tipo: 'checks', itens: [
+      { t: 'Trabalho em tempo integral', se: d => d.trabalho === 'Tempo integral' },
+      { t: 'Trabalho em escala ou plantões', se: d => d.trabalho === 'Escala ou plantões' },
+      { t: 'Filhos pequenos ou alguém sob os meus cuidados', se: d => temFilhos(d) || d.cuida === 'Sim' },
+      'Vou estudar em tempo integral',
+      'Ainda estou na faculdade',
+      { t: 'Fiquei perto da nota de corte numa prova recente', se: d => d.fez_prova === 'Sim' },
+      { t: 'Estudo há anos e não saio da mesma faixa de nota', se: temExperiencia },
+      'Estou mudando de área',
+      'Tenho mais de 40 anos e volto a estudar depois de muito tempo',
+      'Quero fazer vários concursos ao mesmo tempo',
+      { t: 'Tenho uma condição de saúde crônica', se: d => (d.consentimento || [])[1] === true },
+      'Sou pessoa com deficiência',
+      { t: 'Tenho diagnóstico ou suspeita de TDAH, dislexia ou autismo', se: d => (d.consentimento || [])[1] === true },
+      'Tenho pouco dinheiro para cursos e materiais'
+    ] },
+    { id: 'situacoes_obs', tipo: 'texto', rotulo: 'Quer explicar alguma delas?' }
+  ] },
+  { id: 'mentoria', titulo: 'O que você espera', intro: 'Para fechar: do que você mais precisa agora.', campos: [
+    { id: 'dificuldade', tipo: 'longo', rotulo: d => comecando(d) ? 'O que mais te preocupa ao começar?' : 'Qual é a sua maior dificuldade hoje?' },
+    { id: 'ja_tentou', se: temExperiencia, tipo: 'texto', rotulo: 'O que você já tentou para resolver isso?' },
+    { id: 'espera', tipo: 'longo', rotulo: 'Daqui a três meses, o que precisa ter acontecido para você dizer que a mentoria valeu a pena?' },
+    { id: 'encontros', tipo: 'texto', rotulo: 'Melhores dias e horários para os nossos encontros (segunda a sábado)' },
+    { id: 'contato_dado', tipo: 'texto', rotulo: 'Seu WhatsApp ou e-mail' },
+    { id: 'mais', tipo: 'longo', rotulo: 'Algo mais que eu deveria saber?' }
+  ] },
+  { id: 'envio', titulo: 'Revisar e enviar', intro: '', campos: [] }
+];
+
+/* ---------- Estado ---------- */
+let dados = {};
+let atual = 0;
+try { const s = JSON.parse(localStorage.getItem(CHAVE) || 'null'); if (s) { dados = s.dados || {}; atual = Math.min(s.atual || 0, ETAPAS.length - 1); } } catch (e) {}
+let tSalvar;
+function salvar() {
+  clearTimeout(tSalvar);
+  tSalvar = setTimeout(() => {
+    try { localStorage.setItem(CHAVE, JSON.stringify({ dados, atual, em: new Date().toISOString() })); marcaSalvo('Salvo neste aparelho'); }
+    catch (e) { marcaSalvo('Não foi possível salvar aqui; não feche a página'); }
+  }, 300);
+}
+function marcaSalvo(t) { document.getElementById('salvo').textContent = t; }
+
+const sensivelOk = () => (dados.consentimento || [])[1] === true;
+const geralOk = () => (dados.consentimento || [])[0] === true && (dados.nome || '').trim().length > 1;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const txt = v => typeof v === 'function' ? v(dados) : v;
+const ve = x => !x.se || x.se(dados);
+const etapaVisivel = e => ve(e) && !(e.sensivel && !sensivelOk());
+const visiveis = () => ETAPAS.filter(etapaVisivel);
+const itemTexto = it => typeof it === 'string' ? it : it.t;
+const itemVe = it => typeof it === 'string' || ve(it);
+const DIAS = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+
+/* ---------- Desenho dos campos ---------- */
+function rotuloHtml(c) {
+  return c.rotulo ? `<span class="rot" id="r-${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</span>` : '';
+}
+function campoHtml(c) {
+  if (!ve(c)) return '';
+  const v = dados[c.id];
+  const ctl = c.controla ? ' data-controla="1"' : '';
+  switch (c.tipo) {
+    case 'aviso': return `<div class="caixa ${c.classe || ''}" ${c.id ? `id="${c.id}"` : ''}>${c.html}</div>`;
+    case 'texto': case 'numero':
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</label><input type="${c.tipo === 'numero' ? 'number' : 'text'}" id="${c.id}" data-id="${c.id}" value="${esc(v)}" ${c.tipo === 'numero' ? 'inputmode="numeric" min="0"' : ''}></div>`;
+    case 'longo':
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</label><textarea id="${c.id}" data-id="${c.id}">${esc(v)}</textarea></div>`;
+    case 'escolha': case 'varias': {
+      const multi = c.tipo === 'varias';
+      return `<div class="campo" role="group" aria-labelledby="r-${c.id}">${rotuloHtml(c)}<div class="opcoes">${c.opcoes.map(o => {
+        const marc = multi ? (v || []).includes(o) : v === o;
+        return `<label><input type="${multi ? 'checkbox' : 'radio'}" name="${c.id}" data-id="${c.id}" data-multi="${multi}"${ctl} value="${esc(o)}" ${marc ? 'checked' : ''}><span>${esc(o)}</span></label>`;
+      }).join('')}</div></div>`;
+    }
+    case 'checks':
+      return `<div class="campo" role="group" ${c.rotulo ? `aria-labelledby="r-${c.id}"` : ''}>${rotuloHtml(c)}<div class="lista-checks">${c.itens.map((it, i) => itemVe(it) ? `<label><input type="checkbox" data-id="${c.id}" data-idx="${i}" data-n="${c.itens.length}"${c.id === 'consentimento' ? ' data-controla="1"' : ''} ${(v || [])[i] ? 'checked' : ''}><span>${esc(itemTexto(it))}</span></label>` : '').join('')}</div></div>`;
+    case 'principios':
+      return `<div class="grupo">${c.itens.map(([nome, frase], i) => `<div class="item" role="group" aria-labelledby="pr-${i}"><h3 id="pr-${i}">${i + 1}. ${esc(nome)}</h3><p>${esc(frase)}</p><div class="opcoes">${[0, 1, 2].map(n => `<label><input type="radio" name="p12-${i}" data-p12="${i}" value="${n}" ${(v || [])[i] === n ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div></div>`).join('')}</div><p class="total" aria-live="polite">Total: <b id="p12-total">${totalP12()}</b> de 24</p>`;
+    case 'esferas':
+      return `<div class="grupo">${c.itens.map(([k, nome, desc, op = {}]) => {
+        if (op.se && !op.se(dados)) return '';
+        if (op.fe && !sensivelOk()) return '';
+        const e = (v || {})[k] || {};
+        return `<div class="item" role="group" aria-labelledby="es-${k}"><h3 id="es-${k}">${esc(nome)}</h3><p>${esc(desc)}</p><div class="opcoes">${NIVEL_VIDA.map(n => `<label><input type="radio" name="es-${k}" data-esfera="${k}" data-campo="nivel" value="${esc(n)}" ${e.nivel === n ? 'checked' : ''}><span>${esc(n)}</span></label>`).join('')}</div><input type="text" aria-label="${esc(nome)}: observação" placeholder="Quer comentar? (opcional)" data-esfera="${k}" data-campo="obs" value="${esc(e.obs)}"></div>`;
+      }).join('')}</div>`;
+    case 'dias':
+      return `<div class="campo">${rotuloHtml(c)}<div class="grupo">${DIAS.map((d, i) => `<div class="item"><label for="dia-${i}"><b>${d}</b></label><input type="text" id="dia-${i}" data-dia="${i}" data-id="${c.id}" value="${esc((v || [])[i])}" placeholder="Ex.: 20h–22h"></div>`).join('')}<div class="item"><b>Domingo</b><p>Dia de descanso: fica fora do estudo.</p></div></div></div>`;
+    case 'repetir': {
+      const linhas = (v && v.length) ? v : Array.from({ length: c.linhas || 1 }, () => ({}));
+      return `<div class="campo">${rotuloHtml(c)}<div class="rep" id="rep-${c.id}">${linhas.map((l, i) => linhaRep(c, l, i)).join('')}</div><button type="button" class="mais" data-mais="${c.id}">+ Acrescentar linha</button></div>`;
+    }
+  }
+  return '';
+}
+function linhaRep(c, l, i) {
+  return `<div class="rep-linha">${c.colunas.map(([k, nome, ops]) => ops
+    ? `<select aria-label="${esc(nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}"><option value="">${esc(nome)}</option>${ops.map(o => `<option ${l[k] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+    : `<input type="text" aria-label="${esc(nome)}" placeholder="${esc(nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}" value="${esc(l[k])}">`).join('')}<button type="button" class="tira" data-tira="${c.id}" data-linha="${i}">tirar</button></div>`;
+}
+function totalP12() { return (dados.p12 || []).reduce((s, n) => s + (typeof n === 'number' ? n : 0), 0); }
+
+/* ---------- Telas ---------- */
+function render() {
+  const lista = visiveis();
+  if (!etapaVisivel(ETAPAS[atual])) atual = ETAPAS.indexOf(lista.find(x => ETAPAS.indexOf(x) > atual) || lista[lista.length - 1]);
+  const e = ETAPAS[atual];
+  const pos = lista.indexOf(e);
+  const app = document.getElementById('app');
+  document.getElementById('prog-nome').textContent = e.titulo;
+  document.getElementById('prog-num').textContent = `${pos + 1} de ${lista.length}`;
+  const pct = Math.round(100 * pos / (lista.length - 1));
+  const barra = document.getElementById('barra');
+  barra.querySelector('i').style.width = pct + '%';
+  barra.setAttribute('aria-valuenow', pct);
+
+  let corpo;
+  if (e.id === 'envio') corpo = telaEnvio();
+  else if (e.sensivel && !sensivelOk()) corpo = `<div class="caixa"><p>Esta parte fica fechada, porque a autorização de dados sensíveis não foi marcada. Se quiser responder, volte ao início e marque a segunda autorização.</p></div>`;
+  else corpo = e.campos.map(campoHtml).join('');
+
+  const botoes = `<nav class="mapa" aria-label="Etapas">${lista.map(x => { const i = ETAPAS.indexOf(x); return `<button type="button" data-ir="${i}" class="${i === atual ? 'atual' : (lista.indexOf(x) < pos ? 'feita' : '')}" ${i === atual ? 'aria-current="step"' : ''}>${esc(x.titulo)}</button>`; }).join('')}</nav>`;
+  const mapa = atual === 0 ? '' : (e.id === 'envio' ? botoes : `<details class="etapas"><summary>Ver todas as etapas</summary>${botoes}</details>`);
+  const intro = txt(e.intro);
+  app.innerHTML = `<section class="etapa"><h1 tabindex="-1" id="tit">${esc(e.titulo)}</h1>${intro ? `<p class="intro">${esc(intro)}</p>` : ''}${mapa}${corpo}</section>
+  <div class="nav">${pos > 0 ? '<button type="button" class="btn sec" id="voltar">Voltar</button>' : '<span></span>'}${e.id !== 'envio' ? `<button type="button" class="btn" id="seguir" ${atual === 0 && !geralOk() ? 'disabled' : ''}>${atual === 0 ? 'Começar' : 'Continuar'}</button>` : ''}</div>`;
+  atualizaAlerta();
+}
+function passo(dir) {
+  const lista = visiveis();
+  const pos = lista.indexOf(ETAPAS[atual]);
+  const alvo = lista[Math.max(0, Math.min(lista.length - 1, pos + dir))];
+  ir(ETAPAS.indexOf(alvo));
+}
+function ir(i) {
+  if (i > 0 && !geralOk()) i = 0;
+  atual = Math.max(0, Math.min(ETAPAS.length - 1, i));
+  salvar(); render();
+  window.scrollTo({ top: 0 });
+  document.getElementById('tit')?.focus({ preventScroll: true });
+}
+function atualizaAlerta() {
+  const a = document.getElementById('alerta_vida');
+  if (a) a.classList.toggle('oculto', !(dados.mente_sinais || [])[8]);
+}
+function redesenhaMantendo() {
+  const y = window.scrollY; render(); window.scrollTo({ top: y });
+}
+
+/* ---------- Eventos ---------- */
+const app = document.getElementById('app');
+function aoMudar(ev) {
+  const t = ev.target, d = t.dataset;
+  if (!d) return;
+  if (d.rep) { const c = achaCampo(d.rep); dados[d.rep] = lerRep(c); }
+  else if (d.esfera) { dados.esferas = dados.esferas || {}; (dados.esferas[d.esfera] = dados.esferas[d.esfera] || {})[d.campo] = t.value; }
+  else if (d.dia !== undefined) { const a = dados[d.id] || []; a[+d.dia] = t.value; dados[d.id] = a; }
+  else if (d.p12 !== undefined) { const a = dados.p12 || []; a[+d.p12] = +t.value; dados.p12 = a; const tot = document.getElementById('p12-total'); if (tot) tot.textContent = totalP12(); }
+  else if (d.idx !== undefined) { const a = dados[d.id] || Array(+d.n).fill(false); a[+d.idx] = t.checked; dados[d.id] = a; }
+  else if (d.multi === 'true') { const a = new Set(dados[d.id] || []); t.checked ? a.add(t.value) : a.delete(t.value); dados[d.id] = [...a]; }
+  else if (d.id) { dados[d.id] = t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value; }
+  if (atual === 0) { const b = document.getElementById('seguir'); if (b) b.disabled = !geralOk(); }
+  atualizaAlerta();
+  salvar();
+  if (ev.type === 'change' && d.controla) redesenhaMantendo();
+}
+app.addEventListener('input', aoMudar);
+app.addEventListener('change', aoMudar);
+app.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.id === 'seguir') passo(1);
+  else if (t.id === 'voltar') passo(-1);
+  else if (t.dataset.ir) ir(+t.dataset.ir);
+  else if (t.dataset.mais) { const c = achaCampo(t.dataset.mais); const arr = lerRep(c); arr.push({}); dados[c.id] = arr; salvar(); redesenhaRep(c); }
+  else if (t.dataset.tira) { const c = achaCampo(t.dataset.tira); const arr = lerRep(c); arr.splice(+t.dataset.linha, 1); dados[c.id] = arr; salvar(); redesenhaRep(c); }
+  else if (t.id === 'baixar') baixarFicha();
+  else if (t.id === 'compartilhar') compartilharFicha();
+  else if (t.id === 'apagar') { if (confirm('Apagar todas as respostas deste aparelho? Não há como desfazer.')) { dados = {}; try { localStorage.removeItem(CHAVE); } catch (e) {} ir(0); } }
+});
+function achaCampo(id) { for (const e of ETAPAS) for (const c of e.campos) if (c.id === id) return c; }
+function lerRep(c) {
+  const box = document.getElementById('rep-' + c.id);
+  return [...box.querySelectorAll('.rep-linha')].map(l => Object.fromEntries([...l.querySelectorAll('[data-col]')].map(x => [x.dataset.col, x.value])));
+}
+function redesenhaRep(c) { const box = document.getElementById('rep-' + c.id); const arr = dados[c.id]; box.innerHTML = (arr.length ? arr : [{}]).map((l, i) => linhaRep(c, l, i)).join(''); }
+
+/* ---------- Só o que está visível vai para o arquivo ---------- */
+function etapasRespondiveis() { return visiveis().filter(e => e.id !== 'envio' && !(e.sensivel && !sensivelOk())); }
+function dadosVisiveis() {
+  const out = { nome: dados.nome, como_chamar: dados.como_chamar, consentimento: dados.consentimento };
+  for (const e of etapasRespondiveis()) for (const c of e.campos) {
+    if (!c.id || c.tipo === 'aviso' || !ve(c) || dados[c.id] === undefined) continue;
+    let v = dados[c.id];
+    if (c.tipo === 'checks') v = c.itens.map((it, i) => itemVe(it) ? !!(v || [])[i] : false);
+    if (c.tipo === 'esferas') v = Object.fromEntries(c.itens.filter(([k, , , op = {}]) => (!op.se || op.se(dados)) && (!op.fe || sensivelOk())).map(([k]) => [k, (v || {})[k]]).filter(([, x]) => x));
+    out[c.id] = v;
+  }
+  out.p12 = out.p12 || undefined;
+  return out;
+}
+function valorTexto(c, v) {
+  if (v === undefined || v === '' || v === null) return '';
+  switch (c.tipo) {
+    case 'varias': return (v || []).join('; ');
+    case 'checks': return c.itens.filter((it, i) => v[i] && itemVe(it)).map(itemTexto).join('; ');
+    case 'principios': return c.itens.map(([n], i) => `${i + 1}. ${n}: ${v[i] ?? '–'}`).join('\n') + `\nTotal: ${totalP12()} de 24`;
+    case 'dias': return DIAS.map((d, i) => v[i] ? `${d}: ${v[i]}` : '').filter(Boolean).join('\n');
+    case 'repetir': return v.filter(l => Object.values(l).some(Boolean)).map(l => c.colunas.map(([k]) => l[k]).filter(Boolean).join(' · ')).join('\n');
+    case 'esferas': return c.itens.map(([k, n]) => { const e = v[k]; return e && (e.nivel || e.obs) ? `${n}: ${e.nivel || '–'}${e.obs ? ` (${e.obs})` : ''}` : ''; }).filter(Boolean).join('\n');
+    default: return String(v);
+  }
+}
+function resumoHtml() {
+  const dv = dadosVisiveis();
+  return etapasRespondiveis().filter(e => e.id !== 'inicio').map(e => {
+    const linhas = e.campos.filter(c => c.id && c.tipo !== 'aviso' && ve(c)).map(c => {
+      const t = valorTexto(c, dv[c.id]); if (!t) return '';
+      return `<dt>${esc(txt(c.rotulo) || e.titulo)}</dt><dd>${esc(t)}</dd>`;
+    }).join('');
+    return `<h3>${esc(e.titulo)}</h3>${linhas ? `<dl>${linhas}</dl>` : '<p>Sem respostas.</p>'}`;
+  }).join('');
+}
+function telaEnvio() {
+  const partes = etapasRespondiveis().filter(e => e.id !== 'inicio');
+  const respondidas = partes.filter(e => e.campos.some(c => c.id && ve(c) && valorTexto(c, dadosVisiveis()[c.id]))).length;
+  const zap = WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Gullit! Sou ${dados.nome || ''}. Terminei a anamnese da mentoria e vou enviar o arquivo agora.`)}` : '';
+  return `<p class="intro">Você respondeu ${respondidas} de ${partes.length} partes. Confira abaixo. Se quiser mudar algo, toque na etapa.</p>
+  <div class="caixa"><p><b>Como enviar:</b> gere o arquivo da sua anamnese (um arquivo só, que abre em qualquer celular) e envie pelo WhatsApp da mentoria, como documento.</p></div>
+  <div class="acoes">
+    <button type="button" class="btn" id="compartilhar">Gerar e enviar o arquivo</button>
+    <button type="button" class="btn sec" id="baixar">Só baixar o arquivo</button>
+    ${zap ? `<a class="btn zap" href="${zap}" target="_blank" rel="noopener">Abrir o WhatsApp da mentoria</a>` : `<p class="caixa"><b>Rascunho:</b> o número de WhatsApp da mentoria ainda não foi definido.</p>`}
+  </div>
+  <div class="resumo">${resumoHtml()}</div>
+  <div class="caixa"><p>Depois de enviar, você pode apagar as respostas deste aparelho.</p><p><button type="button" class="btn sec" id="apagar">Apagar respostas deste aparelho</button></p></div>`;
+}
+
+/* O arquivo enviado: uma página legível que leva os dados completos embutidos. */
+function nomeArquivo() {
+  const n = (dados.nome || 'mentoreado').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+  return `anamnese-${n}-${new Date().toISOString().slice(0, 10)}.html`;
+}
+function fichaHtml() {
+  const pacote = { tipo: 'anamnese-mentoria-gb', versao: VERSAO, enviado_em: new Date().toISOString(), sensivel_autorizado: sensivelOk(), dados: dadosVisiveis() };
+  const json = JSON.stringify(pacote).replace(/</g, '\\u003c');
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anamnese · ${esc(dados.nome || '')}</title>
+<style>body{margin:0;background:#FCFCFA;color:#23262D;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}main{max-width:720px;margin:0 auto;padding:24px 16px 48px}h1{font:650 30px/1.15 Georgia,serif;margin:0}h3{font:650 19px/1.3 Georgia,serif;margin:28px 0 6px;padding-top:16px;border-top:1px solid #D6DFEA}dt{color:#626873;margin-top:8px}dd{margin:0;white-space:pre-wrap;text-align:justify;hyphens:auto}.meta{color:#626873;margin-top:6px}</style></head>
+<body><main><p class="meta">Mentoria individual · Gullit Belo</p><h1>Anamnese de ${esc(dados.nome || '')}</h1><p class="meta">Enviada em ${new Date().toLocaleDateString('pt-BR')}. Documento pessoal e confidencial.</p>${resumoHtml()}</main>
+<script type="application/json" id="dados-anamnese">${json}<\/script></body></html>`;
+}
+function baixarFicha() {
+  const blob = new Blob([fichaHtml()], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = nomeArquivo();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function compartilharFicha() {
+  const arquivo = new File([fichaHtml()], nomeArquivo(), { type: 'text/html' });
+  if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+    try { await navigator.share({ files: [arquivo], title: 'Anamnese da mentoria', text: `Anamnese de ${dados.nome || ''}` }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  baixarFicha();
+  alert('O arquivo foi baixado. Agora abra o WhatsApp da mentoria e envie esse arquivo como documento.');
+}
+
+render();
+if (Object.keys(dados).length) marcaSalvo('Respostas recuperadas');
+</script>
+</body>
+</html>
