@@ -124,13 +124,13 @@ input:focus,textarea:focus,select:focus{outline:3px solid rgba(31,63,153,.25);bo
 <script>
 /* Número de WhatsApp da mentoria, só dígitos com DDI e DDD (ex.: 5591999999999). */
 const WHATSAPP = '5584999196984';
-const VERSAO = '2026-10b';
+const VERSAO = '2026-10c';
 const CHAVE = 'anamnese-mentoria-v1';
 
 /* ---------- Quem é quem: as respostas que mudam o caminho ---------- */
-const COMECANDO = 'Estou começando agora: é a minha primeira preparação';
-const PAREI = 'Já estudei antes, mas parei';
-const ESTUDO = 'Estudo hoje';
+const COMECANDO = 'Não: esta é a minha primeira preparação para concurso';
+const PAREI = 'Sim, já me preparei para concurso, mas parei';
+const ESTUDO = 'Sim, estou me preparando para concurso agora';
 const comecando = d => d.experiencia === COMECANDO;
 const temExperiencia = d => d.experiencia === PAREI || d.experiencia === ESTUDO;
 const sabeAlvo = d => d.alvo_sabe === 'Já sei qual concurso quero';
@@ -159,7 +159,11 @@ const ETAPAS = [
     { tipo: 'aviso', html: '<p>Sem a segunda autorização, as partes de saúde, emoções e fé ficam fechadas, e você responde todo o resto.</p>' }
   ] },
   { id: 'partida', titulo: 'O seu ponto de partida', intro: 'Esta resposta decide quais perguntas aparecem para você.', campos: [
-    { id: 'experiencia', tipo: 'escolha', controla: true, rotulo: 'Você já estudou para concursos?', opcoes: [COMECANDO, PAREI, ESTUDO] },
+    { id: 'experiencia', tipo: 'escolha', controla: true, rotulo: 'Você já se preparou para algum concurso público?', ajuda: 'Conta só a preparação para concurso. Escola e faculdade entram na pergunta seguinte.', opcoes: [COMECANDO, PAREI, ESTUDO] },
+    { id: 'ultimo_estudo', tipo: 'escolha', rotulo: 'Há quanto tempo você não estuda de forma regular (escola, faculdade, cursos)?', opcoes: ['Estudo hoje', 'Menos de 2 anos', '2 a 5 anos', '5 a 10 anos', 'Mais de 10 anos'] },
+    { id: 'base_portugues', tipo: 'escolha', rotulo: 'Como você sente a sua base em português?', opcoes: ['Boa', 'Razoável', 'Preciso recomeçar do básico'] },
+    { id: 'base_matematica', tipo: 'escolha', rotulo: 'E em matemática?', opcoes: ['Boa', 'Razoável', 'Preciso recomeçar do básico'] },
+    { id: 'quando_comecar', tipo: 'escolha', rotulo: 'Quando você quer começar a estudar com regularidade?', opcoes: ['Agora', 'Nos próximos 3 meses', 'Daqui a mais de 3 meses'] },
     { tipo: 'aviso', se: comecando, html: '<p>Ótimo. Vou pular as perguntas sobre provas anteriores e sobre o seu jeito de estudar. Começar do jeito certo é uma vantagem.</p>' },
     { id: 'tempo_estudo', se: temExperiencia, tipo: 'escolha', rotulo: 'Por quanto tempo você estudou de forma regular, somando tudo?', opcoes: ['Menos de 6 meses', '6 meses a 1 ano e meio', '1 ano e meio a 3 anos', 'Mais de 3 anos'] },
     { id: 'parou_quando', se: d => d.experiencia === PAREI, tipo: 'texto', rotulo: 'Quando parou, e por quê?' },
@@ -188,6 +192,7 @@ const ETAPAS = [
     { id: 'alvo_edital', se: sabeAlvo, tipo: 'escolha', controla: true, rotulo: 'O edital já saiu?', opcoes: ['Sim, já saiu', 'Ainda não', 'Não sei'] },
     { id: 'alvo_prova', se: d => sabeAlvo(d) && d.alvo_edital === 'Sim, já saiu', tipo: 'texto', rotulo: 'Qual a data da prova?' },
     { id: 'porque', tipo: 'longo', rotulo: 'Por que você quer passar num concurso? O que isso muda na sua vida?' },
+    { id: 'remuneracao', tipo: 'texto', rotulo: 'Existe uma remuneração mínima que faria a troca valer a pena? (opcional)' },
     { id: 'conselho', tipo: 'texto', rotulo: 'Já conversou com alguém sobre essa decisão? O que ouviu?' },
     { id: 'orcamento', tipo: 'texto', rotulo: 'Quanto pode investir por mês na preparação, sem apertar as contas?' }
   ] },
