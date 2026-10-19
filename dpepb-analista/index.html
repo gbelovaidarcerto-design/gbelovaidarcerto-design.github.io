@@ -77,7 +77,7 @@ section h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(28px,6vw
 .hero h1 em{font-style:normal;color:var(--ambar)}
 .hero .sub{font-size:18px;color:#DCE7F2;max-width:48ch;margin-top:16px}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.preco-topo{margin-top:14px;font-size:15px;color:#DCE7F2}.preco-topo b{color:#fff;font-size:17px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:10px;font-size:13.5px;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
 .chip i{width:9px;height:9px;border-radius:50%;flex:none;background:var(--ambar)}
 .pilha{position:relative;width:min(340px,78vw);aspect-ratio:1100/1556;margin:8px auto 0;perspective:1200px}
@@ -264,6 +264,7 @@ fbq('track','ViewContent',{content_name:'DPE-PB Analista · página de vendas'})
           <a class="btn prim" href="#oferta">Quero o material</a>
           <a class="btn sec" data-origem href="amostra/">Ler o Dia 1 grátis</a>
         </div>
+      <p class="preco-topo"><b>R$ 247</b> ou em até 12x · Semana 1 liberada na compra · garantia de 7 dias</p>
         <div class="chips">
           <span class="chip"><i></i>Inscrições até 13/11/2026</span>
           <span class="chip"><i></i><span id="chipProva">Prova prevista para 28/02/2027</span></span>
@@ -508,7 +509,7 @@ fbq('track','ViewContent',{content_name:'DPE-PB Analista · página de vendas'})
   </div>
 </footer>
 
-<div class="fixa" id="fixa"><div><b>R$ 247 ou em até 12x</b>Semana 1 liberada na compra</div><a class="btn prim" href="#oferta">Ver oferta</a></div>
+<div class="fixa" id="fixa"><div><b>R$ 247 ou em até 12x</b>Semana 1 liberada na compra</div><a class="btn prim" data-produto="DPE-PB dia a dia · Analista" href="https://pay.kiwify.com.br/72V6Q7F?src=dpepb-analista">Comprar</a></div>
 <dialog class="zoom" id="zoom"><button type="button" aria-label="Fechar">&times;</button><img alt=""></dialog>
 
 <script>
@@ -601,6 +602,9 @@ document.addEventListener("DOMContentLoaded",function(){
   document.querySelectorAll('a[href*="pay.kiwify.com.br"],a[data-origem]').forEach(function(a){
     var u=new URL(a.href,location.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
     if(/kiwify/.test(a.href))a.addEventListener("click",function(){if(window.fbq)fbq("trackCustom","CliqueComprar",{content_name:a.getAttribute("data-produto")||"DPE-PB dia a dia · Analista"})});
+  });
+  document.querySelectorAll('a[href="#oferta"]').forEach(function(a){
+    a.addEventListener("click",function(){if(window.fbq)fbq("trackCustom","CliqueOferta",{content_name:"DPE-PB Analista",local:a.closest(".fixa")?"barra":(a.closest(".hero")?"topo":"meio")})});
   });
 });
 </script>
