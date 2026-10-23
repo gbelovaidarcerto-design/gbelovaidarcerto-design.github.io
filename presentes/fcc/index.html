@@ -244,9 +244,12 @@ ITENS.forEach((q,i)=>{
 });
 const qs=new URLSearchParams(location.search);
 const origem=[qs.get("src"),qs.get("utm_source"),qs.get("utm_campaign")].filter(Boolean).join(" | ")||"direto";
+const CUPOM_ATE=new Date("2026-11-01T23:59:59-03:00");
 const PROD={
- "TRT 4 (RS)":{h:"TRT 4 dia a dia",p:"Feito para o Edital nº 01/2026: três temas por dia, lei seca, julgados, treino Certo ou Errado e a Discursiva do seu cargo. A Semana 1 é liberada na compra. R$ 97 até 25/11.",u:"../../trt4/?src=fcc50_lp"},
- "TRT 8 (PA e AP)":{h:"TRT 8 dia a dia",p:"Feito para o edital do TRT 8: três temas por dia, lei seca, julgados, treino Certo ou Errado e a Discursiva do seu cargo. O Dia 1 está grátis na página.",u:"../../trt8/?src=fcc50_lp"},
+ "TRT 4 (RS)":{h:"TRT 4 dia a dia",p:"Feito para o Edital nº 01/2026: três temas por dia, lei seca, julgados, treino Certo ou Errado e a Discursiva do seu cargo. A Semana 1 é liberada na compra. R$ 97 até 25/11.",u:"../../trt4/?src=fcc50_lp",
+   ck:[["Analista e Oficial","https://pay.kiwify.com.br/sTijo2q"],["Técnico","https://pay.kiwify.com.br/aPCMyAM"]]},
+ "TRT 8 (PA e AP)":{h:"TRT 8 dia a dia",p:"Feito para o edital do TRT 8: três temas por dia, lei seca, julgados, treino Certo ou Errado e a Discursiva do seu cargo. O Dia 1 está grátis na página.",u:"../../trt8/?src=fcc50_lp",
+   ck:[["Analista e Oficial","https://pay.kiwify.com.br/4hJyQ9s"],["Técnico","https://pay.kiwify.com.br/08PurmK"]]},
  "DPE-PB":{h:"DPE-PB dia a dia",p:"Feito para o edital da Defensoria da Paraíba, também da FCC. O Dia 1 está grátis na página.",u:"../../dpepb/?src=fcc50_lp"}};
 const OUTRO={h:"Materiais por edital",p:"Quando sair o edital do seu concurso, você recebe o aviso. Enquanto isso, veja os materiais que já estão prontos, todos com amostra grátis.",u:"../../editais/?src=fcc50_lp"};
 document.querySelectorAll("[data-ev]").forEach(a=>a.addEventListener("click",()=>{try{fbq("trackCustom","CliquePresente",{local:a.dataset.ev})}catch(e){}}));
@@ -265,8 +268,11 @@ document.getElementById("f").addEventListener("submit",async ev=>{
  document.getElementById("f").style.display="none";
  const P=document.getElementById("pronto");P.style.display="block";
  const pr=PROD[v("conc")]||OUTRO;const box=document.getElementById("prod");box.style.display="block";
- box.innerHTML=`<h4>Para o ${esc(v("conc"))}: ${esc(pr.h)}</h4><p>${esc(pr.p)}</p><div style="margin-top:12px"><a class="btn az" href="${pr.u}" data-ev="produto">Ver ${esc(pr.h)}</a></div>`;
- box.querySelector("a").addEventListener("click",()=>{try{fbq("trackCustom","CliqueOferta",{content_name:pr.h,local:"presente"})}catch(e){}});
+ const cupom=pr.ck&&new Date()<=CUPOM_ATE;
+ box.innerHTML=`<h4>Para o ${esc(v("conc"))}: ${esc(pr.h)}</h4><p>${esc(pr.p)}</p>`+
+  (cupom?`<p style="margin-top:10px;color:#10255E"><b>Presente de quem pegou o PDF: cupom FCC50, 15% de desconto, até 01/11.</b> Ele já entra aplicado nos botões abaixo.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">`+pr.ck.map(([c,u])=>`<a class="btn az" href="${u}?coupon=FCC50&src=fcc50_lp" data-ev="checkout">${esc(c)} com 15%</a>`).join("")+`</div><p style="margin-top:10px"><a href="${pr.u}" style="color:#1F3F99;font-weight:700">Ver a página e o Dia 1 grátis</a></p>`
+   :`<div style="margin-top:12px"><a class="btn az" href="${pr.u}" data-ev="produto">Ver ${esc(pr.h)}</a></div>`);
+ box.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{try{fbq("trackCustom","CliqueOferta",{content_name:pr.h,local:"presente",tipo:a.dataset.ev||"pagina"})}catch(e){}}));
  document.getElementById("baixar").addEventListener("click",()=>{try{fbq("trackCustom","BaixouPresente",{content_name:"Presente FCC"})}catch(e){}});
  P.scrollIntoView({behavior:"smooth",block:"start"});
 });
