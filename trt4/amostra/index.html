@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dia 1 grátis · TRT 4 dia a dia · @mentoriagb</title>
-<meta name="description" content="As 7 páginas do Dia 1 do material do TRT 4 (Edital nº 01/2026, FCC), para Analista Judiciário e Oficial de Justiça ou para Técnico Judiciário Área Administrativa.">
+<meta name="description" content="As páginas do Dia 1 do material do TRT 4 (Edital nº 01/2026, FCC), para Analista Judiciário e Oficial de Justiça ou para Técnico Judiciário Área Administrativa.">
 <meta property="og:title" content="TRT 4 · Leia o Dia 1 grátis">
 <meta property="og:description" content="Roteiro, três temas, lei seca, jurisprudência com treino e discursiva: o primeiro dia inteiro, de graça.">
 <meta property="og:image" content="https://gbelovaidarcerto-design.github.io/trt4/og.jpg">
@@ -58,7 +58,7 @@ fbq('track','Lead',{content_name:'TRT 4 · Dia 1 grátis'});
   <div class="w">
     <p class="k">TRT 4 · Edital nº 01/2026 · FCC</p>
     <h1>Dia 1, inteiro e grátis</h1>
-    <p>As sete páginas do primeiro dia, do jeito que estão no material. Escolha o seu cargo.</p>
+    <p>O primeiro dia inteiro, do jeito que está no material: roteiro, temas com contorno teórico, lei seca, jurisprudência com treino e discursiva. Escolha o seu cargo.</p>
     <div class="abas" role="tablist">
       <button role="tab" aria-selected="true" data-c="ao">Analista e Oficial</button>
       <button role="tab" aria-selected="false" data-c="tec">Técnico</button>
@@ -85,10 +85,10 @@ fbq('track','Lead',{content_name:'TRT 4 · Dia 1 grátis'});
   </div>
 </div>
 <script>
-var nomes=['Roteiro do dia','Tema 1','Tema 2','Tema 3','Lei seca do dia','Jurisprudência, teses e treino','Discursiva'];
+var nomes={"ao": ["Roteiro do dia", "Tema 1", "Tema 2", "Tema 2 (continuação)", "Tema 3", "Tema 3 (continuação)", "Lei seca do dia", "Jurisprudência, teses e treino", "Discursiva"], "tec": ["Roteiro do dia", "Tema 1", "Tema 1 (continuação)", "Tema 2", "Tema 3", "Lei seca do dia", "Jurisprudência, teses e treino", "Discursiva"]};
 ['ao','tec'].forEach(function(c){
   var box=document.getElementById(c),h='';
-  for(var i=1;i<=7;i++){h+='<div><p class="pag-n">Página '+i+' · '+nomes[i-1]+'</p><img src="'+c+'/p'+i+'.webp" alt="Dia 1, página '+i+': '+nomes[i-1]+'" width="1100" height="1556" loading="'+(i<3?'eager':'lazy')+'"></div>';}
+  var nm=nomes[c];for(var i=1;i<=nm.length;i++){h+='<div><p class="pag-n">Página '+i+' · '+nm[i-1]+'</p><img src="'+c+'/p'+i+'.webp" alt="Dia 1, página '+i+': '+nm[i-1]+'" width="1100" height="1556" loading="'+(i<3?'eager':'lazy')+'"></div>';}
   box.innerHTML=h;
 });
 document.querySelectorAll('.abas button').forEach(function(b){
