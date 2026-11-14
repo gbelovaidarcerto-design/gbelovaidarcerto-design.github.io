@@ -11,21 +11,88 @@
 <meta property="og:url" content="https://gbelovaidarcerto-design.github.io/tjpb/amostra/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FCFCFA">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3F99'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='27' fill='%23FCFCFA' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../../estilo.css">
+<meta name="theme-color" content="#17505E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2317505E'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23ffffff' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Public+Sans:wght@600;700&display=swap">
+<!-- Amostra do Dia 1 do TJPB dia a dia (Analista Judiciário, Área Judiciária). CSS da oab-30dias/amostra, cores de tjpb/index.html (petróleo). Preço: R$ 147 até 18/11/2026, R$ 247 depois; o script do fim troca sozinho a partir de 19/11. -->
 <style>
-img{height:auto}
-.paginas{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:40px;max-width:820px}
-.paginas li{display:grid;gap:12px}
-.paginas h2{font-size:22px}
-.paginas p{margin:0;color:var(--lapis);font-size:16px;max-width:60ch}
-.paginas img{border:1px solid var(--pauta);box-shadow:0 10px 18px -10px rgba(35,38,45,.35);width:100%}
-.fim{margin-top:56px;padding-top:28px;border-top:7px solid var(--pauta);max-width:640px;display:grid;gap:14px}
-.fim p{margin:0;color:var(--lapis)}
+:root{
+  color-scheme:light;
+  --tinta:#17505E;--escuro:#0E3540;--vermelho:#2E8C9E;--ouro:#FFE14D;--ouro-fio:#B79B6B;--texto:#1F2A2E;
+  --creme:#EEF3F2;--papel:#F8FBFA;--suave:#4A5F68;--fio:#D3DFE2;
+  --serif:'EB Garamond',Garamond,'Times New Roman',serif;--sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--texto);font:400 20px/1.5 var(--serif);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+mark{background:var(--ouro);color:var(--texto);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+[hidden]{display:none!important}
+.w{max-width:1120px;margin:0 auto;padding-inline:20px}
+.sc{font-weight:600;font-size:14px;letter-spacing:.2em;text-transform:uppercase}
+
+/* topo */
+.topo .w{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca b{width:30px;height:30px;display:grid;place-items:center;background:var(--tinta);color:#fff;font:600 15px/1 var(--serif);letter-spacing:0}
+.marca span{font-size:13px;letter-spacing:.18em}
+.topo nav a{font-family:var(--sans);font-size:13.5px;font-weight:600;text-decoration:none;border-bottom:1px solid var(--tinta);white-space:nowrap}
+.filete{height:4px;border-top:1px solid var(--ouro-fio);border-bottom:1px solid var(--ouro-fio)}
+
+/* botões e preços */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:16px;text-decoration:none;background:var(--tinta);color:#fff;padding:15px 26px;border:2px solid var(--tinta);border-radius:0;cursor:pointer;text-align:center}
+.btn:hover{background:var(--escuro);border-color:var(--escuro)}
+.btn.vazado{background:transparent;color:var(--tinta)}
+.btn.vazado:hover{background:var(--papel)}
+.preco{font-family:var(--sans);font-weight:700;font-variant-numeric:tabular-nums}
+s{text-decoration-color:var(--vermelho);text-decoration-thickness:2px}
+
+/* abertura */
+.abre{text-align:center;padding-block:44px 0}
+.abre h1{font-size:clamp(46px,8vw,96px);line-height:1;margin-top:12px}
+.abre .dor{font-size:clamp(21px,2.4vw,27px);line-height:1.4;font-style:italic;max-width:740px;margin:22px auto 0}
+.assina{margin-top:14px;font-style:italic;font-size:19px;color:var(--suave)}
+.assina::before{content:"";display:inline-block;width:28px;height:1px;background:var(--ouro-fio);vertical-align:middle;margin-right:10px}
+.discreto{margin-top:10px;font-family:var(--sans);font-size:13px;font-weight:600;color:var(--suave);text-align:center}
+
+/* páginas reais, leitura vertical */
+.lista{list-style:none;margin:40px auto 0;padding:0;display:grid;gap:56px;max-width:860px}
+.lista h2{font-size:clamp(28px,3.6vw,38px);line-height:1.1}
+.lista .leg{margin:8px 0 18px;font-size:19px;color:var(--suave);max-width:62ch}
+.lista h2 + .pg{margin-top:18px}
+.lista .pg{background:#fff;padding:6px;box-shadow:8px 8px 0 rgba(13,31,51,.22);margin-bottom:22px}
+.lista .pg img{width:100%;aspect-ratio:1100/1556;object-fit:cover}
+
+.fim{text-align:center;padding-block:70px 80px;border-top:1px solid var(--fio);margin-top:56px}
+.fim h2{font-size:clamp(34px,4.6vw,52px);line-height:1.05}
+.fim p.nota{margin:14px auto 0;font-size:20px;color:var(--suave);max-width:640px}
+.fim .valor{display:flex;justify-content:center;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:30px}
+.fim .valor s{font-family:var(--sans);color:var(--suave);font-size:20px}
+.fim .valor .preco{font-size:56px;line-height:1}
+.fim .valor small{flex-basis:100%;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--suave)}
+.fim .acao{margin-top:24px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.fim .acao .btn{font-size:17px;padding:17px 34px}
+
+footer{background:var(--tinta);color:var(--fio);padding:24px 0 34px;font-size:15px}
+footer .w{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+footer nav{display:flex;gap:6px 16px;flex-wrap:wrap}
+
+@media (max-width:560px){
+  body{font-size:19px}
+  .w{padding-inline:16px}
+  .marca span{font-size:11.5px;letter-spacing:.14em}
+  .abre{padding-top:28px}
+  .abre .dor{font-size:20px}
+  .lista{gap:40px}
+  .lista .pg{padding:3px;box-shadow:4px 4px 0 rgba(13,31,51,.22)}
+  .fim{padding-block:56px 64px}
+  .fim .acao .btn{width:100%}
+}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -46,41 +113,48 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 </head>
 <body>
-<header class="w top">
-  <span class="gb" aria-hidden="true">GB</span>
-  <div><b>Gullit Belo</b><a href="https://www.instagram.com/mentoriagb/">@mentoriagb</a></div>
-  <a class="voltar" data-origem href="../">Voltar ao material</a>
-</header>
-<main class="w">
-  <div class="intro">
-    <h1>Dia 1, de graça</h1>
-    <p>São as 13 páginas do primeiro dia do TJPB dia a dia para Analista Judiciário, Área Judiciária, do jeito que chegam no PDF da Semana 1. Leia na ordem, como se fosse estudar hoje.</p>
-  </div>
-  <ol class="paginas">
-    <li><h2>Roteiro</h2><p>Os três temas do dia, de matérias diferentes, o tempo de cada etapa (2h30 no total) e como usar o dia.</p><img src="p1.webp" width="1100" height="1556" alt="Roteiro do Dia 1 com as etapas e os tempos"></li>
-    <li><h2>Direito Civil e do Consumidor</h2><p>LINDB: vigência e revogação das leis, conflito aparente de normas e o modo de interpretar e integrar.</p><img src="p2.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Civil e do Consumidor sobre a LINDB"></li>
-    <li><h2>Direito Civil e do Consumidor, continuação</h2><p>Direito intertemporal e eficácia da lei no espaço.</p><img src="p3.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de LINDB, direito intertemporal e lei no espaço"></li>
-    <li><h2>Direito Civil e do Consumidor, continuação</h2><p>Segurança jurídica no direito público (arts. 20 a 30), com as caixas Para guardar, No Tribunal de Justiça e Pegadinhas.</p><img src="p4.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de LINDB, segurança jurídica no direito público"></li>
-    <li><h2>Direito Processual Civil</h2><p>Normas fundamentais do CPC, com o contraditório e a vedação da decisão surpresa, e a ordem cronológica de conclusão.</p><img src="p5.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Processual Civil"></li>
-    <li><h2>Direito Processual Civil, continuação</h2><p>Aplicação das normas processuais e cooperação judiciária nacional.</p><img src="p6.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de Direito Processual Civil"></li>
-    <li><h2>Direito Administrativo</h2><p>Administração Pública em dois sentidos, organização, papel do Estado e regime jurídico-administrativo.</p><img src="p7.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Administrativo"></li>
-    <li><h2>Direito Administrativo, continuação</h2><p>Princípios expressos e implícitos e o nepotismo na prática.</p><img src="p8.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de Direito Administrativo, princípios e nepotismo"></li>
-    <li><h2>Lei seca do dia</h2><p>Os dispositivos dos três temas, em texto literal e vigente, com os detalhes que a banca troca.</p><img src="p9.webp" width="1100" height="1556" loading="lazy" alt="Página de lei seca do Dia 1"></li>
-    <li><h2>Jurisprudência e teses</h2><p>Julgados conferidos no site oficial do tribunal e as teses do dia para fixar.</p><img src="p10.webp" width="1100" height="1556" loading="lazy" alt="Página de jurisprudência e teses do Dia 1"></li>
-    <li><h2>Treino FGV</h2><p>Três questões autorais de cinco alternativas, no padrão da prova.</p><img src="p11.webp" width="1100" height="1556" loading="lazy" alt="Página com as três questões do treino do Dia 1"></li>
-    <li><h2>Gabarito comentado</h2><p>O comentário de cada alternativa, com a técnica que a banca usaria, e o caminho mental de cada questão.</p><img src="p12.webp" width="1100" height="1556" loading="lazy" alt="Página de gabarito comentado e caminho mental do Dia 1"></li>
-    <li><h2>Discursiva</h2><p>Anatomia do estudo de caso: o que o edital exige, como ler o caso, os quatro movimentos em 30 linhas, um caso ilustrativo e o espelho de 40 pontos.</p><img src="p13.webp" width="1100" height="1556" loading="lazy" alt="Página da discursiva do Dia 1, anatomia do estudo de caso"></li>
+<header class="topo"><div class="w">
+  <a class="marca" data-origem href="../"><b>GB</b><span class="sc">Mentoria Gullit Belo</span></a>
+  <nav><a data-origem href="../">Voltar ao material</a></nav>
+</div><div class="filete"></div></header>
+<main>
+<div class="abre"><div class="w">
+  <span class="sc">TJPB · Analista Judiciário · FGV</span>
+  <h1>Dia 1, de graça</h1>
+  <p class="dor">As 13 páginas do primeiro dia, do jeito que chegam no PDF da Semana 1. Leia na ordem, como se fosse estudar hoje.</p>
+  <p class="assina">Gullit Belo</p>
+</div></div>
+<div class="w">
+  <ol class="lista">
+    <li><h2>Roteiro</h2><p class="leg">Os três temas do dia, de matérias diferentes, o tempo de cada etapa (2h30 no total) e como usar o dia.</p><div class="pg"><img src="p1.webp" width="1100" height="1556" alt="Roteiro do Dia 1 com as etapas e os tempos"></div></li>
+    <li><h2>Direito Civil e do Consumidor</h2><p class="leg">LINDB: vigência e revogação das leis, conflito aparente de normas e o modo de interpretar e integrar.</p><div class="pg"><img src="p2.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Civil e do Consumidor sobre a LINDB"></div></li>
+    <li><h2>Direito Civil e do Consumidor, continuação</h2><p class="leg">Direito intertemporal e eficácia da lei no espaço.</p><div class="pg"><img src="p3.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de LINDB, direito intertemporal e lei no espaço"></div></li>
+    <li><h2>Direito Civil e do Consumidor, continuação</h2><p class="leg">Segurança jurídica no direito público (arts. 20 a 30), com as caixas Para guardar, No Tribunal de Justiça e Pegadinhas.</p><div class="pg"><img src="p4.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de LINDB, segurança jurídica no direito público"></div></li>
+    <li><h2>Direito Processual Civil</h2><p class="leg">Normas fundamentais do CPC, com o contraditório e a vedação da decisão surpresa, e a ordem cronológica de conclusão.</p><div class="pg"><img src="p5.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Processual Civil"></div></li>
+    <li><h2>Direito Processual Civil, continuação</h2><p class="leg">Aplicação das normas processuais e cooperação judiciária nacional.</p><div class="pg"><img src="p6.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de Direito Processual Civil"></div></li>
+    <li><h2>Direito Administrativo</h2><p class="leg">Administração Pública em dois sentidos, organização, papel do Estado e regime jurídico-administrativo.</p><div class="pg"><img src="p7.webp" width="1100" height="1556" loading="lazy" alt="Página de tema de Direito Administrativo"></div></li>
+    <li><h2>Direito Administrativo, continuação</h2><p class="leg">Princípios expressos e implícitos e o nepotismo na prática.</p><div class="pg"><img src="p8.webp" width="1100" height="1556" loading="lazy" alt="Continuação do tema de Direito Administrativo, princípios e nepotismo"></div></li>
+    <li><h2>Lei seca do dia</h2><p class="leg">Os dispositivos dos três temas, em texto literal e vigente, com os detalhes que a banca troca.</p><div class="pg"><img src="p9.webp" width="1100" height="1556" loading="lazy" alt="Página de lei seca do Dia 1"></div></li>
+    <li><h2>Jurisprudência e teses</h2><p class="leg">Julgados conferidos no site oficial do tribunal e as teses do dia para fixar.</p><div class="pg"><img src="p10.webp" width="1100" height="1556" loading="lazy" alt="Página de jurisprudência e teses do Dia 1"></div></li>
+    <li><h2>Treino FGV</h2><p class="leg">Três questões autorais de cinco alternativas, no padrão da prova.</p><div class="pg"><img src="p11.webp" width="1100" height="1556" loading="lazy" alt="Página com as três questões do treino do Dia 1"></div></li>
+    <li><h2>Gabarito comentado</h2><p class="leg">O comentário de cada alternativa, com a técnica que a banca usaria, e o caminho mental de cada questão.</p><div class="pg"><img src="p12.webp" width="1100" height="1556" loading="lazy" alt="Página de gabarito comentado e caminho mental do Dia 1"></div></li>
+    <li><h2>Discursiva</h2><p class="leg">Anatomia do estudo de caso: o que o edital exige, como ler o caso, os quatro movimentos em 30 linhas, um caso ilustrativo e o espelho de 40 pontos.</p><div class="pg"><img src="p13.webp" width="1100" height="1556" loading="lazy" alt="Página da discursiva do Dia 1, anatomia do estudo de caso"></div></li>
   </ol>
-  <div class="fim">
-    <h2>Gostou do jeito de explicar?</h2>
-    <p>O material completo tem 66 dias de estudo, de segunda a sábado, para os 177 temas do edital, com treino no padrão da FGV e um estudo de caso por dia de estudo, num PDF por semana.</p>
-    <p class="valor" style="font:650 26px/1.1 var(--serif);color:var(--grafite)"><mark>R$ 147</mark> <small style="font:400 16px var(--sans);color:var(--lapis)">até 18/11, depois R$ 247, em até 12x no cartão</small></p>
-    <a class="btn" data-origem href="../#oferta">Ver o material e comprar</a>
-  </div>
+</div>
+<section class="fim" id="fim"><div class="w">
+  <h2>Gostou do jeito de explicar?</h2>
+  <p class="nota">O material completo tem 66 dias de estudo, de segunda a sábado, para os 177 temas do edital, com treino no padrão da FGV e um estudo de caso por dia de estudo, num PDF por semana.</p>
+  <div class="valor"><s class="lanc">R$ 247</s><span class="preco pr">R$ 147</span><small><span class="lanc">até 18/11, depois R$ 247 · </span>em até 12x no cartão</small></div>
+  <div class="acao"><a class="btn" data-origem href="../#oferta">Ver o material e comprar</a></div>
+  <p class="discreto">11 PDFs, um por segunda, de 09/11 a 18/01 · 177 temas</p>
+</div></section>
 </main>
-<footer class="w">
-  <p style="max-width:70ch">Material independente, sem vínculo com o Tribunal de Justiça do Estado da Paraíba ou com a Fundação Getulio Vargas. Os dados do concurso seguem o Edital nº 01/2026 e suas retificações.</p>
-  <nav><a href="../">TJPB dia a dia, Analista</a><a href="../../editais/">Materiais por edital</a><a href="../../privacidade/">Privacidade</a></nav>
-</footer>
+<footer><div class="w"><span>Material independente, sem vínculo com o Tribunal de Justiça do Estado da Paraíba ou com a Fundação Getulio Vargas. Os dados do concurso seguem o Edital nº 01/2026 e suas retificações.</span><nav><a data-origem href="../">TJPB dia a dia, Analista</a><a href="../../editais/">Materiais por edital</a><a href="https://www.instagram.com/mentoriagb/">@mentoriagb</a><a href="../../privacidade/">Privacidade</a></nav></div></footer>
+<script>
+/* Preço: até 18/11/2026, R$ 147 (de R$ 247). A partir de 19/11, R$ 247 e somem as linhas de lançamento. */
+(function(){var hoje=new Date(new Date().toDateString()),FIM=new Date(2026,10,18);
+if(hoje>FIM){document.querySelectorAll(".lanc").forEach(function(e){e.style.display="none"});
+document.querySelectorAll(".pr").forEach(function(e){e.textContent=e.textContent.replace("147","247")});}})();
+</script>
 </body>
 </html>
