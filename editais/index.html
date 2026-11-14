@@ -3,24 +3,160 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Materiais por edital · Gullit Belo</title>
-<meta name="description" content="Material de estudo feito para um concurso com edital publicado: o conteúdo, a banca e a data da prova daquele edital. Hoje, o TJPB, da FGV, e o TRT 4ª Região, a Defensoria Pública da Paraíba e o TRT 8ª Região, da FCC.">
-<meta property="og:title" content="Materiais por edital · Gullit Belo">
-<meta property="og:description" content="Material feito para o edital publicado. Hoje, TJPB, TRT 4ª Região, DPE-PB e TRT 8ª Região.">
-<meta property="og:image" content="https://gbelovaidarcerto-design.github.io/trt8/og.jpg">
+<title>Materiais por prova · Mentoria Gullit Belo</title>
+<meta name="description" content="O material de estudo da sua prova, um dia de cada vez: OAB 1ª fase, TRT 8, TJPB, TRT 4 e DPE-PB. Cada um com o Dia 1 grátis para ler antes de comprar.">
+<meta property="og:title" content="Materiais por prova · @mentoriagb">
+<meta property="og:description" content="OAB, TRT 8, TJPB, TRT 4 e DPE-PB: o material da sua prova, um dia de cada vez. Leia o Dia 1 grátis de cada um.">
+<meta property="og:image" content="https://gbelovaidarcerto-design.github.io/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://gbelovaidarcerto-design.github.io/editais/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#FCFCFA">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3F99'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='27' fill='%23FCFCFA' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="../estilo.css">
+<meta name="theme-color" content="#1F3F99">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231F3F99'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='%23ffffff' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Public+Sans:wght@600;700&display=swap">
 <!--
-  MATERIAIS POR EDITAL. Um bloco <section class="concurso"> por concurso.
-  Concurso novo: copie o bloco do TRT 8, troque ficha, datas (data-prova) e produtos.
+  HUB "MATERIAIS POR PROVA" (substitui o antigo catálogo "Materiais por edital" como entrada dos concursos).
+  CSS base, topo, botões e rodapé da oab-30dias/; cor própria do hub: caneta azul #1F3F99 (marca, abertura e rodapé).
+  Uma faixa (.cad) por material, na cor da página dele, em ordem de data de prova (a mais próxima primeiro).
+  Material novo: copie uma <article class="cad">, troque --c, imagem, textos, links e data-prova (AAAA-MM-DD),
+  e acrescente o atalho no .indice da abertura.
+
+  Fatos copiados das páginas de cada material em 14/11/2026:
+    OAB 1ª fase em 30 dias: 48º Exame, FGV, objetiva em 10/01/2027 (data provável), R$ 147 (de R$ 197).
+    TRT 8 dia a dia: FCC, prova prevista para 17/01/2027, R$ 97 por cargo (de R$ 197).
+      A promoção de R$ 97 ia até 05/11 na página antiga; a página atual mostra R$ 97 sem data. Conferir com GB.
+      Jurisprudência para o TRT 8ª Região: R$ 67 no checkout do dia a dia, R$ 97 avulso.
+    TJPB dia a dia: FGV, prova em 24/01/2027, R$ 147 até 18/11/2026, depois R$ 247.
+      O script do fim troca sozinho o preço a partir de 19/11 (atributos data-ate e data-depois), como a página do TJPB.
+    TRT 4 dia a dia: FCC, prova prevista para 31/01/2027, R$ 97 por cargo até 25/11, depois R$ 197.
+      Texto fixo, como na página do TRT 4 (que não troca sozinha). Depois de 25/11, atualizar as duas.
+    DPE-PB dia a dia, Técnico: FCC, prova prevista para 28/02/2027, R$ 97 (de R$ 197). A promoção ia até 13/11: conferir.
+    DPE-PB dia a dia, Analista: FCC, prova prevista para 28/02/2027, R$ 147 (de R$ 247). A promoção ia até 13/11: conferir.
 -->
+<style>
+:root{
+  color-scheme:light;
+  --tinta:#1F3F99;--escuro:#152C6E;--ouro:#FFE14D;--ouro-fio:#B79B6B;--texto:#22252E;
+  --creme:#F2F0E6;--papel:#FBFAF5;--suave:#575A60;--fio:#DCD6C6;
+  --serif:'EB Garamond',Garamond,'Times New Roman',serif;--sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--creme);color:var(--texto);font:400 20px/1.5 var(--serif);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+.cad :focus-visible{outline-color:#fff}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+.w{max-width:1120px;margin:0 auto;padding-inline:20px}
+.sc{font-weight:600;font-size:14px;letter-spacing:.2em;text-transform:uppercase}
+
+/* topo */
+.topo .w{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marca b{width:30px;height:30px;display:grid;place-items:center;background:var(--tinta);color:#fff;font:600 15px/1 var(--serif);letter-spacing:0}
+.marca span{font-size:13px;letter-spacing:.18em}
+.topo nav a{font-family:var(--sans);font-size:13.5px;font-weight:600;text-decoration:none;border-bottom:1px solid var(--tinta);white-space:nowrap}
+.filete{height:4px;border-top:1px solid var(--ouro-fio);border-bottom:1px solid var(--ouro-fio)}
+
+/* botões e preços */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:16px;text-decoration:none;background:var(--tinta);color:#fff;padding:15px 26px;border:2px solid var(--tinta);border-radius:0;cursor:pointer}
+.btn:hover{background:var(--escuro);border-color:var(--escuro)}
+.btn.branco{background:#fff;color:var(--c,var(--tinta));border-color:#fff}
+.btn.branco:hover{background:var(--creme);border-color:var(--creme)}
+.preco{font-family:var(--sans);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* página como objeto: moldura branca e sombra chapada */
+.capa{display:block;background:#fff;padding:6px;box-shadow:8px 8px 0 rgba(0,0,0,.25)}
+.capa img{width:100%;aspect-ratio:1100/1556;object-fit:cover;object-position:top}
+
+/* abertura */
+.abre{text-align:center;padding-block:48px 52px}
+.abre .sc{color:var(--tinta)}
+.abre h1{font-size:clamp(46px,8vw,96px);line-height:1;margin-top:12px;color:var(--tinta)}
+.abre .dor{font-size:clamp(21px,2.4vw,27px);line-height:1.4;font-style:italic;max-width:760px;margin:22px auto 0}
+.assina{margin-top:14px;font-style:italic;font-size:19px;color:var(--suave)}
+.assina::before{content:"";display:inline-block;width:28px;height:1px;background:var(--ouro-fio);vertical-align:middle;margin-right:10px}
+.indice{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:30px auto 0;padding:0;list-style:none;max-width:760px}
+.indice a{display:block;font-family:var(--sans);font-weight:700;font-size:13.5px;text-decoration:none;color:#fff;background:var(--c);padding:8px 12px}
+.indice a:hover{filter:brightness(1.18)}
+
+/* uma faixa de cor por material, como os cadernos de filho-meu/ferias */
+.cad{background:var(--c);color:#fff;border-bottom:3px solid rgba(0,0,0,.22);scroll-margin-top:0}
+.cad .w{display:grid;grid-template-columns:210px 1fr auto;gap:12px 44px;align-items:center;padding-block:44px}
+.cad .capa{grid-row:span 2}
+.cad .sc{display:block;color:var(--ouro);font-size:12.5px}
+.cad h2{font-size:clamp(40px,5vw,60px);line-height:.98;font-weight:700;margin-top:6px}
+.cad h2 small{display:block;font-size:.5em;font-weight:600;margin-top:6px;letter-spacing:0}
+.cad .cargo{font-size:21px;margin-top:10px;line-height:1.35}
+.cad .prova{font-family:var(--sans);font-weight:600;font-size:14.5px;margin-top:14px;line-height:1.5;color:rgba(255,255,255,.92)}
+.cad .prova b{font-weight:700;color:#fff}
+.cad .prova .faltam{display:inline-block;margin-left:6px;padding:1px 7px;background:rgba(255,255,255,.16);font-size:13px}
+.cad .pg{font-size:18px;line-height:1.4;color:rgba(255,255,255,.9);grid-column:2;align-self:start}
+.cad .extra{font-size:17px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.28);line-height:1.4}
+.cad .extra a{font-family:var(--sans);font-weight:700;font-size:14.5px;white-space:nowrap;color:#fff}
+.cad .direita{text-align:right;grid-column:3;grid-row:1 / span 2}
+.cad .valor{display:flex;justify-content:flex-end;align-items:baseline;gap:12px}
+.cad .valor s{font-family:var(--sans);font-weight:700;font-size:18px;color:rgba(255,255,255,.8);text-decoration-color:#fff;text-decoration-thickness:2px}
+.cad .valor .preco{font-size:44px;line-height:1}
+.cad .ate{font-family:var(--sans);font-size:13px;font-weight:600;color:rgba(255,255,255,.9);margin-top:6px}
+.cad .btn{margin-top:16px;min-width:230px}
+.cad .dia1{display:block;margin-top:12px;font-family:var(--sans);font-weight:700;font-size:15px;color:#fff}
+.cad.ciclo .w{padding-block:34px}
+.cad.ciclo .capa{max-width:170px}
+.cad.ciclo h2{font-size:clamp(34px,4vw,46px)}
+
+/* fim */
+.fim{text-align:center;padding-block:70px 80px}
+.fim h2{font-size:clamp(34px,4.6vw,52px);line-height:1.05}
+.fim p.nota{margin:14px auto 0;font-size:20px;color:var(--suave);max-width:640px}
+.fim .quem{margin:6px auto 0;font-size:16.5px;color:var(--suave);max-width:640px}
+.fim .acao{margin-top:28px;display:flex;justify-content:center}
+
+footer{background:var(--tinta);color:#E3E7F3;padding:24px 0 34px;font-size:15px}
+footer .w{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .cad .w{grid-template-columns:190px 1fr;gap:16px 28px}
+  .cad .capa{grid-row:span 2}
+  .cad .direita{grid-column:1 / -1;grid-row:auto;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-top:8px}
+  .cad .valor{justify-content:flex-start}
+  .cad .btn{margin-top:0}
+  .cad .dia1{margin-top:0}
+}
+@media (max-width:560px){
+  body{font-size:19px}
+  .w{padding-inline:16px}
+  .marca span{font-size:11.5px;letter-spacing:.14em}
+  .topo nav .pc{display:none}
+  .abre{padding-block:30px 38px}
+  .abre .dor{font-size:20px}
+  .indice{gap:6px}
+  .indice a{font-size:12.5px;padding:7px 10px}
+  .cad .w{grid-template-columns:36% 1fr;gap:14px 18px;padding-block:28px;align-items:start}
+  .cad .capa{grid-row:auto;padding:4px;box-shadow:5px 5px 0 rgba(0,0,0,.25)}
+  .cad.ciclo .capa{max-width:none}
+  .cad .sc{font-size:11px;letter-spacing:.14em}
+  .cad h2{font-size:31px}
+  .cad .cargo{font-size:17px;margin-top:8px}
+  .cad .prova{font-size:13px;margin-top:10px}
+  .cad .prova .faltam{margin-left:0;margin-top:4px}
+  .cad .pg{grid-column:1 / -1;font-size:17px}
+  .cad .direita{display:block;margin-top:4px}
+  .cad .valor .preco{font-size:34px}
+  .cad .btn{width:100%;margin-top:14px}
+  .cad .dia1{text-align:center;margin-top:12px;padding-block:4px}
+  .cad.ciclo h2{font-size:29px}
+  .fim{padding-block:56px 64px}
+  .fim .acao .btn{width:100%}
+}
+</style>
+<!-- Meta Pixel + repasse de UTM, como nas outras páginas do site -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -29,158 +165,195 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','2146801305916148');
 fbq('track','PageView');
-document.addEventListener('DOMContentLoaded',function(){
-  // Leva utm_* e src desta página para as páginas de cada material.
-  var q=new URLSearchParams(location.search),keep=new URLSearchParams();
-  q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
-  if(!keep.has('src'))keep.set('src','editais');
-  document.querySelectorAll('a[data-origem]').forEach(function(a){
-    var u=new URL(a.href,location.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
-  });
-  // Dias até a prova de cada concurso (data-prova="AAAA-MM-DD").
-  var hoje=new Date(new Date().toDateString());
-  document.querySelectorAll('[data-prova]').forEach(function(el){
-    var p=el.getAttribute('data-prova').split('-'),d=new Date(+p[0],+p[1]-1,+p[2]);
-    var n=Math.ceil((d-hoje)/864e5);
-    if(n>1)el.textContent=el.getAttribute('data-texto')+', daqui a '+n+' dias';
-    else if(n===1)el.textContent=el.getAttribute('data-texto')+', amanhã';
-  });
-});
+fbq('track','ViewContent',{content_name:'Materiais por prova'});
 </script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2146801305916148&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
-<header class="w top">
-  <span class="gb" aria-hidden="true">GB</span>
-  <div><b>Gullit Belo</b><a href="https://www.instagram.com/mentoriagb/">@mentoriagb</a></div>
-  <a class="voltar" href="../">Todos os materiais</a>
-</header>
+<header class="topo"><div class="w">
+  <a class="marca" href="../"><b>GB</b><span class="sc">Mentoria Gullit Belo</span></a>
+  <nav><a href="https://www.instagram.com/mentoriagb/" target="_blank" rel="noopener"><span class="pc">Instagram </span>@mentoriagb</a></nav>
+</div><div class="filete"></div></header>
 
 <main>
-  <div class="w intro">
-    <h1>Materiais por edital</h1>
-    <p>Material escrito para um concurso com edital publicado: segue o conteúdo, a banca e a data da prova daquele edital, dia a dia, até a prova.</p>
+<div class="abre"><div class="w">
+  <span class="sc">Materiais por prova</span>
+  <h1>O material da sua prova</h1>
+  <p class="dor">Escrevi cada material para uma prova só, um dia de cada vez: os temas do dia, a lei seca, a jurisprudência que a banca cobra e o treino no estilo dela. Em todos, o Dia 1 está aberto para você ler antes de comprar.</p>
+  <p class="assina">Gullit Belo</p>
+  <ul class="indice" aria-label="Ir para o material">
+    <li><a href="#oab" style="--c:#5A1A2B">OAB</a></li>
+    <li><a href="#trt8" style="--c:#1A3A5C">TRT 8</a></li>
+    <li><a href="#tjpb" style="--c:#17505E">TJPB</a></li>
+    <li><a href="#trt4" style="--c:#1E5638">TRT 4</a></li>
+    <li><a href="#dpepb" style="--c:#4A2C6B">DPE-PB Técnico</a></li>
+    <li><a href="#dpepb-analista" style="--c:#4A5A1C">DPE-PB Analista</a></li>
+    <li><a href="#ciclo" style="--c:#8E3D20">Folha do ciclo grátis</a></li>
+  </ul>
+</div></div>
+
+<section aria-label="Materiais, da prova mais próxima para a mais distante">
+
+<article class="cad" id="oab" style="--c:#5A1A2B"><div class="w">
+  <a class="capa" data-origem href="../oab-30dias/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../oab-30dias/amostra/capa.webp" alt="Capa da Semana 1 do OAB 1ª fase em 30 dias" width="1100" height="1556" fetchpriority="high"></a>
+  <div>
+    <span class="sc">48º Exame de Ordem · FGV</span>
+    <h2>OAB 1ª fase em 30 dias</h2>
+    <p class="cargo">1ª fase, prova objetiva</p>
+    <p class="prova" data-prova="2027-01-10"><b>Prova em 10 de janeiro de 2027</b> (data provável)</p>
   </div>
+  <p class="pg">30 dias de estudo, de segunda a sábado, começando em 30 de novembro, organizados pelo que a FGV mais cobra.</p>
+  <div class="direita">
+    <div class="valor"><s>R$ 197</s><span class="preco">R$ 147</span></div>
+    <a class="btn branco" data-origem data-local="oab" href="../oab-30dias/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../oab-30dias/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
 
-  <section class="w concurso" aria-labelledby="t-tjpb">
-    <h2 id="t-tjpb">Tribunal de Justiça da Paraíba</h2>
-    <dl class="ficha">
-      <dt>Banca</dt><dd>FGV</dd>
-      <dt>Inscrições</dt><dd>até 18 de novembro de 2026</dd>
-      <dt>Prova</dt><dd data-prova="2027-01-24" data-texto="24 de janeiro de 2027">24 de janeiro de 2027</dd>
-      <dt>Cargo</dt><dd>Analista Judiciário (Área Judiciária)</dd>
-    </dl>
-  </section>
-  <ul class="estante tres" aria-label="Materiais do Tribunal de Justiça da Paraíba">
-    <li class="livro" style="--i:0">
-      <div class="cv"><img class="pagina" src="../tjpb/amostra/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Analista Judiciário do TJPB"></div>
-      <h3><a data-origem href="../tjpb/">TJPB dia a dia: Analista Judiciário</a></h3>
-      <p>66 dias de estudo, de segunda a sábado, para os 177 temas do edital, com treino no padrão da FGV e estudo de caso todo dia.</p>
-      <p class="preco"><mark>R$ 147</mark> até 18/11, depois R$ 247 · em até 12x</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-  </ul>
-  <section class="w concurso" aria-labelledby="t-trt4">
-    <h2 id="t-trt4">TRT 4ª Região</h2>
-    <dl class="ficha">
-      <dt>Banca</dt><dd>FCC</dd>
-      <dt>Inscrições</dt><dd>de 26 de outubro a 25 de novembro de 2026</dd>
-      <dt>Prova</dt><dd data-prova="2027-01-31" data-texto="31 de janeiro de 2027 (prevista)">31 de janeiro de 2027 (prevista)</dd>
-      <dt>Cargos</dt><dd>Analista Judiciário (Área Judiciária), Oficial de Justiça Avaliador Federal e Técnico Judiciário (Área Administrativa)</dd>
-    </dl>
-  </section>
-  <ul class="estante tres" aria-label="Materiais do TRT 4ª Região">
-    <li class="livro" style="--i:0">
-      <div class="cv"><img class="pagina" src="../trt4/amostra/ao/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material do TRT 4 para Analista e Oficial de Justiça"></div>
-      <h3><a data-origem href="../trt4/">TRT 4 dia a dia: Analista e Oficial</a></h3>
-      <p>68 dias para os 174 temas do edital, com estudo de caso todo dia e o Regimento do TRT 4 na versão vigente.</p>
-      <p class="preco"><mark>R$ 97</mark> até 25 de novembro</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-    <li class="livro" style="--i:1">
-      <div class="cv"><img class="pagina" src="../trt4/amostra/tec/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material do TRT 4 para Técnico Judiciário"></div>
-      <h3><a data-origem href="../trt4/#tec">TRT 4 dia a dia: Técnico</a></h3>
-      <p>48 dias para os 123 temas do edital, com redação todo dia.</p>
-      <p class="preco"><mark>R$ 97</mark> até 25 de novembro</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-  </ul>
-  <section class="w concurso" aria-labelledby="t-dpepb">
-    <h2 id="t-dpepb">Defensoria Pública da Paraíba</h2>
-    <dl class="ficha">
-      <dt>Banca</dt><dd>FCC</dd>
-      <dt>Inscrições</dt><dd>até 13 de novembro de 2026</dd>
-      <dt>Prova</dt><dd data-prova="2027-02-28" data-texto="28 de fevereiro de 2027 (prevista)">28 de fevereiro de 2027 (prevista)</dd>
-      <dt>Cargos</dt><dd>Técnico da Defensoria (Sem Especialidade) e Analista da Defensoria (Assistente Jurídico)</dd>
-    </dl>
-  </section>
-  <ul class="estante tres" aria-label="Materiais da Defensoria Pública da Paraíba">
-    <li class="livro" style="--i:0">
-      <div class="cv"><img class="pagina" src="../dpepb/amostra/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Técnico da Defensoria da Paraíba"></div>
-      <h3><a data-origem href="../dpepb/">DPE-PB dia a dia: Técnico</a></h3>
-      <p>49 dias para os 124 temas do edital, escrito para quem está começando do zero.</p>
-      <p class="preco"><mark>R$ 97</mark> até 13/11, depois R$ 197 · em até 12x</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-    <li class="livro" style="--i:1">
-      <div class="cv"><img class="pagina" src="../dpepb-analista/amostra/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Analista da Defensoria da Paraíba, Assistente Jurídico"></div>
-      <h3><a data-origem href="../dpepb-analista/">DPE-PB dia a dia: Analista, Assistente Jurídico</a></h3>
-      <p>88 dias para os 224 temas do edital, para consulta e fixação, com Redação todo dia.</p>
-      <p class="preco"><mark>R$ 147</mark> até 13/11, depois R$ 247 · em até 12x</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-  </ul>
-  <section class="w concurso" aria-labelledby="t-trt8">
-    <h2 id="t-trt8">TRT 8ª Região</h2>
-    <dl class="ficha">
-      <dt>Banca</dt><dd>FCC</dd>
-      <dt>Inscrições</dt><dd>até 5 de novembro de 2026</dd>
-      <dt>Prova</dt><dd data-prova="2027-01-17" data-texto="17 de janeiro de 2027 (prevista)">17 de janeiro de 2027 (prevista)</dd>
-      <dt>Cargos</dt><dd>Analista Judiciário (Área Judiciária), Oficial de Justiça e Técnico Judiciário (Área Administrativa)</dd>
-    </dl>
-  </section>
+<article class="cad" id="trt8" style="--c:#1A3A5C"><div class="w">
+  <a class="capa" data-origem href="../trt8/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../trt8/amostra/ao/p1.webp" alt="Roteiro do Dia 1 do TRT 8 dia a dia, Analista e Oficial" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">TRT 8ª Região · FCC</span>
+    <h2>TRT 8 dia a dia</h2>
+    <p class="cargo">Analista Judiciário (Área Judiciária) e Oficial de Justiça, ou Técnico Judiciário (Área Administrativa)</p>
+    <p class="prova" data-prova="2027-01-17"><b>Prova em 17 de janeiro de 2027</b> (prevista)</p>
+  </div>
+  <div class="pg">
+    <p>Um material por cargo, com uma discursiva para escrever todo dia.</p>
+    <p class="extra">Extra: a Jurisprudência para o TRT 8ª Região (súmulas, OJs e teses do TST, do STF e do STJ) sai por R$ 67 junto com o dia a dia. <a data-origem data-local="trt8-jurisprudencia" href="../trt8/jurisprudencia/?src=materiais">Ver a Jurisprudência</a></p>
+  </div>
+  <div class="direita">
+    <div><div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div><p class="ate">por cargo</p></div>
+    <a class="btn branco" data-origem data-local="trt8" href="../trt8/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../trt8/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
 
-  <ul class="estante tres" aria-label="Materiais do TRT 8ª Região">
-    <li class="livro" style="--i:0">
-      <div class="cv"><img class="pagina" src="../trt8/amostra/ao/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Analista e Oficial de Justiça"></div>
-      <h3><a data-origem href="../trt8/">TRT 8 dia a dia: Analista e Oficial</a></h3>
-      <p>67 dias de estudo para os 171 temas do edital, com estudo de caso todo dia.</p>
-      <p class="preco"><mark>R$ 97</mark> até 5 de novembro</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-    <li class="livro" style="--i:1">
-      <div class="cv"><img class="pagina" src="../trt8/amostra/tec/p2.webp" width="1100" height="1556" alt="Página de um dia de estudo do material para Técnico Judiciário"></div>
-      <h3><a data-origem href="../trt8/">TRT 8 dia a dia: Técnico</a></h3>
-      <p>46 dias de estudo para os 117 temas do edital, com redação todo dia.</p>
-      <p class="preco"><mark>R$ 97</mark> até 5 de novembro</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-    <li class="livro" style="--i:2">
-      <div class="cv"><img class="pagina" src="../trt8/jurisprudencia/capa.webp" width="1100" height="1556" alt="Capa da Jurisprudência para o TRT 8ª Região"></div>
-      <h3><a data-origem href="../trt8/jurisprudencia/">Jurisprudência para o TRT 8ª Região</a></h3>
-      <p>Súmulas, OJs e teses do TST, do STF e do STJ que a FCC cobra, por disciplina e na ordem do edital.</p>
-      <p class="preco"><mark>R$ 97</mark>, ou R$ 67 junto com o dia a dia</p>
-      <span class="ver" aria-hidden="true">Ver o material</span>
-    </li>
-  </ul>
+<article class="cad" id="tjpb" style="--c:#17505E"><div class="w">
+  <a class="capa" data-origem href="../tjpb/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../tjpb/amostra/p1.webp" alt="Roteiro do Dia 1 do TJPB dia a dia" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">Tribunal de Justiça da Paraíba · FGV</span>
+    <h2>TJPB dia a dia</h2>
+    <p class="cargo">Analista Judiciário, Área Judiciária</p>
+    <p class="prova" data-prova="2027-01-24"><b>Prova em 24 de janeiro de 2027</b> (domingo, das 13h às 18h)</p>
+  </div>
+  <p class="pg">66 dias de estudo, de segunda a sábado, com um estudo de caso em cada dia de estudo.</p>
+  <div class="direita" data-ate="2026-11-18" data-depois="R$ 247">
+    <div><div class="valor"><s>R$ 247</s><span class="preco">R$ 147</span></div><p class="ate">até 18/11, depois R$ 247</p></div>
+    <a class="btn branco" data-origem data-local="tjpb" href="../tjpb/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../tjpb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
 
-  <section class="w secao" aria-labelledby="t-gratis">
-    <h2 id="t-gratis">Antes de comprar</h2>
-    <ul class="gratis">
-      <li><a data-origem href="../tjpb/amostra/"><b>Dia 1 do TJPB</b><span>As 13 páginas do primeiro dia do material do Analista Judiciário, com treino e estudo de caso.</span><i>Ler</i></a></li>
-      <li><a data-origem href="../trt4/amostra/"><b>Dia 1 do TRT 4</b><span>As sete páginas do primeiro dia, para Analista e Oficial e para Técnico.</span><i>Ler</i></a></li>
-      <li><a data-origem href="../dpepb/amostra/"><b>Dia 1 da DPE-PB</b><span>As seis páginas do primeiro dia do material do Técnico da Defensoria.</span><i>Ler</i></a></li>
-      <li><a data-origem href="../dpepb-analista/amostra/"><b>Dia 1 da DPE-PB, Analista</b><span>As sete páginas do primeiro dia do material do Analista, Assistente Jurídico.</span><i>Ler</i></a></li>
-      <li><a data-origem href="../trt8/amostra/"><b>Dia 1 do TRT 8</b><span>As sete páginas de um dia de estudo, para Analista e Oficial e para Técnico.</span><i>Ler</i></a></li>
-      <li><a data-origem href="../trt8/jurisprudencia/#teste"><b>Teste de jurisprudência</b><span>Cinco afirmações do material para julgar Certo ou Errado, com comentário.</span><i>Fazer</i></a></li>
-    </ul>
-    <p class="nota">Quando sair o edital de outro concurso que eu acompanho, o material dele entra nesta página.</p>
-  </section>
+<article class="cad" id="trt4" style="--c:#1E5638"><div class="w">
+  <a class="capa" data-origem href="../trt4/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../trt4/amostra/ao/p1.webp" alt="Roteiro do Dia 1 do TRT 4 dia a dia, Analista e Oficial" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">TRT 4ª Região · FCC</span>
+    <h2>TRT 4 dia a dia</h2>
+    <p class="cargo">Analista Judiciário (Área Judiciária) e Oficial de Justiça Avaliador Federal, ou Técnico Judiciário (Área Administrativa)</p>
+    <p class="prova" data-prova="2027-01-31"><b>Prova em 31 de janeiro de 2027</b> (prevista)</p>
+  </div>
+  <p class="pg">Um material por cargo, com uma página de Discursiva em cada dia de estudo.</p>
+  <div class="direita">
+    <div><div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div><p class="ate">por cargo, até 25/11, depois R$ 197</p></div>
+    <a class="btn branco" data-origem data-local="trt4" href="../trt4/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../trt4/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
+
+<article class="cad" id="dpepb" style="--c:#4A2C6B"><div class="w">
+  <a class="capa" data-origem href="../dpepb/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../dpepb/amostra/p1.webp" alt="Roteiro do Dia 1 do DPE-PB dia a dia, Técnico" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">Defensoria Pública da Paraíba · FCC</span>
+    <h2>DPE-PB dia a dia <small>Técnico</small></h2>
+    <p class="cargo">Técnico da Defensoria</p>
+    <p class="prova" data-prova="2027-02-28"><b>Prova em 28 de fevereiro de 2027</b> (prevista)</p>
+  </div>
+  <p class="pg">Os 124 temas do edital em 49 dias, escrito para quem começa do zero.</p>
+  <div class="direita">
+    <div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div>
+    <a class="btn branco" data-origem data-local="dpepb" href="../dpepb/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../dpepb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
+
+<article class="cad" id="dpepb-analista" style="--c:#4A5A1C"><div class="w">
+  <a class="capa" data-origem href="../dpepb-analista/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../dpepb-analista/amostra/p1.webp" alt="Roteiro do Dia 1 do DPE-PB dia a dia, Analista" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">Defensoria Pública da Paraíba · FCC</span>
+    <h2>DPE-PB dia a dia <small>Analista</small></h2>
+    <p class="cargo">Analista da Defensoria, Assistente Jurídico (B02)</p>
+    <p class="prova" data-prova="2027-02-28"><b>Prova em 28 de fevereiro de 2027</b> (prevista)</p>
+  </div>
+  <p class="pg">Os 224 temas do edital em 88 dias, com uma página de Redação por dia.</p>
+  <div class="direita">
+    <div class="valor"><s>R$ 247</s><span class="preco">R$ 147</span></div>
+    <a class="btn branco" data-origem data-local="dpepb-analista" href="../dpepb-analista/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../dpepb-analista/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
+
+<article class="cad ciclo" id="ciclo" style="--c:#8E3D20"><div class="w">
+  <a class="capa" data-origem href="../ciclo/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../ciclo/previa-1.png" alt="Primeira página da folha do ciclo" width="794" height="1123" loading="lazy"></a>
+  <div>
+    <span class="sc">Grátis · para qualquer concurso</span>
+    <h2>A folha do ciclo</h2>
+    <p class="cargo">Montei esta folha para o dia que dá errado: no ciclo, amanhã você continua de onde parou.</p>
+  </div>
+  <p class="pg">Cinco páginas em PDF, A4, para imprimir e usar a lápis.</p>
+  <div class="direita">
+    <div class="valor"><span class="preco">Grátis</span></div>
+    <a class="btn branco" data-origem data-local="ciclo" href="../ciclo/?src=materiais">Baixar grátis</a>
+  </div>
+</div></article>
+
+</section>
+
+<section class="fim"><div class="w">
+  <h2>Comece pelo Dia 1</h2>
+  <p class="nota">Leia o Dia 1 da sua prova inteiro, faça o treino e decida depois. Quando sair o edital de outra prova que eu acompanho, o material dela entra aqui.</p>
+  <p class="assina">Gullit Belo · @mentoriagb</p>
+  <p class="quem">Quase vinte aprovações em concursos de tribunais (estaduais, federais, do trabalho e eleitorais), do Ministério Público, da AGU, do INSS e de universidades, além da OAB. Hoje sou servidor no TRT.</p>
+  <div class="acao"><a class="btn" href="https://www.instagram.com/mentoriagb/" target="_blank" rel="noopener">Seguir @mentoriagb no Instagram</a></div>
+</div></section>
 </main>
 
-<footer class="w">
-  <nav><a href="../">Todos os materiais</a><a href="https://www.instagram.com/mentoriagb/">@mentoriagb no Instagram</a><a href="../privacidade/">Privacidade</a></nav>
-</footer>
+<footer><div class="w"><span>Materiais independentes, sem vínculo com os tribunais, a Defensoria, a OAB ou as bancas (FGV e FCC).</span><span><a href="../">@mentoriagb</a> · <a href="../privacidade/">Privacidade</a></span></div></footer>
 
+<script>
+(function(){
+  /* Repasse de utm_* e src para os links internos (data-origem). Sem src na chegada, fica o src=materiais do link. */
+  var q=new URLSearchParams(location.search),keep=new URLSearchParams();
+  q.forEach(function(v,k){if(/^utm_|^src$/.test(k))keep.set(k,v)});
+  document.querySelectorAll("a[data-origem]").forEach(function(a){
+    var u=new URL(a.href,location.href);keep.forEach(function(v,k){u.searchParams.set(k,v)});a.href=u.toString();
+    var l=a.getAttribute("data-local");
+    if(l)a.addEventListener("click",function(){if(window.fbq)fbq("trackCustom","CliqueMaterial",{content_name:"Materiais por prova",material:l})});
+  });
+
+  var hoje=new Date(new Date().toDateString());
+  function dia(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+
+  /* Preço com data de troca (hoje só o TJPB, que também troca sozinho na própria página a partir de 19/11). */
+  document.querySelectorAll("[data-ate]").forEach(function(el){
+    if(hoje>dia(el.getAttribute("data-ate"))){
+      el.querySelector(".preco").textContent=el.getAttribute("data-depois");
+      var s=el.querySelector("s"),a=el.querySelector(".ate");
+      if(s)s.remove();
+      if(a)a.textContent="em até 12x";
+    }
+  });
+
+  /* Dias até a prova (data-prova="AAAA-MM-DD"). */
+  document.querySelectorAll("[data-prova]").forEach(function(el){
+    var n=Math.ceil((dia(el.getAttribute("data-prova"))-hoje)/864e5);
+    if(n<1)return;
+    var t=document.createElement("span");t.className="faltam";
+    t.textContent=n===1?"amanhã":"daqui a "+n+" dias";
+    el.appendChild(document.createTextNode(" "));el.appendChild(t);
+  });
+})();
+</script>
 </body>
 </html>
