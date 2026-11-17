@@ -112,6 +112,10 @@ dialog.zoom .fechar{position:fixed;top:12px;right:14px;width:44px;height:44px;bo
 .oferta h2{margin-top:8px}
 .oferta .frase{color:var(--suave);font-size:20px;margin:12px auto 0;max-width:680px}
 .oferta .capa{max-width:220px;margin:34px auto 0}
+.inclui{list-style:none;padding:0;margin:30px auto 0;max-width:520px;text-align:left;font-size:19px;line-height:1.35}
+.inclui li{padding:10px 0 10px 30px;border-top:1px solid var(--fio);position:relative}
+.inclui li:last-child{border-bottom:1px solid var(--fio)}
+.inclui li::before{content:"";position:absolute;left:4px;top:19px;width:12px;height:7px;border-left:2px solid var(--tinta);border-bottom:2px solid var(--tinta);transform:rotate(-45deg)}
 .oferta .valor{display:flex;justify-content:center;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:34px}
 .oferta .valor s{font-family:var(--sans);color:var(--suave);font-size:20px}
 .oferta .valor .preco{font-size:56px;line-height:1}
@@ -228,13 +232,13 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
 
 <section class="bonus" id="bonus"><div class="w">
   <span class="sc">Bônus para quem comprar</span>
-  <h2>Quatro bônus tirados da análise das provas</h2>
-  <p class="frase">Liberados na área de membros junto com a Semana 1. Toque na capa para ampliar.</p>
+  <h2>Quatro recursos para chegar aos 40 pontos</h2>
+  <p class="frase">O plano ensina o conteúdo. Os bônus cuidam do resto da prova: o que reler na lei, como a banca monta a alternativa errada, como agir no dia 10/01 e como guardar o que você estudou. Todos saíram da mesma análise das provas do XXII ao 47º Exame.</p>
   <div class="bgrid">
-    <figure><button type="button"><img src="bonus/b1.webp" alt="Capa do bônus Artigos que a FGV mais cobra" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 1</span><b>Artigos que a FGV mais cobra</b>Os 220 dispositivos que mais voltaram do XXII ao 47º Exame, com o texto da lei e o grifo onde a banca arma a pegadinha.</figcaption></figure>
-    <figure><button type="button"><img src="bonus/b2.webp" alt="Capa do bônus Iscas da FGV" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 2</span><b>Iscas da FGV</b>As 25 técnicas que a banca usa para montar a alternativa errada, tiradas de 6.138 alternativas incorretas.</figcaption></figure>
-    <figure><button type="button"><img src="bonus/b3.webp" alt="Capa do bônus Guia da prova de 10/01" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 3</span><b>Guia da prova de 10/01</b>O edital item a item para o dia da prova, a rota dos 40 pontos e como usar as cinco horas.</figcaption></figure>
-    <figure><button type="button"><img src="bonus/b4.webp" alt="Capa dos Cartões de revisão da Semana 1" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 4</span><b>Cartões de revisão</b>As afirmações Certo ou Errado de cada semana em cartões para recortar e dobrar, e em arquivo para o Anki.</figcaption></figure>
+    <figure><button type="button"><img src="bonus/b1.webp" alt="Capa do bônus Artigos que a FGV mais cobra" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 1 · o que reler</span><b>Artigos que a FGV mais cobra</b>A lei seca é grande e o tempo é curto. Aqui estão os 220 dispositivos que mais voltaram nas provas, na ordem do exame, com o grifo na palavra onde a banca arma a pegadinha.</figcaption></figure>
+    <figure><button type="button"><img src="bonus/b2.webp" alt="Capa do bônus Iscas da FGV" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 2 · as pegadinhas</span><b>Iscas da FGV</b>Muito ponto se perde com a regra na cabeça. Separei as 25 técnicas que a FGV usa para montar a alternativa errada, a partir de 6.138 alternativas incorretas, cada uma com a alternativa errada ao lado da versão certa.</figcaption></figure>
+    <figure><button type="button"><img src="bonus/b3.webp" alt="Capa do bônus Guia da prova de 10/01" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 3 · o dia da prova</span><b>Guia da prova de 10/01</b>O edital item a item para o domingo da prova (documento, horários, o que levar), onde estão as questões de cada disciplina e como dividir as cinco horas.</figcaption></figure>
+    <figure><button type="button"><img src="bonus/b4.webp" alt="Capa dos Cartões de revisão da Semana 1" width="1100" height="1556" loading="lazy"></button><figcaption><span class="n">Bônus 4 · não esquecer</span><b>Cartões de revisão</b>As afirmações Certo ou Errado de cada semana em cartões para recortar e dobrar, e em arquivo para o Anki no celular. Dez minutos por dia mantêm vivo o que você estudou nas semanas anteriores.</figcaption></figure>
   </div>
   <p class="prem"><b>E ainda o Premonitório do 48º Exame</b>, entregue no início de janeiro: a minha projeção dos temas para a última semana antes da prova.</p>
 </div></section>
@@ -244,6 +248,14 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
   <h2>30 dias de estudo, de segunda a sábado</h2>
   <p class="frase">Cada tema traz Em uma frase, lei seca, jurisprudência conferida, Pegadinhas da FGV, uma questão no padrão da banca e afirmações Certo ou Errado.</p>
   <div class="capa"><img src="amostra/capa.webp" alt="" width="1100" height="1556" loading="lazy"></div>
+  <ul class="inclui">
+    <li><b>30 dias de estudo</b> em cinco PDFs semanais</li>
+    <li><b>Artigos que a FGV mais cobra</b> · bônus</li>
+    <li><b>Iscas da FGV</b> · bônus</li>
+    <li><b>Guia da prova de 10/01</b> · bônus</li>
+    <li><b>Cartões de revisão</b> de cada semana, em PDF e no Anki · bônus</li>
+    <li><b>Premonitório do 48º Exame</b> no início de janeiro · bônus</li>
+  </ul>
   <div class="valor"><s>R$ 197</s><span class="preco">R$ 147</span></div>
   <div class="acao"><a class="btn" data-comprar data-local="oferta" href="#oferta">Comprar o plano de 30 dias</a></div>
   <p class="discreto">Semana 1 e os 4 bônus na compra · as outras semanas às segundas: 07/12, 14/12, 21/12 e 28/12 · Premonitório no início de janeiro</p>
