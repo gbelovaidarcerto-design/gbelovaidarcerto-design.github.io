@@ -156,6 +156,14 @@ dialog.zoom .fechar{position:fixed;top:12px;right:14px;width:44px;height:44px;bo
 .bcron + .discreto{margin-top:24px}
 @media (max-width:560px){.bcron{padding:18px 16px 16px}.bcron .sc{font-size:12px;letter-spacing:.12em}.bcron h3{font-size:26px}.bcron-txt{font-size:17.5px}}
 
+/* contagem regressiva até a prova: calculada no navegador, a partir de hoje */
+.faltam-linha{margin:22px auto 0;text-align:center}
+.faltam-linha[hidden]{display:none}
+.faltam-linha span{display:inline-block;padding:4px 12px;background:var(--ouro);color:var(--texto);font-family:var(--sans);font-weight:800;font-size:18px;line-height:1.3;box-shadow:3px 3px 0 rgba(0,0,0,.18)}
+.faltam-linha b{font-size:23px}
+.faltam-linha + .quando{margin-top:12px}
+@media (max-width:560px){.faltam-linha span{font-size:16px}.faltam-linha b{font-size:20px}}
+
 .fim{text-align:center;padding-block:70px 80px;border-top:1px solid var(--fio)}
 .fim p.nota{margin:14px auto 0;font-size:20px;color:var(--suave);max-width:640px}
 .fim .quem{margin:6px auto 0;font-size:16.5px;color:var(--suave);max-width:640px}
@@ -226,6 +234,7 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
   <div class="w">
     <div class="acao"><a class="btn" data-comprar data-local="topo" href="#oferta" id="cta1">Quero o plano por R$ 147</a><a class="btn vazado" data-origem href="amostra/">Ler o Dia 1 grátis</a></div>
     <p class="agora"><mark>Você recebe agora: Semana 1 + 4 bônus.</mark> Dá para fazer a triagem do Dia 1 antes de o plano começar, em 30 de novembro.</p>
+    <p class="faltam-linha" data-faltam="2027-01-10" hidden><span></span></p>
     <p class="quando">A objetiva está marcada para 10 de janeiro (data provável). Os 30 dias cabem com folga no Natal e no Ano-Novo.</p>
     <p class="discreto">Um PDF por semana · as outras semanas chegam às segundas</p>
     <p class="discreto bcron-linha" data-bonus-linha hidden>Bônus: cronograma personalizado para 10 compradores (<span>restam 10</span>)</p>
@@ -365,6 +374,13 @@ var CHECKOUT="https://pay.kiwify.com.br/3AUfUbf";
     [document.getElementById("cta1"),document.getElementById("oferta")].forEach(function(a){ob.observe(a)});
   }
 })();
+</script>
+<script>
+/* Contagem regressiva: dias de hoje até a prova (data-prova="AAAA-MM-DD"). Some depois da prova. */
+(function(){var hoje=new Date(new Date().toDateString());
+document.querySelectorAll("[data-faltam]").forEach(function(el){var p=el.getAttribute("data-faltam").split("-");
+var n=Math.ceil((new Date(+p[0],+p[1]-1,+p[2])-hoje)/864e5);if(n<1)return;
+el.querySelector("span").innerHTML=n===1?"<b>amanhã</b> é a prova":"faltam <b>"+n+"</b> dias para a prova";el.hidden=false;});})();
 </script>
 </body>
 </html>
