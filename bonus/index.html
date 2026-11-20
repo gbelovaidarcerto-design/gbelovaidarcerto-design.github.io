@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Bônus · Cronograma personalizado</title>
+<meta name="description" content="Anamnese curta do bônus Cronograma personalizado, para quem comprou um material de Gullit Belo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FCFCFA; --grafite:#23262D; --lapis:#626873; --caneta:#1F3F99;
+  --pauta:#D6DFEA; --marca:#FFE14D; --alerta:#9B2C1F; --alerta-fundo:#FBEDEA;
+  --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--grafite);font:400 17px/1.55 var(--sans);overflow-x:hidden}
+a{color:var(--caneta);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--caneta);outline-offset:3px;border-radius:2px}
+mark{background:linear-gradient(transparent 12%,var(--marca) 12%,var(--marca) 88%,transparent 88%);color:inherit;padding:0 .15em}
+h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;margin:0;text-wrap:balance}
+.w{max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left))}
+
+/* faixa e topo: a cor muda com o material escolhido */
+.faixa{height:6px;background:var(--caneta);transition:background .3s}
+.top{display:flex;align-items:center;gap:12px;padding-block:18px 6px}
+.gb{width:40px;height:40px;border-radius:10px;background:var(--caneta);color:var(--papel);display:grid;place-items:center;font:500 17px/1 var(--serif);flex:none;transition:background .3s}
+.top b{display:block;font-weight:600;font-size:16px;line-height:1.2}
+.top span{font-size:14px;color:var(--lapis)}
+.salvo{margin-left:auto;font-size:13px;color:var(--lapis);text-align:right}
+@media (prefers-reduced-motion:reduce){.faixa,.gb{transition:none}}
+
+/* progresso */
+.prog{position:sticky;top:0;z-index:5;background:var(--papel);padding-block:12px 10px;border-bottom:1px solid var(--pauta)}
+.prog-linha{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--lapis);margin-bottom:8px}
+.prog-linha b{color:var(--grafite);font-weight:600}
+.barra{height:7px;background:var(--pauta);border-radius:4px;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--caneta);transition:width .3s}
+@media (prefers-reduced-motion:reduce){.barra i{transition:none}}
+
+/* etapa */
+.etapa{padding-block:28px 8px}
+.etapa h1{font-size:clamp(28px,7vw,40px);line-height:1.1}
+.etapa .intro{color:var(--lapis);margin:12px 0 0}
+.intro,.ajuda,.caixa p,.item p,.resumo dd,.rodape,.carta p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.campo{margin-top:28px}
+.campo>label,.campo>.rot{display:block;font-weight:600;line-height:1.35}
+.campo .ajuda{display:block;font-size:15px;color:var(--lapis);margin-top:4px;font-weight:400}
+.campo .porque{display:block;font-size:14px;color:var(--lapis);margin-top:6px;font-weight:400;font-style:italic;padding-left:10px;border-left:3px solid var(--caneta)}
+input[type=text],input[type=number],input[type=email],input[type=tel],textarea,select{width:100%;margin-top:10px;font:400 17px/1.4 var(--sans);color:var(--grafite);background:#fff;border:1px solid #B9C4D2;border-radius:8px;padding:12px 14px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(31,63,153,.25);border-color:var(--caneta)}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opcoes label{position:relative}
+.opcoes input{position:absolute;opacity:0;pointer-events:none}
+.opcoes span{display:inline-block;font:500 15px/1.2 var(--sans);padding:10px 14px;border:1px solid #B9C4D2;border-radius:999px;background:#fff;cursor:pointer}
+.opcoes input:checked+span{background:var(--caneta);border-color:var(--caneta);color:var(--papel)}
+.opcoes input:focus-visible+span{outline:3px solid var(--caneta);outline-offset:2px}
+.lista-checks{display:grid;gap:10px;margin-top:12px}
+.lista-checks label{display:flex;gap:12px;align-items:flex-start;line-height:1.4;cursor:pointer}
+.lista-checks input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--caneta)}
+
+/* grupos (dias) */
+.grupo{margin-top:22px;border-top:1px solid var(--pauta)}
+.item{padding:18px 0;border-bottom:1px solid var(--pauta)}
+.item h3{font-size:19px;line-height:1.3}
+.item p{margin:4px 0 0;font-size:15px;color:var(--lapis)}
+.item input[type=text]{margin-top:10px}
+
+/* listas repetíveis */
+.rep{margin-top:12px;display:grid;gap:12px}
+.rep-linha{background:#fff;border:1px solid var(--pauta);border-radius:10px;padding:12px 14px;display:grid;gap:8px}
+.rep-linha input,.rep-linha select{margin-top:0}
+.rep-linha .fixa{font-weight:600;line-height:1.35}
+.rep-linha .tira{justify-self:end;background:none;border:0;color:var(--lapis);font:500 14px var(--sans);text-decoration:underline;cursor:pointer;padding:4px}
+.mais{margin-top:10px;background:none;border:1px dashed #9AA8BA;border-radius:8px;padding:11px 14px;font:600 15px var(--sans);color:var(--caneta);cursor:pointer;width:100%}
+
+/* caixas */
+.caixa{margin-top:24px;padding:16px 18px;border-left:5px solid var(--pauta);background:#fff;border-radius:0 8px 8px 0}
+.caixa p{margin:0}
+.caixa p+p{margin-top:8px}
+.caixa.cor{border-left-color:var(--caneta)}
+.caixa ul{margin:8px 0 0;padding-left:20px}
+.caixa li+li{margin-top:4px}
+.alerta{border-left-color:var(--alerta);background:var(--alerta-fundo)}
+.alerta b{color:var(--alerta)}
+.oculto{display:none}
+
+/* carta de abertura */
+.sc{margin:0 0 10px;font:600 13px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--caneta)}
+.carta{margin-top:20px}
+.carta p{margin:0 0 12px}
+.carta .assina{font-family:var(--serif);font-weight:500;font-size:19px;margin-top:4px}
+
+/* navegação */
+.nav{display:flex;gap:12px;justify-content:space-between;align-items:center;padding-block:30px 10px}
+.falta{font-size:14px;color:var(--lapis);text-align:right;margin:0 0 30px}
+.btn{display:inline-block;background:var(--caneta);color:var(--papel);border:0;text-decoration:none;font:600 16px/1 var(--sans);padding:15px 22px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--caneta);border:1px solid var(--caneta)}
+.btn.zap{background:#1F7A4D}
+.acoes{display:grid;gap:12px;margin-top:22px}
+.acoes .btn{text-align:center}
+.etapas{margin-top:14px}.etapas summary{cursor:pointer;color:var(--caneta);font:600 15px var(--sans)}
+.mapa{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.mapa button{font:500 13px var(--sans);border:1px solid var(--pauta);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--lapis)}
+.mapa button.feita{border-color:var(--caneta);color:var(--caneta)}
+.mapa button.atual{background:var(--caneta);color:var(--papel);border-color:var(--caneta)}
+.passos{margin:14px 0 0;padding-left:22px}
+.passos li{margin-top:8px}
+.resumo{margin-top:20px;font-size:15px}
+.resumo h3{font-size:18px;margin-top:22px}
+.resumo dl{margin:8px 0 0;display:grid;gap:6px}
+.resumo dt{color:var(--lapis)}
+.resumo dd{margin:0 0 6px;white-space:pre-wrap}
+.rodape{font-size:14px;color:var(--lapis);padding-block:20px 40px;border-top:1px solid var(--pauta)}
+</style>
+</head>
+<body>
+<div class="faixa" aria-hidden="true"></div>
+<div class="w">
+  <header class="top">
+    <div class="gb" aria-hidden="true">GB</div>
+    <div><b>Mentoria Gullit Belo</b><span id="sub">Bônus do material</span></div>
+    <div class="salvo" id="salvo" aria-live="polite"></div>
+  </header>
+</div>
+<div class="prog"><div class="w">
+  <div class="prog-linha"><span id="prog-nome"></span><b id="prog-num"></b></div>
+  <div class="barra" role="progressbar" aria-label="Progresso da anamnese" aria-valuemin="0" aria-valuemax="100" id="barra"><i></i></div>
+</div></div>
+<main class="w" id="app"></main>
+<div class="w"><p class="rodape">Suas respostas ficam guardadas só neste aparelho até você enviar o arquivo. Nada é enviado pela internet enquanto você preenche.</p></div>
+
+<script>
+/* Número de WhatsApp da mentoria, só dígitos com DDI e DDD (ex.: 5591999999999). */
+const WHATSAPP = '5584999196984';
+const VERSAO = 'bonus-2026-11a';
+const CHAVE = 'anamnese-bonus-v1';
+
+/* ---------- Os materiais do bônus ----------
+   codigo (o ?m= do link), nome legível (vai em dados.material), cor da página de venda,
+   data da prova (das páginas de venda) e as disciplinas para a tabela da base.
+   Disciplinas: OAB (30 e 100 dias) pelas 20 do edital da FGV; TJPB, TRT 8, TRT 4 e DPE-PB pelos conteúdos
+   programáticos dos editais (roteiros da mentoria e a pesquisa T5-base-comum), conferidos
+   com o que as páginas de venda e as amostras mostram. */
+const ANALISTA = 'Analista e Oficial de Justiça';
+const TECNICO = 'Técnico Judiciário';
+const DISC_OAB = [
+  'Ética Profissional (Estatuto e Código de Ética da OAB)', 'Filosofia do Direito', 'Direito Constitucional', 'Direitos Humanos', 'Direito Eleitoral', 'Direito Internacional', 'Direito Financeiro', 'Direito Tributário', 'Direito Administrativo', 'Direito Ambiental', 'Direito Civil', 'Estatuto da Criança e do Adolescente', 'Direito do Consumidor', 'Direito Empresarial', 'Direito Processual Civil', 'Direito Penal', 'Direito Processual Penal', 'Direito Previdenciário', 'Direito do Trabalho', 'Direito Processual do Trabalho'];
+const MATERIAIS = {
+  oab: { nome: 'OAB 1ª fase em 30 dias', cor: '#5A1A2B', prova: '10/01/2027 (data provável)', comeco: 'O plano começa em 30/11.', disc: DISC_OAB },
+  'oab-100dias': { nome: 'OAB 1ª fase em 100 dias', cor: '#1C3A2E', prova: '09/05/2027 (prevista)', comeco: 'O plano vai de 11/01 a 08/05/2027.', disc: DISC_OAB },
+  tjpb: { nome: 'TJPB dia a dia', cor: '#17505E', prova: '24/01/2027', disc: [
+    'Língua Portuguesa', 'Ética e Gestão no Serviço Público', 'Informática e Proteção de Dados', 'Direito Constitucional', 'Direito Administrativo', 'Direito Civil e do Consumidor', 'Direito Processual Civil', 'Direito Penal', 'Direito Processual Penal', 'Direitos Humanos e Tutela Coletiva', 'Estudo de caso (discursiva)'] },
+  trt8: { nome: 'TRT 8 dia a dia', cor: '#1A3A5C', prova: '17/01/2027 (prevista)', cargos: {
+    [ANALISTA]: ['Língua Portuguesa', 'Matemática e Raciocínio Lógico', 'Informática', 'Legislação do TRT 8 (Regimento Interno e normas)', 'Direitos Humanos e das Pessoas com Deficiência', 'Direito Constitucional', 'Direito Administrativo', 'Direito Civil', 'Direito Processual Civil', 'Direito do Trabalho', 'Direito Processual do Trabalho', 'Estudo de caso (discursiva)'],
+    [TECNICO]: ['Língua Portuguesa', 'Matemática e Raciocínio Lógico', 'Informática', 'Legislação do TRT 8 (Regimento Interno e normas)', 'Direitos Humanos e das Pessoas com Deficiência', 'Direito Constitucional', 'Direito Administrativo', 'Administração Pública', 'Direito do Trabalho', 'Direito Processual do Trabalho', 'Redação (discursiva)'] } },
+  trt4: { nome: 'TRT 4 dia a dia', cor: '#1E5638', prova: '31/01/2027 (prevista)', cargos: {
+    [ANALISTA]: ['Língua Portuguesa', 'Raciocínio Lógico', 'Informática', 'Regimento Interno do TRT 4 e Código de Conduta', 'Direitos Humanos', 'Direito Constitucional', 'Direito Administrativo', 'Direito Civil', 'Direito Processual Civil', 'Direito do Trabalho', 'Direito Processual do Trabalho', 'Estudo de caso (discursiva)'],
+    [TECNICO]: ['Língua Portuguesa', 'Matemática e Raciocínio Lógico', 'Informática', 'Legislação (Regimento Interno do TRT 4 e Código de Conduta)', 'Direitos Humanos', 'Administração Pública', 'Direito Constitucional', 'Direito Administrativo', 'Direito do Trabalho', 'Direito Processual do Trabalho', 'Redação (discursiva)'] } },
+  dpepb: { nome: 'DPE-PB dia a dia, Técnico', cor: '#4A2C6B', prova: '28/02/2027 (prevista)', disc: [
+    'Língua Portuguesa', 'Legislação da Defensoria (LC 80/1994 e leis da Paraíba)', 'Direito Constitucional', 'Direito Administrativo', 'Administração Pública', 'Direitos Humanos', 'Direito do Consumidor', 'Grupos vulneráveis (criança, idoso, pessoa com deficiência, mulher, pessoa em situação de rua)'] },
+  'dpepb-analista': { nome: 'DPE-PB dia a dia, Analista', cor: '#4A5A1C', prova: '28/02/2027 (prevista)', disc: [
+    'Língua Portuguesa', 'Legislação da Defensoria (LC 80/1994 e leis da Paraíba)', 'Direito Constitucional', 'Direito Administrativo', 'Direito Civil', 'Direito do Consumidor', 'Direito Processual Civil', 'Direito Penal', 'Direito Processual Penal', 'Direitos Humanos', 'Grupos vulneráveis (criança, idoso, pessoa com deficiência, mulher, pessoa em situação de rua)', 'Redação (discursiva)'] }
+};
+const COR_PADRAO = '#1F3F99';
+const codigoDe = nome => Object.keys(MATERIAIS).find(k => MATERIAIS[k].nome === nome);
+const mat = d => MATERIAIS[codigoDe(d.material)];
+const temCargo = d => { const m = mat(d); return !!(m && m.cargos); };
+const disciplinas = d => { const m = mat(d); if (!m) return null; if (m.cargos) return m.cargos[d.cargo] || null; return m.disc; };
+const chaveBase = d => `${codigoDe(d.material) || ''}|${temCargo(d) ? d.cargo || '' : ''}`;
+const trabalha = d => d.trabalho && d.trabalho !== 'Não trabalho';
+const jaComecou = d => d.ja_comecou === 'Já comecei';
+
+/* ---------- As perguntas ----------
+   Tipos: texto, longo, numero, escolha (uma), varias (várias), checks (lista de caixas),
+   dias (segunda a sábado), repetir (lista que cresce; "fixas" traz linhas já preenchidas), aviso.
+   "se" decide se a etapa, a pergunta ou o item aparece; "controla" redesenha a etapa
+   quando a resposta muda; "porque" é a linha "Por que pergunto". */
+const DOMINIO = ['Nunca estudei', 'Fraco(a)', 'Razoável', 'Bem'];
+const CARTA = d => { const m = mat(d); return `<div class="carta"><p>${m ? `Obrigado pela sua compra do ${esc(m.nome)}.` : 'Obrigado pela sua compra.'} Este bônus é um presente para quem confiou no meu material, e eu quero que ele sirva de verdade para a sua vida.</p><p>Eu mesmo vou ler cada resposta sua. Com elas, monto o seu <b>diagnóstico</b> (uma página, com o que vi na sua rotina e na sua base) e o seu <b>cronograma personalizado em PDF</b>: os dias do material no seu calendário real, até a prova, nos horários que você tem de fato, com as revisões no fim do dia, no fim da semana e um mês depois, e com as questões e os simulados no lugar certo. O domingo fica livre: é o Dia do Senhor, e nele não estudamos.</p><p>Leva cerca de 15 minutos. Responda pela rotina real, e não pela ideal. Se não souber alguma coisa, deixe em branco.</p><p class="assina">Gullit Belo</p></div>`; };
+const REGRAS = '<p><b>Como funciona o bônus</b></p><ul><li>As 10 vagas de cada material vão para os primeiros compradores que enviarem esta anamnese (no TRT 8 e no TRT 4, os dois cargos somados). Ao enviar, confiro a sua compra pelo e-mail e confirmo a vaga.</li><li>Responda em até 7 dias depois de receber este link.</li><li>Eu entrego o diagnóstico e o cronograma em até 5 dias úteis depois de receber a anamnese.</li><li>O bônus não inclui acompanhamento, encontros nem correção de peças ou redações.</li></ul>';
+const ETAPAS = [
+  { id: 'abertura', titulo: 'O seu cronograma', intro: '', campos: [
+    { tipo: 'aviso', classe: 'sem-caixa', html: CARTA },
+    { tipo: 'aviso', classe: 'cor', html: REGRAS },
+    { id: 'nome', tipo: 'texto', rotulo: 'Seu nome completo' },
+    { id: 'como_chamar', tipo: 'texto', rotulo: 'Como prefere ser chamado(a)?' },
+    { id: 'email_compra', tipo: 'email', rotulo: 'E-mail da compra', ajuda: 'O e-mail usado na compra, para eu conferir a sua vaga.' },
+    { id: 'material', tipo: 'escolha', controla: true, rotulo: 'Qual material você comprou?', opcoes: Object.values(MATERIAIS).map(m => m.nome) },
+    { id: 'cargo', se: temCargo, tipo: 'escolha', controla: true, rotulo: 'Qual cargo?', porque: 'O material de cada cargo tem dias e disciplinas diferentes.', opcoes: [ANALISTA, TECNICO] },
+    { id: 'consentimento', tipo: 'checks', rotulo: 'Autorizações', ajuda: 'Algumas perguntas tratam de saúde, sono e fé. A lei de proteção de dados chama isso de dados sensíveis e pede uma autorização própria.', itens: [
+      'Autorizo o uso destas respostas só para preparar o meu diagnóstico e o meu cronograma do bônus com Gullit Belo. Elas não serão compartilhadas, e posso pedir a exclusão quando quiser.',
+      'Autorizo também as respostas sobre saúde, sono, ansiedade e fé, para a mesma finalidade.'
+    ] },
+    { tipo: 'aviso', html: '<p>Sem a segunda autorização, a parte de sono e fé fica fechada, e você responde todo o resto.</p>' }
+  ] },
+  { id: 'comeco', titulo: 'O começo e a rotina', intro: d => { const m = mat(d); return m ? `A prova do ${m.nome}: ${m.prova}. Daqui até lá, o que manda no cronograma é a sua rotina.` : 'Daqui até a prova, o que manda no cronograma é a sua rotina.'; }, campos: [
+    { id: 'inicio', tipo: 'texto', rotulo: 'Em que data quer começar a seguir o cronograma?', ajuda: d => `No formato dd/mm/aaaa.${(mat(d) || {}).comeco ? ' ' + mat(d).comeco : ''}`, porque: 'É o primeiro dia do calendário. Conto dele até a véspera da prova.' },
+    { id: 'ja_comecou', tipo: 'escolha', controla: true, rotulo: 'Você já começou o material?', opcoes: ['Ainda não comecei', 'Já comecei'] },
+    { id: 'dia_atual', se: jaComecou, tipo: 'numero', rotulo: 'Em que Dia do material você está?', ajuda: 'O número do Dia que está no PDF. Ex.: 6.', porque: 'O cronograma parte daí, sem repetir o que você já fez.' },
+    { id: 'idade', tipo: 'numero', rotulo: 'Idade' },
+    { id: 'trabalho', tipo: 'escolha', controla: true, rotulo: 'Trabalho', opcoes: ['Não trabalho', 'Meio período', 'Tempo integral', 'Escala ou plantões', 'Autônomo(a)'] },
+    { id: 'trabalho_desc', se: trabalha, tipo: 'texto', rotulo: 'O que você faz, em que horário e quanto tempo leva no trajeto?', ajuda: 'Ex.: atendente, 8h às 17h, 40 minutos de ônibus. Se for escala, diga qual (12x36, plantões).', porque: 'Os dias de trabalho mais pesados recebem os temas mais leves.' }
+  ] },
+  { id: 'tempo', titulo: 'O seu tempo', intro: 'Quando você consegue estudar. A semana de estudo vai de segunda a sábado. O domingo é o Dia do Senhor: não estudamos.', campos: [
+    { id: 'janelas', tipo: 'dias', rotulo: 'Horários livres em cada dia', ajuda: 'Inclua os curtos também, como o almoço ou o ônibus. Ex.: 6h às 6h40 e 20h às 21h30.', porque: 'É aqui que eu encaixo cada etapa do Dia: os temas nos horários longos, a revisão nos curtos.' },
+    { id: 'horas_semana', tipo: 'numero', rotulo: 'Quantas horas por semana você consegue manter de verdade?', ajuda: 'Conte só o que dá para repetir toda semana, inclusive nas semanas ruins.', porque: 'Se o material não couber nessas horas, eu digo o que priorizar, em vez de montar um plano que quebra na segunda semana.' },
+    { id: 'energia_alta', tipo: 'varias', rotulo: 'Em que hora do dia a sua cabeça rende mais?', opcoes: ['Cedo, de manhã', 'Fim da manhã', 'Tarde', 'Noite', 'Tarde da noite'], porque: 'O tema novo vai para essa hora. Revisão e questões ficam para as outras.' },
+    { id: 'lugar', tipo: 'texto', rotulo: 'Onde você estuda?', ajuda: 'Ex.: em casa, no quarto; na biblioteca; no trabalho, no intervalo.' },
+    { id: 'indisponiveis', tipo: 'repetir', rotulo: 'Datas em que não vai dar para estudar', ajuda: 'Viagens, plantões, outras provas, festas de fim de ano. Deixe em branco se não houver.', porque: 'Eu tiro essas datas do calendário antes de distribuir os dias.', colunas: [['quando', 'Datas'], ['motivo', 'Motivo']] }
+  ] },
+  { id: 'base', titulo: 'A sua base', intro: 'Uma primeira impressão de como você está em cada disciplina do seu material. Seja sincero(a): isso decide onde vão as revisões extras.', campos: [
+    { tipo: 'aviso', se: d => !disciplinas(d), html: '<p>Para eu mostrar as disciplinas do seu material, escolha o material (e o cargo, no TRT 8 e no TRT 4) na primeira etapa.</p>' },
+    { id: 'base', se: d => !!disciplinas(d), tipo: 'repetir', rotulo: 'Como você está em cada disciplina', ajuda: 'Escolha uma opção em cada linha.', porque: 'As disciplinas marcadas como fracas ganham mais tempo de revisão e de questões.', colunas: [['disciplina', 'Disciplina'], ['dominio', 'Como você está', DOMINIO]], fixas: disciplinas },
+    { id: 'fracas', se: d => !disciplinas(d), tipo: 'texto', rotulo: 'Quais matérias você sente mais fracas?' }
+  ] },
+  { id: 'estudo', titulo: 'Como você estuda', intro: 'O que já faz parte da sua preparação, para o cronograma somar e não brigar com isso.', campos: [
+    { id: 'outros', tipo: 'texto', rotulo: 'Além do meu material, o que você usa?', ajuda: 'Cursinho, plataforma de questões, outro material, videoaulas. Deixe em branco se for só o material.', porque: 'Assim eu encaixo o que você já paga, em vez de dobrar o trabalho.' },
+    { id: 'questoes', tipo: 'escolha', rotulo: 'Quantas questões você faz por semana, hoje?', opcoes: ['Nenhuma', 'Até 30', '30 a 100', 'Mais de 100'], porque: 'Decide quantas questões extras eu sugiro por semana, a partir do seu ritmo.' },
+    { id: 'simulados', tipo: 'escolha', rotulo: 'Já fez simulado completo, com o tempo da prova?', opcoes: ['Nunca fiz', 'Já fiz um ou dois', 'Faço com frequência'], porque: 'Decide quando entram os simulados e quantos.' },
+    { id: 'revisao_hoje', tipo: 'escolha', rotulo: 'Como você revisa hoje?', opcoes: ['Ainda não reviso', 'Releio o material', 'Refaço questões', 'Uso cartões ou Anki', 'Reviso em datas marcadas'], porque: 'As revisões do cronograma partem do que você já faz.' }
+  ] },
+  { id: 'corpo', titulo: 'Sono e fé', sensivel: true, intro: 'Tudo aqui é opcional. O corpo estuda junto, e a fé também entra na conta.', campos: [
+    { id: 'sono', tipo: 'texto', rotulo: 'Em dias de semana, que horas você dorme e acorda?', ajuda: 'Ex.: 23h30 às 6h.', porque: 'O cronograma não tira horas de sono: se o tempo de estudo sair do sono, eu aviso.' },
+    { id: 'sono_nota', tipo: 'escolha', rotulo: 'Como acorda, na maioria dos dias?', opcoes: ['Descansado(a)', 'Mais ou menos', 'Cansado(a)'] },
+    { id: 'ansiedade_prova', tipo: 'escolha', rotulo: 'Em provas e avaliações, a ansiedade costuma…', opcoes: ['Não atrapalhar', 'Atrapalhar um pouco', 'Atrapalhar muito'], porque: 'Se atrapalha, o cronograma traz mais simulados com tempo marcado, para a prova ficar familiar.' },
+    { id: 'fe_projeto', tipo: 'escolha', rotulo: 'Eu escrevo a partir de uma fé cristã. No seu diagnóstico e no cronograma, você prefere que a fé apareça…', opcoes: ['Abertamente', 'Com discrição', 'Prefiro que fique de fora'] }
+  ] },
+  { id: 'fechar', titulo: 'Para fechar', intro: 'Marque o que vale para você. Cada situação muda alguma coisa no plano.', campos: [
+    { id: 'situacoes', tipo: 'checks', itens: [
+      'Tenho filhos pequenos ou alguém sob os meus cuidados',
+      'Trabalho em escala ou plantões',
+      'Estou na faculdade',
+      { t: 'Tenho diagnóstico ou suspeita de TDAH ou dislexia', se: d => (d.consentimento || [])[1] === true },
+      'Tenho muito pouco tempo até a prova',
+      'Já fiz esta prova antes'
+    ] },
+    { id: 'mais', tipo: 'longo', rotulo: 'Algo mais que eu deveria saber para montar o seu plano?', ajuda: 'Ex.: uma semana que já sei que vai ser difícil; uma disciplina que me trava; como foi a prova que já fiz.' },
+    { id: 'contato', tipo: 'texto', rotulo: 'Onde você quer receber o diagnóstico e o cronograma?', ajuda: 'Seu WhatsApp com DDD, ou um e-mail.' }
+  ] },
+  { id: 'envio', titulo: 'Revisar e enviar', intro: '', campos: [] }
+];
+
+/* ---------- Estado ---------- */
+let dados = {};
+let atual = 0;
+try { const s = JSON.parse(localStorage.getItem(CHAVE) || 'null'); if (s) { dados = s.dados || {}; atual = Math.min(s.atual || 0, ETAPAS.length - 1); } } catch (e) {}
+const recuperado = Object.keys(dados).length > 0;
+/* ?m=<material> já marca o material, se ainda não houver um escolhido neste aparelho. */
+try { const m = new URLSearchParams(location.search).get('m'); if (m && MATERIAIS[m] && dados.material !== MATERIAIS[m].nome) { dados.material = MATERIAIS[m].nome; dados.cargo = ''; dados.base = []; } } catch (e) {}
+let tSalvar;
+function salvar() {
+  clearTimeout(tSalvar);
+  tSalvar = setTimeout(() => {
+    try { localStorage.setItem(CHAVE, JSON.stringify({ dados, atual, em: new Date().toISOString() })); marcaSalvo('Salvo neste aparelho'); }
+    catch (e) { marcaSalvo('Não foi possível salvar aqui; não feche a página'); }
+  }, 300);
+}
+function marcaSalvo(t) { document.getElementById('salvo').textContent = t; }
+
+const sensivelOk = () => (dados.consentimento || [])[1] === true;
+const emailOk = () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((dados.email_compra || '').trim());
+const geralOk = () => (dados.consentimento || [])[0] === true && (dados.nome || '').trim().length > 1 && emailOk() && !!mat(dados) && (!temCargo(dados) || !!dados.cargo);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const txt = v => typeof v === 'function' ? v(dados) : v;
+const ve = x => !x.se || x.se(dados);
+const etapaVisivel = e => ve(e) && !(e.sensivel && !sensivelOk());
+const visiveis = () => ETAPAS.filter(etapaVisivel);
+const itemTexto = it => typeof it === 'string' ? it : it.t;
+const itemVe = it => typeof it === 'string' || ve(it);
+const DIAS = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+const primeiroNome = () => (dados.como_chamar || dados.nome || '').trim().split(/\s+/)[0] || '';
+
+/* A cor do material escolhido vai para a faixa, a marca GB, a barra e os botões. */
+function aplicaCor() {
+  const m = mat(dados);
+  document.documentElement.style.setProperty('--caneta', m ? m.cor : COR_PADRAO);
+  document.getElementById('sub').textContent = m ? `Bônus do material · ${m.nome}` : 'Bônus do material';
+}
+
+/* ---------- Desenho dos campos ---------- */
+function extras(c) {
+  return `${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}${c.porque ? `<span class="porque">Por que pergunto: ${esc(txt(c.porque))}</span>` : ''}`;
+}
+function rotuloHtml(c) {
+  return c.rotulo ? `<span class="rot" id="r-${c.id}">${esc(txt(c.rotulo))}${extras(c)}</span>` : '';
+}
+function campoHtml(c) {
+  if (!ve(c)) return '';
+  const v = dados[c.id];
+  const ctl = c.controla ? ' data-controla="1"' : '';
+  switch (c.tipo) {
+    case 'aviso': return c.classe === 'sem-caixa' ? txt(c.html) : `<div class="caixa ${c.classe || ''}" ${c.id ? `id="${c.id}"` : ''}>${txt(c.html)}</div>`;
+    case 'texto': case 'numero': case 'email': {
+      const tipo = c.tipo === 'numero' ? 'number' : c.tipo === 'email' ? 'email' : 'text';
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${extras(c)}</label><input type="${tipo}" id="${c.id}" data-id="${c.id}" value="${esc(v)}" ${c.tipo === 'numero' ? 'inputmode="numeric" min="0"' : ''}${c.tipo === 'email' ? 'autocomplete="email" inputmode="email"' : ''}></div>`;
+    }
+    case 'longo':
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${extras(c)}</label><textarea id="${c.id}" data-id="${c.id}">${esc(v)}</textarea></div>`;
+    case 'escolha': case 'varias': {
+      const multi = c.tipo === 'varias';
+      return `<div class="campo" role="group" aria-labelledby="r-${c.id}">${rotuloHtml(c)}<div class="opcoes">${c.opcoes.map(o => {
+        const marc = multi ? (v || []).includes(o) : v === o;
+        return `<label><input type="${multi ? 'checkbox' : 'radio'}" name="${c.id}" data-id="${c.id}" data-multi="${multi}"${ctl} value="${esc(o)}" ${marc ? 'checked' : ''}><span>${esc(o)}</span></label>`;
+      }).join('')}</div></div>`;
+    }
+    case 'checks':
+      return `<div class="campo" role="group" ${c.rotulo ? `aria-labelledby="r-${c.id}"` : ''}>${rotuloHtml(c)}<div class="lista-checks">${c.itens.map((it, i) => itemVe(it) ? `<label><input type="checkbox" data-id="${c.id}" data-idx="${i}" data-n="${c.itens.length}"${c.id === 'consentimento' ? ' data-controla="1"' : ''} ${(v || [])[i] ? 'checked' : ''}><span>${esc(itemTexto(it))}</span></label>` : '').join('')}</div></div>`;
+    case 'dias':
+      return `<div class="campo">${rotuloHtml(c)}<div class="grupo">${DIAS.map((d, i) => `<div class="item"><label for="dia-${i}"><b>${d}</b></label><input type="text" id="dia-${i}" data-dia="${i}" data-id="${c.id}" value="${esc((v || [])[i])}" placeholder="Ex.: 20h às 22h"></div>`).join('')}<div class="item"><b>Domingo</b><p>O Dia do Senhor: não estudamos.</p></div></div></div>`;
+    case 'repetir':
+      return `<div class="campo">${rotuloHtml(c)}<div class="rep" id="rep-${c.id}">${linhasRep(c).map((l, i) => linhaRep(c, l, i)).join('')}</div><button type="button" class="mais" data-mais="${c.id}">${c.fixas ? '+ Acrescentar outra disciplina' : '+ Acrescentar linha'}</button></div>`;
+  }
+  return '';
+}
+/* Linhas fixas: valem as salvas só se foram feitas para o mesmo material e cargo. */
+function linhasRep(c) {
+  const v = dados[c.id];
+  if (c.fixas) {
+    const fixas = txt(c.fixas) || [];
+    const salvas = (v && dados[c.id + '_de'] === chaveBase(dados)) ? v : [];
+    const porNome = Object.fromEntries(salvas.map(l => [l.disciplina, l]));
+    const extrasL = salvas.filter(l => l._extra);
+    return [...fixas.map(n => ({ ...(porNome[n] || {}), disciplina: n, _fixa: true })), ...extrasL];
+  }
+  return (v && v.length) ? v : Array.from({ length: c.linhas || 1 }, () => ({}));
+}
+function linhaRep(c, l, i) {
+  const fixa = !!l._fixa;
+  return `<div class="rep-linha" ${fixa ? 'data-fixa="1"' : 'data-extra="1"'}>${c.colunas.map(([k, nome, ops], j) => {
+    if (fixa && j === 0) return `<div class="fixa" id="rf-${c.id}-${i}">${esc(l[k])}</div><input type="hidden" data-rep="${c.id}" data-linha="${i}" data-col="${k}" value="${esc(l[k])}">`;
+    return ops
+      ? `<select aria-label="${esc(fixa ? l[c.colunas[0][0]] + ': ' + nome : nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}"><option value="">${esc(nome)}</option>${ops.map(o => `<option ${l[k] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+      : `<input type="text" aria-label="${esc(nome)}" placeholder="${esc(nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}" value="${esc(l[k])}">`;
+  }).join('')}${fixa ? '' : `<button type="button" class="tira" data-tira="${c.id}" data-linha="${i}">tirar</button>`}</div>`;
+}
+
+/* ---------- Telas ---------- */
+function faltaInicio() {
+  const f = [];
+  if ((dados.nome || '').trim().length < 2) f.push('o nome');
+  if (!emailOk()) f.push('o e-mail da compra');
+  if (!mat(dados)) f.push('o material');
+  else if (temCargo(dados) && !dados.cargo) f.push('o cargo');
+  if ((dados.consentimento || [])[0] !== true) f.push('a primeira autorização');
+  return f.length ? `Para começar, falta ${f.length > 1 ? f.slice(0, -1).join(', ') + ' e ' + f[f.length - 1] : f[0]}.` : '';
+}
+function render() {
+  aplicaCor();
+  const lista = visiveis();
+  if (!etapaVisivel(ETAPAS[atual])) atual = ETAPAS.indexOf(lista.find(x => ETAPAS.indexOf(x) > atual) || lista[lista.length - 1]);
+  const e = ETAPAS[atual];
+  const pos = lista.indexOf(e);
+  const app = document.getElementById('app');
+  document.getElementById('prog-nome').textContent = e.titulo;
+  document.getElementById('prog-num').textContent = `${pos + 1} de ${lista.length}`;
+  const pct = Math.round(100 * pos / (lista.length - 1));
+  const barra = document.getElementById('barra');
+  barra.querySelector('i').style.width = pct + '%';
+  barra.setAttribute('aria-valuenow', pct);
+
+  let corpo;
+  if (e.id === 'envio') corpo = telaEnvio();
+  else if (e.sensivel && !sensivelOk()) corpo = `<div class="caixa"><p>Esta parte fica fechada, porque a autorização de dados sensíveis não foi marcada. Se quiser responder, volte ao início e marque a segunda autorização.</p></div>`;
+  else corpo = e.campos.map(campoHtml).join('');
+
+  const botoes = `<nav class="mapa" aria-label="Etapas">${lista.map(x => { const i = ETAPAS.indexOf(x); return `<button type="button" data-ir="${i}" class="${i === atual ? 'atual' : (lista.indexOf(x) < pos ? 'feita' : '')}" ${i === atual ? 'aria-current="step"' : ''}>${esc(x.titulo)}</button>`; }).join('')}</nav>`;
+  const mapa = atual === 0 ? '' : (e.id === 'envio' ? botoes : `<details class="etapas"><summary>Ver todas as etapas</summary>${botoes}</details>`);
+  const intro = txt(e.intro);
+  const titulo = e.id === 'envio' && primeiroNome() ? `Obrigado, ${primeiroNome()}` : e.titulo;
+  app.innerHTML = `<section class="etapa">${atual === 0 ? '<p class="sc">Bônus para 10 compradores</p>' : ''}<h1 tabindex="-1" id="tit">${esc(titulo)}</h1>${intro ? `<p class="intro">${esc(intro)}</p>` : ''}${mapa}${corpo}</section>
+  <div class="nav">${pos > 0 ? '<button type="button" class="btn sec" id="voltar">Voltar</button>' : '<span></span>'}${e.id !== 'envio' ? `<button type="button" class="btn" id="seguir" ${atual === 0 && !geralOk() ? 'disabled' : ''}>${atual === 0 ? 'Começar' : 'Continuar'}</button>` : ''}</div>
+  ${atual === 0 ? `<p class="falta" id="falta" aria-live="polite">${esc(faltaInicio())}</p>` : '<p class="falta"></p>'}`;
+}
+function passo(dir) {
+  const lista = visiveis();
+  const pos = lista.indexOf(ETAPAS[atual]);
+  const alvo = lista[Math.max(0, Math.min(lista.length - 1, pos + dir))];
+  ir(ETAPAS.indexOf(alvo));
+}
+function ir(i) {
+  if (i > 0 && !geralOk()) i = 0;
+  atual = Math.max(0, Math.min(ETAPAS.length - 1, i));
+  salvar(); render();
+  window.scrollTo({ top: 0 });
+  document.getElementById('tit')?.focus({ preventScroll: true });
+}
+function redesenhaMantendo() {
+  const y = window.scrollY; render(); window.scrollTo({ top: y });
+}
+
+/* ---------- Eventos ---------- */
+const app = document.getElementById('app');
+function aoMudar(ev) {
+  const t = ev.target, d = t.dataset;
+  if (!d) return;
+  if (d.rep) { const c = achaCampo(d.rep); dados[d.rep] = lerRep(c); if (c.fixas) dados[d.rep + '_de'] = chaveBase(dados); }
+  else if (d.dia !== undefined) { const a = dados[d.id] || []; a[+d.dia] = t.value; dados[d.id] = a; }
+  else if (d.idx !== undefined) { const a = dados[d.id] || Array(+d.n).fill(false); a[+d.idx] = t.checked; dados[d.id] = a; }
+  else if (d.multi === 'true') { const a = new Set(dados[d.id] || []); t.checked ? a.add(t.value) : a.delete(t.value); dados[d.id] = [...a]; }
+  else if (d.id) { dados[d.id] = t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value; }
+  if (atual === 0) {
+    const b = document.getElementById('seguir'); if (b) b.disabled = !geralOk();
+    const f = document.getElementById('falta'); if (f) f.textContent = faltaInicio();
+  }
+  salvar();
+  if (ev.type === 'change' && d.controla) redesenhaMantendo();
+}
+app.addEventListener('input', aoMudar);
+app.addEventListener('change', aoMudar);
+app.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.id === 'seguir') passo(1);
+  else if (t.id === 'voltar') passo(-1);
+  else if (t.dataset.ir) ir(+t.dataset.ir);
+  else if (t.dataset.mais) { const c = achaCampo(t.dataset.mais); const arr = lerRep(c); arr.push(c.fixas ? { _extra: true } : {}); dados[c.id] = arr; if (c.fixas) dados[c.id + '_de'] = chaveBase(dados); salvar(); redesenhaRep(c); }
+  else if (t.dataset.tira) { const c = achaCampo(t.dataset.tira); const arr = lerRep(c); arr.splice(+t.dataset.linha, 1); dados[c.id] = arr; salvar(); redesenhaRep(c); }
+  else if (t.id === 'baixar') baixarFicha();
+  else if (t.id === 'compartilhar') compartilharFicha();
+  else if (t.id === 'apagar') { if (confirm('Apagar todas as respostas deste aparelho? Não há como desfazer.')) { dados = {}; try { localStorage.removeItem(CHAVE); } catch (e) {} ir(0); } }
+});
+function achaCampo(id) { for (const e of ETAPAS) for (const c of e.campos) if (c.id === id) return c; }
+function lerRep(c) {
+  const box = document.getElementById('rep-' + c.id);
+  return [...box.querySelectorAll('.rep-linha')].map(l => {
+    const o = Object.fromEntries([...l.querySelectorAll('[data-col]')].map(x => [x.dataset.col, x.value]));
+    if (c.fixas && l.dataset.extra) o._extra = true;
+    return o;
+  });
+}
+function redesenhaRep(c) {
+  const box = document.getElementById('rep-' + c.id);
+  if (c.fixas) { box.innerHTML = linhasRep(c).map((l, i) => linhaRep(c, l, i)).join(''); return; }
+  const arr = dados[c.id]; box.innerHTML = (arr.length ? arr : [{}]).map((l, i) => linhaRep(c, l, i)).join('');
+}
+
+/* ---------- Só o que está visível vai para o arquivo ---------- */
+function etapasRespondiveis() { return visiveis().filter(e => e.id !== 'envio' && !(e.sensivel && !sensivelOk())); }
+function dadosVisiveis() {
+  const out = {};
+  for (const e of etapasRespondiveis()) for (const c of e.campos) {
+    if (!c.id || c.tipo === 'aviso' || !ve(c)) continue;
+    let v = dados[c.id];
+    if (c.tipo === 'repetir' && c.fixas) v = linhasRep(c).map(l => { const o = {}; for (const [k] of c.colunas) o[k] = l[k] || ''; return o; });
+    if (v === undefined) continue;
+    if (c.tipo === 'checks') v = c.itens.map((it, i) => itemVe(it) ? !!(v || [])[i] : false);
+    out[c.id] = v;
+  }
+  return out;
+}
+function valorTexto(c, v) {
+  if (v === undefined || v === '' || v === null) return '';
+  switch (c.tipo) {
+    case 'varias': return (v || []).join('; ');
+    case 'checks': return c.itens.filter((it, i) => v[i] && itemVe(it)).map(itemTexto).join('; ');
+    case 'dias': return DIAS.map((d, i) => v[i] ? `${d}: ${v[i]}` : '').filter(Boolean).join('\n');
+    case 'repetir':
+      if (c.fixas) return v.map(l => `${l.disciplina}: ${l.dominio || 'sem resposta'}`).join('\n');
+      return v.filter(l => Object.values(l).some(Boolean)).map(l => c.colunas.map(([k]) => l[k]).filter(Boolean).join(' · ')).join('\n');
+    default: return String(v);
+  }
+}
+function resumoHtml() {
+  const dv = dadosVisiveis();
+  return etapasRespondiveis().map(e => {
+    const linhas = e.campos.filter(c => c.id && c.tipo !== 'aviso' && ve(c)).map(c => {
+      const t = valorTexto(c, dv[c.id]); if (!t) return '';
+      return `<dt>${esc(txt(c.rotulo) || e.titulo)}</dt><dd>${esc(t)}</dd>`;
+    }).join('');
+    return `<h3>${esc(e.titulo)}</h3>${linhas ? `<dl>${linhas}</dl>` : '<p>Sem respostas.</p>'}`;
+  }).join('');
+}
+function telaEnvio() {
+  const partes = etapasRespondiveis();
+  const dv = dadosVisiveis();
+  const respondidas = partes.filter(e => e.campos.some(c => c.id && ve(c) && valorTexto(c, dv[c.id]))).length;
+  const m = mat(dados);
+  const zap = WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Gullit! Sou ${dados.nome || ''}. Terminei a anamnese do bônus do cronograma personalizado${m ? ` (${m.nome}${temCargo(dados) && dados.cargo ? `, ${dados.cargo}` : ''})` : ''} e vou enviar o arquivo agora.`)}` : '';
+  return `<p class="intro">Obrigado por responder com cuidado. Você preencheu ${respondidas} de ${partes.length} partes. Confira o resumo abaixo; se quiser mudar algo, toque na etapa.</p>
+  <div class="caixa cor"><p><b>O que acontece agora</b></p><ol class="passos">
+    <li>Você gera o arquivo da sua anamnese (um arquivo só, que abre em qualquer celular) e me envia pelo WhatsApp da mentoria, como documento.</li>
+    <li>Eu confiro a sua compra pelo e-mail${dados.email_compra ? ` (${esc(dados.email_compra.trim())})` : ''}, e confirmo a vaga se ainda houver uma livre para o seu material.</li>
+    <li>Leio as suas respostas e monto o diagnóstico de uma página e o cronograma personalizado em PDF${m ? `, com os dias do ${esc(m.nome)} até a prova de ${esc(m.prova)}` : ''}.</li>
+    <li>Envio os dois em até 5 dias úteis depois de receber o arquivo${dados.contato ? `, em ${esc(dados.contato.trim())}` : ''}.</li>
+  </ol></div>
+  <div class="acoes">
+    <button type="button" class="btn" id="compartilhar">Gerar e enviar o arquivo</button>
+    <button type="button" class="btn sec" id="baixar">Só baixar o arquivo</button>
+    ${zap ? `<a class="btn zap" href="${zap}" target="_blank" rel="noopener">Abrir o WhatsApp da mentoria</a>` : `<p class="caixa"><b>Rascunho:</b> o número de WhatsApp da mentoria ainda não foi definido.</p>`}
+  </div>
+  <div class="resumo">${resumoHtml()}</div>
+  <div class="caixa"><p>Depois de enviar, você pode apagar as respostas deste aparelho.</p><p><button type="button" class="btn sec" id="apagar">Apagar respostas deste aparelho</button></p></div>`;
+}
+
+/* O arquivo enviado: uma página legível que leva os dados completos embutidos. */
+function nomeArquivo() {
+  const n = (dados.nome || 'aluno').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+  return `anamnese-bonus-${n}-${new Date().toISOString().slice(0, 10)}.html`;
+}
+function fichaHtml() {
+  const m = mat(dados);
+  const pacote = { tipo: 'anamnese-bonus-gb', versao: VERSAO, enviado_em: new Date().toISOString(), sensivel_autorizado: sensivelOk(), codigo_material: codigoDe(dados.material) || null, dados: dadosVisiveis() };
+  const json = JSON.stringify(pacote).replace(/</g, '\\u003c');
+  const cor = m ? m.cor : COR_PADRAO;
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anamnese do bônus · ${esc(dados.nome || '')}</title>
+<style>body{margin:0;background:#FCFCFA;color:#23262D;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif;border-top:6px solid ${cor}}main{max-width:720px;margin:0 auto;padding:24px 16px 48px}h1{font:650 30px/1.15 Georgia,serif;margin:0}h3{font:650 19px/1.3 Georgia,serif;margin:28px 0 6px;padding-top:16px;border-top:1px solid #D6DFEA}dt{color:#626873;margin-top:8px}dd{margin:0;white-space:pre-wrap;text-align:justify;hyphens:auto}.meta{color:#626873;margin-top:6px}</style></head>
+<body><main><p class="meta">Bônus Cronograma personalizado · Mentoria Gullit Belo${m ? ` · ${esc(m.nome)}` : ''}</p><h1>Anamnese de ${esc(dados.nome || '')}</h1><p class="meta">Enviada em ${new Date().toLocaleDateString('pt-BR')}. Documento pessoal e confidencial.</p>${resumoHtml()}</main>
+<script type="application/json" id="dados-anamnese">${json}<\/script></body></html>`;
+}
+function baixarFicha() {
+  const blob = new Blob([fichaHtml()], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = nomeArquivo();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function compartilharFicha() {
+  const arquivo = new File([fichaHtml()], nomeArquivo(), { type: 'text/html' });
+  if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+    try { await navigator.share({ files: [arquivo], title: 'Anamnese do bônus', text: `Anamnese do bônus de ${dados.nome || ''}` }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  baixarFicha();
+  alert('O arquivo foi baixado. Agora abra o WhatsApp da mentoria e envie esse arquivo como documento.');
+}
+
+render();
+if (recuperado) marcaSalvo('Respostas recuperadas');
+</script>
+</body>
+</html>

@@ -129,6 +129,24 @@ dialog.zoom .fechar{position:fixed;top:12px;right:14px;width:44px;height:44px;bo
 .oferta .discreto{max-width:760px;margin:26px auto 0;line-height:1.5}
 .oferta .discreto + .discreto{margin-top:8px}
 
+/* bônus "cronograma personalizado": vagas lidas de ../bonus/vagas.js */
+.bcron{max-width:640px;margin:34px auto 0;padding:22px 24px 20px;background:var(--papel);border:1px solid var(--fio);border-top:3px solid var(--tinta);text-align:center}
+.bcron .sc{display:block;font-size:12.5px;color:var(--tinta)}
+.bcron h3{font-size:30px;line-height:1.1;margin-top:6px}
+.bcron-txt{font-size:18.5px;line-height:1.45;margin:10px auto 0;max-width:560px}
+.bcron-vagas{display:flex;align-items:center;justify-content:center;gap:8px 12px;flex-wrap:wrap;margin-top:14px;font-family:var(--sans);font-weight:700;font-size:15px;color:var(--tinta)}
+.bcron-vagas[hidden],.bcron-linha[hidden]{display:none}
+.bcron-pips{display:inline-flex;gap:3px}
+.bcron-pips i{width:10px;height:10px;border:1.5px solid var(--tinta)}
+.bcron-pips i.on{background:var(--tinta)}
+.bcron-nota{margin-top:12px;font-family:var(--sans);font-size:12.5px;font-weight:600;line-height:1.5;color:var(--suave)}
+.bcron-fim{display:none;margin-top:10px;font-size:18.5px;font-style:italic;color:var(--suave)}
+.bcron.fechado .bcron-txt,.bcron.fechado .bcron-vagas,.bcron.fechado .bcron-nota{display:none}
+.bcron.fechado .bcron-fim{display:block}
+.abre .bcron-linha{color:var(--tinta)}
+.bcron + .discreto{margin-top:24px}
+@media (max-width:560px){.bcron{padding:18px 16px 16px}.bcron .sc{font-size:12px;letter-spacing:.12em}.bcron h3{font-size:26px}.bcron-txt{font-size:17.5px}}
+
 .fim{text-align:center;padding-block:70px 80px;border-top:1px solid var(--fio)}
 .fim p.nota{margin:14px auto 0;font-size:20px;color:var(--suave);max-width:640px}
 .fim .quem{margin:6px auto 0;font-size:16.5px;color:var(--suave);max-width:640px}
@@ -210,6 +228,7 @@ fbq('track','ViewContent',{content_name:'TRT 4 · página de vendas'});
     <div class="acao"><a class="btn" data-local="topo" href="#oferta" id="cta1">Quero o material por R$ 97</a><a class="btn vazado" data-origem href="amostra/">Ler o Dia 1 grátis</a></div>
     <p class="quando">As inscrições vão até 25 de novembro. Até lá, cada cargo sai por R$&nbsp;97; depois, por R$&nbsp;197.</p>
     <p class="discreto">Um PDF por semana · Semana 1 liberada na compra</p>
+    <p class="discreto bcron-linha" data-bonus-linha hidden>Bônus: cronograma personalizado para 10 compradores (<span>restam 10</span>)</p>
   </div>
 </div>
 
@@ -268,6 +287,14 @@ fbq('track','ViewContent',{content_name:'TRT 4 · página de vendas'});
     </div></article>
   </div>
   <div class="w">
+    <aside class="bcron" data-bonus aria-label="Bônus para 10 compradores">
+      <span class="sc">Bônus para 10 compradores</span>
+      <h3>Cronograma personalizado</h3>
+      <p class="bcron-txt">Você responde uma anamnese curta e recebe um diagnóstico e <mark>um cronograma feito para a sua rotina</mark>, com o material do seu cargo distribuído até a prova, as revisões e o domingo livre.</p>
+      <p class="bcron-vagas" hidden><b>Restam 10 de 10 vagas</b><span class="bcron-pips" aria-hidden="true"></span></p>
+      <p class="bcron-fim">As vagas do bônus deste material se encerraram.</p>
+      <p class="bcron-nota">O link da anamnese chega com a sua compra. As vagas vão para os 10 primeiros que a enviarem, em até 7 dias após a compra. Entrega em até 5 dias úteis. Sem acompanhamento: é o seu plano, para executar. As 10 vagas valem para os dois cargos juntos.</p>
+    </aside>
     <p class="discreto">Semana 1 na compra · as outras às segundas, até 28/12 (Analista e Oficial, 10 PDFs) e até 07/12 (Técnico, 7 PDFs) · quem entra depois baixa na hora as semanas já liberadas</p>
     <p class="discreto">Os Conhecimentos Gerais são os mesmos nos dois · as outras especialidades do edital não estão cobertas</p>
   </div>
@@ -288,6 +315,30 @@ fbq('track','ViewContent',{content_name:'TRT 4 · página de vendas'});
 
 <dialog class="zoom" id="zoom"><button class="fechar" type="button" aria-label="Fechar">×</button><img alt=""></dialog>
 
+<script src="../bonus/vagas.js"></script>
+<script>
+/* Bônus "cronograma personalizado": vagas restantes em ../bonus/vagas.js, chave "trt4".
+   Com 0, o bloco da oferta diz que as vagas se encerraram e a linha do topo some.
+   Se o arquivo não carregar, o contador e a linha do topo ficam escondidos. */
+(function(){
+  var b=window.BONUS,n=b&&b.vagas?Number(b.vagas["trt4"]):NaN,ok=isFinite(n);
+  if(ok)n=Math.max(0,Math.min(10,Math.floor(n)));
+  var txt=n===1?"Resta 1 de 10 vagas":"Restam "+n+" de 10 vagas";
+  document.querySelectorAll("[data-bonus]").forEach(function(el){
+    if(!ok)return;
+    if(n<1){el.classList.add("fechado");return}
+    var v=el.querySelector(".bcron-vagas"),p=v.querySelector(".bcron-pips");
+    v.querySelector("b").textContent=txt;
+    for(var i=0;i<10;i++){var c=document.createElement("i");if(i<n)c.className="on";p.appendChild(c)}
+    v.hidden=false;
+  });
+  document.querySelectorAll("[data-bonus-linha]").forEach(function(el){
+    if(!ok||n<1)return;
+    el.querySelector("span").textContent=n===1?"resta 1":"restam "+n;
+    el.hidden=false;
+  });
+})();
+</script>
 <script>
 /* ====== CHECKOUT ======
    Dois produtos nesta página: cada botão de compra traz o seu link da Kiwify em data-checkout.

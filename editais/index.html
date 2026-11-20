@@ -134,6 +134,12 @@ p{margin:0}
   .par .cad .dia1{width:100%;text-align:center}
 }
 
+/* bônus "cronograma personalizado": vagas lidas de ../bonus/vagas.js */
+.bonus-geral{margin:16px auto 0;max-width:640px;font-family:var(--sans);font-weight:600;font-size:14.5px;line-height:1.5;color:var(--tinta)}
+.bonus-geral[hidden],.cad .bv[hidden]{display:none}
+.cad .bv{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ouro);margin-top:8px}
+.par .cad .bv{width:100%;margin-top:-4px}
+
 /* fim */
 .fim{text-align:center;padding-block:70px 80px}
 .fim h2{font-size:clamp(34px,4.6vw,52px);line-height:1.05}
@@ -205,6 +211,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   <h1>O material da sua prova</h1>
   <p class="dor">Escrevi cada material para uma prova só, um dia de cada vez: os temas do dia, a lei seca, a jurisprudência que a banca cobra e o treino no estilo dela. Em todos, o Dia 1 está aberto para você ler antes de comprar.</p>
   <p class="assina">Gullit Belo</p>
+  <p class="bonus-geral" data-bonus-geral hidden>Bônus: cronograma personalizado para 10 compradores. O link da anamnese chega junto com a sua compra.</p>
   <ul class="indice" aria-label="Ir para o material">
     <li><a href="#oab" style="--c:#5A1A2B">OAB 30 dias</a></li>
     <li><a href="#oab100" style="--c:#1C3A2E">OAB 100 dias</a></li>
@@ -231,6 +238,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   <p class="pg">30 dias de estudo, de segunda a sábado, começando em 30 de novembro, organizados pelo que a FGV mais cobra.</p>
   <div class="direita">
     <div class="valor"><s>R$ 197</s><span class="preco">R$ 147</span></div>
+    <p class="bv" data-bonus-vagas="oab" hidden></p>
     <a class="btn branco" data-origem data-local="oab" href="../oab-30dias/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../oab-30dias/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -247,6 +255,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   <p class="pg">O edital inteiro em 100 dias, de 11 de janeiro a 8 de maio, com a lei de 2026.</p>
   <div class="direita">
     <div class="valor"><s>R$ 297</s><span class="preco">R$ 197</span></div>
+    <p class="bv" data-bonus-vagas="oab-100dias" hidden></p>
     <a class="btn branco" data-origem data-local="oab100" href="../oab-100dias/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../oab-100dias/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -266,7 +275,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
     <p class="extra">Extra: a Jurisprudência para o TRT 8ª Região (súmulas, OJs e teses do TST, do STF e do STJ) sai por R$ 67 junto com o dia a dia. <a data-origem data-local="trt8-jurisprudencia" href="../trt8/jurisprudencia/?src=materiais">Ver a Jurisprudência</a></p>
   </div>
   <div class="direita">
-    <div><div class="valor"><span class="preco">R$ 197</span></div><p class="ate">por cargo</p></div>
+    <div><div class="valor"><span class="preco">R$ 197</span></div><p class="ate">por cargo</p><p class="bv" data-bonus-vagas="trt8" hidden></p></div>
     <a class="btn branco" data-origem data-local="trt8" href="../trt8/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../trt8/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -282,7 +291,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   </div>
   <p class="pg">66 dias de estudo, de segunda a sábado, com um estudo de caso por dia até a reta final.</p>
   <div class="direita" data-ate="2026-11-18" data-depois="R$ 247">
-    <div><div class="valor"><span class="preco">R$ 247</span></div></div>
+    <div><div class="valor"><span class="preco">R$ 247</span></div><p class="bv" data-bonus-vagas="tjpb" hidden></p></div>
     <a class="btn branco" data-origem data-local="tjpb" href="../tjpb/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../tjpb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -298,7 +307,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   </div>
   <p class="pg">Um material por cargo, com uma página de Discursiva em cada dia de estudo.</p>
   <div class="direita">
-    <div><div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div><p class="ate">por cargo, até 25/11, depois R$ 197</p></div>
+    <div><div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div><p class="ate">por cargo, até 25/11, depois R$ 197</p><p class="bv" data-bonus-vagas="trt4" hidden></p></div>
     <a class="btn branco" data-origem data-local="trt4" href="../trt4/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../trt4/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -314,7 +323,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   </div>
   <p class="pg">Os 124 temas do edital em 49 dias, escrito para quem começa do zero.</p>
   <div class="direita">
-    <div class="valor"><span class="preco">R$ 197</span></div>
+    <div><div class="valor"><span class="preco">R$ 197</span></div><p class="bv" data-bonus-vagas="dpepb" hidden></p></div>
     <a class="btn branco" data-origem data-local="dpepb" href="../dpepb/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../dpepb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -330,7 +339,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   </div>
   <p class="pg">Os 224 temas do edital em 88 dias, com uma página de Redação por dia.</p>
   <div class="direita">
-    <div class="valor"><span class="preco">R$ 247</span></div>
+    <div><div class="valor"><span class="preco">R$ 247</span></div><p class="bv" data-bonus-vagas="dpepb-analista" hidden></p></div>
     <a class="btn branco" data-origem data-local="dpepb-analista" href="../dpepb-analista/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../dpepb-analista/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
@@ -395,6 +404,23 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
     t.textContent=n===1?"amanhã":"daqui a "+n+" dias";
     el.appendChild(document.createTextNode(" "));el.appendChild(t);
   });
+})();
+</script>
+<script src="../bonus/vagas.js"></script>
+<script>
+/* Bônus "cronograma personalizado": vagas restantes de cada material em ../bonus/vagas.js.
+   Cada faixa mostra "restam X de 10"; com 0, a linha da faixa some. Sem o arquivo, nada aparece. */
+(function(){
+  var b=window.BONUS,v=b&&b.vagas,algum=false;
+  if(!v)return;
+  document.querySelectorAll("[data-bonus-vagas]").forEach(function(el){
+    var n=Number(v[el.getAttribute("data-bonus-vagas")]);
+    if(!isFinite(n)||n<1)return;
+    n=Math.min(10,Math.floor(n));
+    el.textContent="Bônus: cronograma personalizado · "+(n===1?"resta 1":"restam "+n)+" de 10 vagas";
+    el.hidden=false;algum=true;
+  });
+  if(algum)document.querySelectorAll("[data-bonus-geral]").forEach(function(el){el.hidden=false});
 })();
 </script>
 </body>
