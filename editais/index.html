@@ -24,7 +24,7 @@
   Uma faixa (.cad) por material, na cor da página dele, em ordem de data de prova (a mais próxima primeiro).
   Material novo: copie uma <article class="cad">, troque --c, imagem, textos, links e data-prova (AAAA-MM-DD),
   e acrescente o atalho no .indice da abertura.
-  Exceção à ordem por data (GB, 20/11/2026): OAB 30 dias e OAB 100 dias ficam juntos, lado a lado, no .par do topo.
+  Exceção à ordem por data (GB, 20/11/2026): OAB 30 dias e OAB 100 dias ficam juntos, lado a lado, no .par do topo; TRT 8 e TRT 4 também ficam lado a lado, num .par.
 
   Fatos copiados das páginas de cada material em 14/11/2026:
     OAB 1ª fase em 30 dias: 48º Exame, FGV, objetiva em 10/01/2027 (data provável), R$ 147 (de R$ 197).
@@ -124,10 +124,10 @@ p{margin:0}
 .par .cad .valor{justify-content:flex-start;width:100%}
 .par .cad .btn{margin-top:0;min-width:0}
 .par .cad .dia1{margin-top:0}
-.par #oab{border-right:3px solid rgba(0,0,0,.22)}
+.par > .cad:first-child{border-right:3px solid rgba(0,0,0,.22)}
 @media (max-width:760px){
   .par{grid-template-columns:1fr}
-  .par #oab{border-right:0}
+  .par > .cad:first-child{border-right:0}
 }
 @media (max-width:560px){
   .par .cad .w{grid-template-columns:36% 1fr;gap:14px 18px;padding-inline:16px;padding-block:28px}
@@ -216,8 +216,8 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
     <li><a href="#oab" style="--c:#5A1A2B">OAB 30 dias</a></li>
     <li><a href="#oab100" style="--c:#1C3A2E">OAB 100 dias</a></li>
     <li><a href="#trt8" style="--c:#1A3A5C">TRT 8</a></li>
-    <li><a href="#tjpb" style="--c:#17505E">TJPB</a></li>
     <li><a href="#trt4" style="--c:#1E5638">TRT 4</a></li>
+    <li><a href="#tjpb" style="--c:#17505E">TJPB</a></li>
     <li><a href="#dpepb" style="--c:#4A2C6B">DPE-PB Técnico</a></li>
     <li><a href="#dpepb-analista" style="--c:#4A5A1C">DPE-PB Analista</a></li>
     <li><a href="#ciclo" style="--c:#8E3D20">Folha do ciclo grátis</a></li>
@@ -262,6 +262,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
 </div></article>
 </div>
 
+<div class="par" aria-label="TRT: 8ª e 4ª Região">
 <article class="cad" id="trt8" style="--c:#1A3A5C"><div class="w">
   <a class="capa" data-origem href="../trt8/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../trt8/amostra/ao/p1.webp" alt="Roteiro do Dia 1 do TRT 8 dia a dia, Analista e Oficial" width="1100" height="1556" loading="lazy"></a>
   <div>
@@ -281,22 +282,6 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
   </div>
 </div></article>
 
-<article class="cad" id="tjpb" style="--c:#17505E"><div class="w">
-  <a class="capa" data-origem href="../tjpb/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../tjpb/amostra/p1.webp" alt="Roteiro do Dia 1 do TJPB dia a dia" width="1100" height="1556" loading="lazy"></a>
-  <div>
-    <span class="sc">Tribunal de Justiça da Paraíba · FGV</span>
-    <h2>TJPB dia a dia</h2>
-    <p class="cargo">Analista Judiciário, Área Judiciária</p>
-    <p class="prova" data-prova="2027-01-24"><b>Prova em 24 de janeiro de 2027</b> (domingo, das 13h às 18h)</p>
-  </div>
-  <p class="pg">66 dias de estudo, de segunda a sábado, com um estudo de caso por dia até a reta final.</p>
-  <div class="direita" data-ate="2026-11-18" data-depois="R$ 247">
-    <div><div class="valor"><span class="preco">R$ 247</span></div><p class="bv" data-bonus-vagas="tjpb" hidden></p></div>
-    <a class="btn branco" data-origem data-local="tjpb" href="../tjpb/?src=materiais">Ver o material</a>
-    <a class="dia1" data-origem href="../tjpb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
-  </div>
-</div></article>
-
 <article class="cad" id="trt4" style="--c:#1E5638"><div class="w">
   <a class="capa" data-origem href="../trt4/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../trt4/amostra/ao/p1.webp" alt="Roteiro do Dia 1 do TRT 4 dia a dia, Analista e Oficial" width="1100" height="1556" loading="lazy"></a>
   <div>
@@ -310,6 +295,23 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
     <div><div class="valor"><s>R$ 197</s><span class="preco">R$ 97</span></div><p class="ate">por cargo, até 25/11, depois R$ 197</p><p class="bv" data-bonus-vagas="trt4" hidden></p></div>
     <a class="btn branco" data-origem data-local="trt4" href="../trt4/?src=materiais">Ver o material</a>
     <a class="dia1" data-origem href="../trt4/amostra/?src=materiais">Ler o Dia 1 grátis</a>
+  </div>
+</div></article>
+</div>
+
+<article class="cad" id="tjpb" style="--c:#17505E"><div class="w">
+  <a class="capa" data-origem href="../tjpb/?src=materiais" tabindex="-1" aria-hidden="true"><img src="../tjpb/amostra/p1.webp" alt="Roteiro do Dia 1 do TJPB dia a dia" width="1100" height="1556" loading="lazy"></a>
+  <div>
+    <span class="sc">Tribunal de Justiça da Paraíba · FGV</span>
+    <h2>TJPB dia a dia</h2>
+    <p class="cargo">Analista Judiciário, Área Judiciária</p>
+    <p class="prova" data-prova="2027-01-24"><b>Prova em 24 de janeiro de 2027</b> (domingo, das 13h às 18h)</p>
+  </div>
+  <p class="pg">66 dias de estudo, de segunda a sábado, com um estudo de caso por dia até a reta final.</p>
+  <div class="direita" data-ate="2026-11-18" data-depois="R$ 247">
+    <div><div class="valor"><span class="preco">R$ 247</span></div><p class="bv" data-bonus-vagas="tjpb" hidden></p></div>
+    <a class="btn branco" data-origem data-local="tjpb" href="../tjpb/?src=materiais">Ver o material</a>
+    <a class="dia1" data-origem href="../tjpb/amostra/?src=materiais">Ler o Dia 1 grátis</a>
   </div>
 </div></article>
 
