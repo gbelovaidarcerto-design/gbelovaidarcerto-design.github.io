@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /presentes/
 Disallow: /anamnese/
+Disallow: /anamnese-medicina/
