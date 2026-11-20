@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Anamnese · Medicina</title>
+<meta name="description" content="Diagnóstico de partida para o projeto de preparação para Medicina de Gullit Belo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FCFCFA; --grafite:#23262D; --lapis:#626873; --caneta:#1F3F99;
+  --pauta:#D6DFEA; --marca:#FFE14D; --alerta:#9B2C1F; --alerta-fundo:#FBEDEA;
+  --serif:'Literata',Georgia,serif; --sans:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--grafite);font:400 17px/1.55 var(--sans);overflow-x:hidden}
+a{color:var(--caneta);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--caneta);outline-offset:3px;border-radius:2px}
+mark{background:linear-gradient(transparent 12%,var(--marca) 12%,var(--marca) 88%,transparent 88%);color:inherit;padding:0 .15em}
+h1,h2,h3{font-family:var(--serif);font-weight:650;letter-spacing:-.012em;margin:0;text-wrap:balance}
+.w{max-width:720px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left))}
+
+/* topo */
+.top{display:flex;align-items:center;gap:12px;padding-block:18px 6px}
+.gb{width:40px;height:40px;border-radius:10px;background:var(--caneta);color:var(--papel);display:grid;place-items:center;font:500 17px/1 var(--serif);flex:none}
+.top b{display:block;font-weight:600;font-size:16px;line-height:1.2}
+.top span{font-size:14px;color:var(--lapis)}
+.salvo{margin-left:auto;font-size:13px;color:var(--lapis);text-align:right}
+
+/* progresso */
+.prog{position:sticky;top:0;z-index:5;background:var(--papel);padding-block:12px 10px;border-bottom:1px solid var(--pauta)}
+.prog-linha{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--lapis);margin-bottom:8px}
+.prog-linha b{color:var(--grafite);font-weight:600}
+.barra{height:7px;background:var(--pauta);border-radius:4px;overflow:hidden}
+.barra i{display:block;height:100%;width:0;background:var(--caneta);transition:width .3s}
+@media (prefers-reduced-motion:reduce){.barra i{transition:none}}
+
+/* etapa */
+.etapa{padding-block:28px 8px}
+.etapa h1{font-size:clamp(28px,7vw,40px);line-height:1.1}
+.etapa .intro{color:var(--lapis);margin:12px 0 0}
+.intro,.ajuda,.caixa p,.item p,.resumo dd,.rodape{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.campo{margin-top:28px}
+.campo>label,.campo>.rot{display:block;font-weight:600;line-height:1.35}
+.campo .ajuda{display:block;font-size:15px;color:var(--lapis);margin-top:4px;font-weight:400}
+input[type=text],input[type=number],input[type=email],input[type=tel],textarea,select{width:100%;margin-top:10px;font:400 17px/1.4 var(--sans);color:var(--grafite);background:#fff;border:1px solid #B9C4D2;border-radius:8px;padding:12px 14px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(31,63,153,.25);border-color:var(--caneta)}
+.opcoes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opcoes label{position:relative}
+.opcoes input{position:absolute;opacity:0;pointer-events:none}
+.opcoes span{display:inline-block;font:500 15px/1.2 var(--sans);padding:10px 14px;border:1px solid #B9C4D2;border-radius:999px;background:#fff;cursor:pointer}
+.opcoes input:checked+span{background:var(--caneta);border-color:var(--caneta);color:var(--papel)}
+.opcoes input:focus-visible+span{outline:3px solid var(--caneta);outline-offset:2px}
+.lista-checks{display:grid;gap:10px;margin-top:12px}
+.lista-checks label{display:flex;gap:12px;align-items:flex-start;line-height:1.4;cursor:pointer}
+.lista-checks input{width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:var(--caneta)}
+
+/* grupos (esferas, princípios, dias) */
+.grupo{margin-top:22px;border-top:1px solid var(--pauta)}
+.item{padding:18px 0;border-bottom:1px solid var(--pauta)}
+.item h3{font-size:19px;line-height:1.3}
+.item p{margin:4px 0 0;font-size:15px;color:var(--lapis)}
+.item textarea{min-height:70px}
+.item input[type=text]{margin-top:10px}
+.total{margin-top:18px;font-size:18px}
+.total b{font-family:var(--serif);font-size:28px}
+
+/* listas repetíveis */
+.rep{margin-top:12px;display:grid;gap:12px}
+.rep-linha{background:#fff;border:1px solid var(--pauta);border-radius:10px;padding:12px 14px;display:grid;gap:8px}
+.rep-linha input,.rep-linha select{margin-top:0}
+.rep-linha .tira{justify-self:end;background:none;border:0;color:var(--lapis);font:500 14px var(--sans);text-decoration:underline;cursor:pointer;padding:4px}
+.mais{margin-top:10px;background:none;border:1px dashed #9AA8BA;border-radius:8px;padding:11px 14px;font:600 15px var(--sans);color:var(--caneta);cursor:pointer;width:100%}
+
+/* caixas */
+.caixa{margin-top:24px;padding:16px 18px;border-left:5px solid var(--pauta);background:#fff;border-radius:0 8px 8px 0}
+.caixa p{margin:0}
+.caixa p+p{margin-top:8px}
+.alerta{border-left-color:var(--alerta);background:var(--alerta-fundo)}
+.alerta b{color:var(--alerta)}
+.oculto{display:none}
+
+/* navegação */
+.nav{display:flex;gap:12px;justify-content:space-between;align-items:center;padding-block:30px 40px}
+.btn{display:inline-block;background:var(--caneta);color:var(--papel);border:0;text-decoration:none;font:600 16px/1 var(--sans);padding:15px 22px;border-radius:8px;cursor:pointer}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--caneta);border:1px solid var(--caneta)}
+.btn.zap{background:#1F7A4D}
+.acoes{display:grid;gap:12px;margin-top:22px}
+.acoes .btn{text-align:center}
+.etapas{margin-top:14px}.etapas summary{cursor:pointer;color:var(--caneta);font:600 15px var(--sans)}
+.mapa{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.mapa button{font:500 13px var(--sans);border:1px solid var(--pauta);background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--lapis)}
+.mapa button.feita{border-color:var(--caneta);color:var(--caneta)}
+.mapa button.atual{background:var(--caneta);color:var(--papel);border-color:var(--caneta)}
+.resumo{margin-top:20px;font-size:15px}
+.resumo h3{font-size:18px;margin-top:22px}
+.resumo dl{margin:8px 0 0;display:grid;gap:6px}
+.resumo dt{color:var(--lapis)}
+.resumo dd{margin:0 0 6px;white-space:pre-wrap}
+.rodape{font-size:14px;color:var(--lapis);padding-block:20px 40px;border-top:1px solid var(--pauta)}
+</style>
+</head>
+<body>
+<div class="w">
+  <header class="top">
+    <div class="gb" aria-hidden="true">GB</div>
+    <div><b>Gullit Belo</b><span>Projeto Medicina</span></div>
+    <div class="salvo" id="salvo" aria-live="polite"></div>
+  </header>
+</div>
+<div class="prog"><div class="w">
+  <div class="prog-linha"><span id="prog-nome"></span><b id="prog-num"></b></div>
+  <div class="barra" role="progressbar" aria-label="Progresso da anamnese" aria-valuemin="0" aria-valuemax="100" id="barra"><i></i></div>
+</div></div>
+<main class="w" id="app"></main>
+<div class="w"><p class="rodape">Suas respostas ficam guardadas só neste aparelho até você enviar o arquivo. Nada é enviado pela internet enquanto você preenche.</p></div>
+
+<script>
+/* Número de WhatsApp da mentoria, só dígitos com DDI e DDD (ex.: 5591999999999). */
+const WHATSAPP = '5584999196984';
+const VERSAO = 'med-2026-11a';
+const CHAVE = 'anamnese-medicina-v1';
+
+/* ---------- Quem é quem: as respostas que mudam o caminho ---------- */
+const PRIMEIRA = 'Não: esta é a minha primeira preparação para Medicina';
+const JA_TENTEI = 'Sim, já tentei e parei';
+const TENTANDO = 'Sim, estou me preparando agora';
+const primeira = d => d.experiencia === PRIMEIRA;
+const temExperiencia = d => d.experiencia === JA_TENTEI || d.experiencia === TENTANDO;
+const menor = d => d.menor === 'Sim';
+const noMedio = d => (d.escolaridade || '').startsWith('Cursando o');
+const fezEnem = d => d.fez_enem === 'Sim';
+const temFilhos = d => d.tem_filhos === 'Sim';
+const sozinho = d => d.mora_com === 'Sozinho(a)';
+const trabalha = d => d.trabalho && d.trabalho !== 'Não trabalho';
+const casado = d => d.estado_civil === 'Casado(a) ou em união estável';
+const relacionamento = d => d.estado_civil === 'Namorando' || d.estado_civil === 'Noivo(a)';
+const DOMINIO = ['Nunca estudei', 'Fraco(a)', 'Razoável', 'Bem', 'Muito bem'];
+
+/* ---------- As perguntas ----------
+   Tipos: texto, longo, numero, escolha (uma), varias (várias), checks (lista de caixas),
+   esferas, principios, dias, repetir (lista que cresce), aviso.
+   "se" decide se a etapa, a pergunta ou o item aparece; "controla" redesenha a etapa
+   quando a resposta muda; rótulos podem depender das respostas. */
+const NIVEL_VIDA = ['Em ordem', 'Precisa de atenção', 'Negligenciado', 'Não se aplica'];
+const ETAPAS = [
+  { id: 'inicio', titulo: 'Antes de começar', intro: 'Com as suas respostas, eu monto um projeto completo de preparação para Medicina, feito para você executar sozinho(a), sem encontros. Por isso, quanto mais exato você for, mais certeiro fica o plano. Leva de 30 a 45 minutos. Você pode parar e voltar depois: tudo fica salvo neste aparelho.', campos: [
+    { tipo: 'aviso', html: '<p><b>Responda pela sua rotina real, não pela ideal.</b> Não há resposta certa nem nota. Se não souber alguma coisa, deixe em branco. Se tiver o boletim do ENEM ou de algum simulado, deixe por perto.</p>' },
+    { id: 'nome', tipo: 'texto', rotulo: 'Seu nome completo' },
+    { id: 'como_chamar', tipo: 'texto', rotulo: 'Como prefere ser chamado(a)?' },
+    { id: 'menor', tipo: 'escolha', controla: true, rotulo: 'Você tem menos de 18 anos?', opcoes: ['Sim', 'Não'] },
+    { tipo: 'aviso', se: menor, html: '<p><b>Menor de 18 anos:</b> a lei pede que o seu pai, a sua mãe ou o seu responsável legal autorize o uso destas respostas. Preencha junto com ele(a), ou peça que leia as autorizações abaixo e confirme.</p>' },
+    { id: 'responsavel', se: menor, tipo: 'texto', rotulo: 'Nome do responsável que autoriza' },
+    { id: 'consentimento', tipo: 'checks', rotulo: 'Autorizações', ajuda: 'Algumas perguntas tratam de saúde, emoções, fé e da modalidade de vaga (cotas). A lei de proteção de dados chama isso de dados sensíveis e pede uma autorização própria.', itens: [
+      'Autorizo (ou, sendo menor, o meu responsável autoriza) o uso destas respostas só para preparar o meu projeto de preparação com Gullit Belo. Elas não serão compartilhadas, e posso pedir a exclusão quando quiser.',
+      'Autorizo também as respostas sobre saúde, sono, emoções, fé e modalidade de vaga, para a mesma finalidade.'
+    ] },
+    { tipo: 'aviso', html: '<p>Sem a segunda autorização, essas partes ficam fechadas, e você responde todo o resto.</p>' }
+  ] },
+  { id: 'partida', titulo: 'O seu ponto de partida', intro: 'Onde você está hoje nos estudos. Esta etapa decide quais perguntas aparecem para você.', campos: [
+    { id: 'idade', tipo: 'numero', rotulo: 'Idade' },
+    { id: 'cidade', tipo: 'texto', rotulo: 'Cidade e estado onde mora' },
+    { id: 'escolaridade', tipo: 'escolha', controla: true, rotulo: 'Escolaridade hoje', opcoes: ['Cursando o 1º ano do ensino médio', 'Cursando o 2º ano do ensino médio', 'Cursando o 3º ano do ensino médio', 'Ensino médio concluído', 'Cursando outra graduação', 'Graduado(a) em outra área'] },
+    { id: 'ano_conclusao', se: d => d.escolaridade && !noMedio(d), tipo: 'texto', rotulo: 'Em que ano concluiu o ensino médio? E, se for o caso, qual graduação faz ou fez?' },
+    { id: 'escola', tipo: 'escolha', rotulo: 'Onde fez (ou faz) o ensino médio?', opcoes: ['Todo em escola pública', 'Todo em escola particular', 'Parte em cada uma', 'Escola particular com bolsa integral', 'Supletivo ou EJA'] },
+    { id: 'turno_escola', se: noMedio, tipo: 'texto', rotulo: 'Horário da escola (e de cursos extras, se houver)', ajuda: 'Ex.: 7h às 12h40, de segunda a sexta; inglês às terças, 18h.' },
+    { id: 'experiencia', tipo: 'escolha', controla: true, rotulo: 'Você já se preparou para entrar em Medicina antes?', opcoes: [PRIMEIRA, JA_TENTEI, TENTANDO] },
+    { id: 'tempo_preparo', se: temExperiencia, tipo: 'escolha', rotulo: 'Por quanto tempo, somando tudo?', opcoes: ['Menos de 6 meses', '6 meses a 1 ano', '1 a 2 anos', '2 a 3 anos', 'Mais de 3 anos'] },
+    { id: 'parou_quando', se: d => d.experiencia === JA_TENTEI, tipo: 'texto', rotulo: 'Quando parou, e por quê?' },
+    { id: 'cursinho', tipo: 'escolha', controla: true, rotulo: 'Faz ou já fez cursinho ou plataforma de estudos?', opcoes: ['Faço agora', 'Já fiz', 'Nunca fiz'] },
+    { id: 'cursinho_qual', se: d => d.cursinho && d.cursinho !== 'Nunca fiz', tipo: 'texto', rotulo: 'Qual (ou quais), em que formato (presencial ou online) e o que achou?', ajuda: 'O projeto pode aproveitar o que você já tem, em vez de trocar tudo.' },
+    { id: 'materiais_atuais', tipo: 'texto', rotulo: 'Que livros, apostilas, sites ou canais você usa para estudar?' }
+  ] },
+  { id: 'notas', titulo: 'ENEM e vestibulares', intro: 'As notas de verdade mostram a distância até a vaga. Copie do boletim, se tiver.', campos: [
+    { id: 'fez_enem', tipo: 'escolha', controla: true, rotulo: 'Já fez o ENEM (mesmo como treineiro)?', opcoes: ['Sim', 'Ainda não'] },
+    { id: 'enem', se: fezEnem, tipo: 'repetir', rotulo: 'As suas notas no ENEM', ajuda: 'Uma linha por ano. Se não lembrar de alguma nota, deixe em branco.', colunas: [['ano', 'Ano'], ['lc', 'Linguagens'], ['ch', 'Humanas'], ['cn', 'Natureza'], ['mt', 'Matemática'], ['red', 'Redação']] },
+    { id: 'enem_tempo', se: fezEnem, tipo: 'escolha', rotulo: 'No ENEM, o tempo de prova…', opcoes: ['Sobrou', 'Deu justo', 'Faltou e chutei várias questões', 'Faltou muito'] },
+    { id: 'enem_dia_dificil', se: fezEnem, tipo: 'escolha', rotulo: 'Qual dia foi mais difícil para você?', opcoes: ['O 1º (Linguagens, Humanas e Redação)', 'O 2º (Natureza e Matemática)', 'Os dois', 'Nenhum em especial'] },
+    { id: 'vestibulares', tipo: 'repetir', rotulo: 'Outros vestibulares ou processos que já fez', ajuda: 'Vestibular próprio, seriado (PSS, PAS), faculdade particular. Deixe em branco se não houver.', colunas: [['processo', 'Vestibular e instituição'], ['ano', 'Ano'], ['resultado', 'Resultado ou nota']] },
+    { id: 'simulados', tipo: 'escolha', rotulo: 'Com que frequência faz simulado completo, no tempo da prova?', opcoes: ['Nunca fiz', 'Raramente', 'Uma vez por mês', 'A cada duas semanas ou mais'] },
+    { id: 'simulado_nota', tipo: 'texto', rotulo: 'Se fez simulados recentes, quanto tirou? (acertos por área ou nota TRI)' },
+    { id: 'distancia', tipo: 'texto', rotulo: 'Sabe quanto falta para a nota de corte que você quer? Escreva o que souber.', ajuda: 'Ex.: "a nota de corte da UFPB foi cerca de 790 e a minha média foi 690". Não sabe? Tudo bem: o projeto calcula.' }
+  ] },
+  { id: 'alvo', titulo: 'O seu alvo', intro: 'Aonde você quer chegar, e por quê.', campos: [
+    { id: 'porque', tipo: 'longo', rotulo: 'Por que Medicina? Conte com as suas palavras.' },
+    { id: 'decisao', tipo: 'escolha', rotulo: 'Essa decisão é…', opcoes: ['Minha, bem pensada', 'Minha, mas ainda tenho dúvidas', 'Muito influenciada pela família', 'Ainda estou decidindo'] },
+    { id: 'contato_area', tipo: 'texto', rotulo: 'Já teve contato com a rotina de um médico (família, estágio, voluntariado, conversa)? Como foi?' },
+    { id: 'vias', tipo: 'varias', rotulo: 'Por quais caminhos você quer tentar a vaga?', opcoes: ['ENEM e Sisu (federais e estaduais)', 'Vestibular próprio de universidade pública (ex.: Fuvest, Unicamp, UERJ)', 'Vestibular seriado (PSS, PAS e similares)', 'ProUni', 'Fies', 'Faculdade particular, pagando', 'Ainda não sei'] },
+    { id: 'instituicoes', tipo: 'texto', rotulo: 'Quais universidades ou cidades você quer? Em ordem de preferência.' },
+    { id: 'mudar', tipo: 'escolha', rotulo: 'Você pode se mudar de cidade ou de estado para estudar?', opcoes: ['Sim, para qualquer lugar', 'Sim, para perto', 'Só no meu estado', 'Não posso me mudar'] },
+    { id: 'modalidade', tipo: 'escolha', rotulo: 'Em que modalidade de vaga você pretende concorrer?', ajuda: 'A nota de corte muda muito de uma modalidade para outra, por isso essa resposta decide a meta do projeto. Responda só se autorizou os dados sensíveis.', se: d => (d.consentimento || [])[1] === true, opcoes: ['Ampla concorrência', 'Escola pública', 'Escola pública e baixa renda', 'Escola pública, pretos, pardos ou indígenas', 'Pessoa com deficiência', 'Não sei se tenho direito a alguma'] },
+    { id: 'prazo', tipo: 'escolha', rotulo: 'Para qual ENEM (ou vestibular) você está se preparando?', opcoes: ['O deste ano', 'O do ano que vem', 'Daqui a dois anos', 'Ainda não sei'] },
+    { id: 'tentativas', tipo: 'texto', rotulo: 'Por quantos anos você (e a sua família) aceitam tentar? Existe um plano B?' },
+    { id: 'orcamento', tipo: 'texto', rotulo: 'Quanto pode ser investido por mês na preparação (livros, plataformas, simulados), sem apertar as contas?' }
+  ] },
+  { id: 'materias', titulo: 'Matéria por matéria', intro: 'Uma primeira impressão de como você está em cada matéria. Seja sincero(a): é isso que define onde o projeto começa.', campos: [
+    { id: 'disc', tipo: 'repetir', rotulo: 'Como você está', ajuda: 'Escolha uma opção em cada linha. Se quiser, acrescente outra matéria no fim.', colunas: [['nome', 'Matéria'], ['dominio', 'Como você está', DOMINIO]], fixas: ['Biologia', 'Química', 'Física', 'Matemática', 'Gramática e interpretação de texto', 'Literatura', 'Inglês ou espanhol', 'História', 'Geografia', 'Filosofia e Sociologia', 'Redação'] },
+    { id: 'gosta', tipo: 'texto', rotulo: 'De quais matérias você mais gosta?' },
+    { id: 'trava', tipo: 'texto', rotulo: 'Quais assuntos travam você de verdade? Seja específico(a).', ajuda: 'Ex.: estequiometria, genética, funções, eletricidade, cinemática.' },
+    { id: 'base_mat', tipo: 'escolha', rotulo: 'Na matemática básica (frações, porcentagem, regra de três, equações), você…', opcoes: ['Resolve com segurança', 'Resolve, mas erra contas', 'Precisa recomeçar do básico'] },
+    { id: 'leitura', tipo: 'escolha', rotulo: 'Ler textos longos (enunciados, textos de apoio) é…', opcoes: ['Tranquilo', 'Cansativo, mas vou', 'Difícil: perco a concentração ou demoro muito'] },
+    { id: 'redacao_freq', tipo: 'escolha', rotulo: 'Quantas redações você escreve por mês?', opcoes: ['Nenhuma', '1 ou 2', '3 ou 4', '5 ou mais'] },
+    { id: 'redacao_correcao', tipo: 'escolha', rotulo: 'As suas redações são corrigidas?', opcoes: ['Não', 'Às vezes, por alguém', 'Sim, por corretor ou plataforma'] },
+    { id: 'redacao_dificuldade', tipo: 'varias', rotulo: 'Na redação, o que mais pesa?', opcoes: ['Começar e organizar as ideias', 'Repertório (exemplos, dados, autores)', 'Proposta de intervenção', 'Gramática e ortografia', 'Tempo', 'Ainda não sei'] }
+  ] },
+  { id: 'habitos', titulo: 'Como você estuda', intro: d => primeira(d) ? 'Pense em como você estuda hoje para a escola ou por conta própria.' : 'Pense numa semana comum, e não no seu melhor dia.', campos: [
+    { id: 'distribuicao', tipo: 'escolha', rotulo: 'A maior parte do seu tempo de estudo vai para…', opcoes: ['Assistir aula e ler', 'Resumir, grifar e fazer mapas', 'Fazer questões', 'Revisar', 'Um pouco de cada'] },
+    { id: 'questoes_semana', tipo: 'escolha', rotulo: 'Quantas questões você resolve por semana, em média?', opcoes: ['Quase nenhuma', 'Até 50', '50 a 150', '150 a 300', 'Mais de 300'] },
+    { id: 'copia_resumo', tipo: 'escolha', rotulo: 'Faz resumos copiando do material?', opcoes: ['Muito', 'Às vezes', 'Não'] },
+    { id: 'revisoes', tipo: 'escolha', rotulo: 'Revisa o que já estudou em datas marcadas?', opcoes: ['Sim', 'Às vezes', 'Não'] },
+    { id: 'cronograma', tipo: 'escolha', rotulo: 'Como organiza o que estudar a cada dia?', opcoes: ['Não organizo', 'Cronograma com matéria fixa por dia', 'Sigo o cronograma do cursinho', 'Ciclo de estudos', 'Decido na hora'] },
+    { id: 'dia_falha', tipo: 'texto', rotulo: 'Quando um dia de estudo falha, o que acontece com o resto da semana?' },
+    { id: 'erro_tipo', tipo: 'varias', rotulo: 'Quando erra uma questão, o que mais acontece?', opcoes: ['Não conhecia o conteúdo', 'Li errado ou rápido demais', 'Errei a conta', 'Estudei, mas esqueci', 'Faltou tempo', 'Não sei dizer'] },
+    { id: 'erro_registro', tipo: 'escolha', rotulo: 'Volta às questões que errou?', opcoes: ['Sempre', 'Às vezes', 'Quase nunca'] },
+    { id: 'celular', tipo: 'escolha', rotulo: 'Enquanto estuda, o celular fica…', opcoes: ['Longe de mim', 'Na mesa', 'Na mão'] },
+    { id: 'ia', tipo: 'escolha', rotulo: 'Usa inteligência artificial para estudar?', opcoes: ['Não', 'Às vezes', 'Muito'] },
+    { id: 'domingo_estudo', tipo: 'escolha', rotulo: 'Estuda no domingo?', opcoes: ['Nunca', 'Às vezes', 'Sempre'] },
+    { id: 'gargalo', tipo: 'escolha', rotulo: 'O que mais te trava hoje?', opcoes: ['Falta de tempo', 'Base fraca', 'O jeito de estudar', 'Constância', 'Cansaço', 'Ansiedade', 'Distração com o celular', 'Não sei'] }
+  ] },
+  { id: 'autonomia', titulo: 'Estudar sem acompanhamento', intro: 'O seu projeto vai ser executado por você, sem encontros. Estas respostas ajudam a desenhar um plano que você realmente consiga seguir sozinho(a).', campos: [
+    { id: 'sozinho_historico', tipo: 'escolha', rotulo: 'Quando você se compromete sozinho(a) com um plano, normalmente…', opcoes: ['Sigo até o fim', 'Começo bem e perco o ritmo em algumas semanas', 'Abandono logo', 'Nunca tentei'] },
+    { id: 'formato', tipo: 'varias', rotulo: 'Como prefere usar o projeto?', opcoes: ['Impresso, na mesa ou na parede', 'No celular', 'No computador ou tablet', 'Com caixinhas para marcar o que fiz'] },
+    { id: 'detalhe', tipo: 'escolha', rotulo: 'Você prefere um plano…', opcoes: ['Bem detalhado: o que fazer em cada dia', 'Com a semana definida e liberdade no dia', 'Com metas por mês e liberdade para organizar'] },
+    { id: 'quem_acompanha', tipo: 'texto', rotulo: 'Alguém vai acompanhar a sua execução (pai, mãe, cônjuge, amigo)? Quem?', ajuda: 'Uma pessoa que pergunte, uma vez por semana, como foi. Ajuda muito quem estuda sem mentor.' },
+    { id: 'motiva', tipo: 'texto', rotulo: 'O que te faz voltar a estudar depois de um dia ruim?' }
+  ] },
+  { id: 'tempo', titulo: 'O seu tempo', intro: 'Quando você consegue estudar. A semana de estudo vai de segunda a sábado: o domingo fica de fora.', campos: [
+    { id: 'janelas', tipo: 'dias', rotulo: 'Horários livres para estudar em cada dia', ajuda: 'Fora a escola ou o cursinho. Inclua os curtos também. Ex.: 14h–17h30 e 19h30–21h.' },
+    { id: 'horas_reais', tipo: 'texto', rotulo: 'Quantas horas por dia você estuda hoje, de verdade (fora aula)?' },
+    { id: 'trabalho', tipo: 'escolha', controla: true, rotulo: 'Trabalha?', opcoes: ['Não trabalho', 'Meio período', 'Tempo integral', 'Escala ou plantões', 'Bicos ou horários variáveis'] },
+    { id: 'trabalho_desc', se: trabalha, tipo: 'texto', rotulo: 'O que faz, e em que horário?' },
+    { id: 'deslocamento', tipo: 'texto', rotulo: 'Quanto tempo passa no trânsito por dia, e como (carro, ônibus, a pé)?' },
+    { id: 'tela', tipo: 'texto', rotulo: 'Quanto tempo passa no celular por dia, fora o estudo?', ajuda: 'O celular mostra isso nas configurações.' },
+    { id: 'energia_alta', tipo: 'varias', rotulo: 'Em que hora do dia a sua cabeça rende mais?', opcoes: ['Cedo, de manhã', 'Fim da manhã', 'Tarde', 'Noite', 'Tarde da noite'] },
+    { id: 'lugar', tipo: 'texto', rotulo: 'Onde você estuda? É silencioso? Tem mesa só para isso?' }
+  ] },
+  { id: 'vida', titulo: 'A vida em volta do estudo', intro: 'A preparação se encaixa na vida, e não o contrário. Diga como está cada parte. Se alguma não fizer sentido para você, marque "Não se aplica".', campos: [
+    { id: 'mora_com', tipo: 'escolha', controla: true, rotulo: 'Com quem você mora?', opcoes: ['Com pais ou responsáveis', 'Com outros familiares', 'Com cônjuge e/ou filhos', 'Sozinho(a)', 'Com amigos ou colegas'] },
+    { id: 'estado_civil', se: d => !menor(d), tipo: 'escolha', controla: true, rotulo: 'Estado civil', opcoes: ['Solteiro(a)', 'Namorando', 'Noivo(a)', 'Casado(a) ou em união estável'] },
+    { id: 'tem_filhos', se: d => !menor(d), tipo: 'escolha', controla: true, rotulo: 'Tem filhos?', opcoes: ['Sim', 'Não'] },
+    { id: 'filhos', se: temFilhos, tipo: 'texto', rotulo: 'Quantos, e com que idades?' },
+    { id: 'tarefas_casa', tipo: 'texto', rotulo: 'Que tarefas da casa ou da família ficam com você (irmãos, almoço, compras)?' },
+    { id: 'esferas', tipo: 'esferas', itens: [
+      ['deus', 'Vida com Deus', 'Oração, leitura da Bíblia, igreja, o domingo.', { fe: true }],
+      ['conjuge', 'Casamento', 'Tempo juntos, conversa, decisões em conjunto.', { se: casado }],
+      ['relacionamento', 'Namoro ou noivado', 'Tempo juntos e planos em comum.', { se: relacionamento }],
+      ['filhos', 'Filhos', 'Presença, cuidado, educação.', { se: temFilhos }],
+      ['pais', 'Pais e família', 'Convivência, respeito, ajuda em casa.'],
+      ['casa', 'Quarto, casa e dinheiro', 'Organização, tarefas e gastos.'],
+      ['trabalho', 'Trabalho', 'Fazer bem o que se deve no trabalho.', { se: trabalha }],
+      ['igreja', 'Igreja e amizades', 'Comunhão, serviço, amigos.', { fe: true }],
+      ['civis', 'Documentos e obrigações', 'Documentos, inscrições, prazos.']
+    ] },
+    { id: 'familia_apoio', tipo: 'escolha', rotulo: 'A sua família, em relação a Medicina…', opcoes: ['Apoia e me deixa no meu ritmo', 'Apoia, mas cobra muito', 'Não apoia muito', 'É indiferente', 'A decisão foi mais deles do que minha'] },
+    { id: 'pressao', tipo: 'texto', rotulo: 'Existe alguma pressão (família, colegas, redes sociais, dinheiro) que pesa na sua preparação?' },
+    { id: 'fatores', tipo: 'repetir', rotulo: 'Algo importante previsto para os próximos 12 meses?', ajuda: 'Mudança, formatura, viagem, cirurgia, emprego, alistamento. Deixe em branco se não houver.', colunas: [['fator', 'O que vai acontecer'], ['quando', 'Quando']] },
+    { id: 'financas', tipo: 'escolha', rotulo: 'As contas da casa estão…', opcoes: ['Tranquilas', 'Apertadas, mas em dia', 'Difíceis', 'Prefiro não dizer'] }
+  ] },
+  { id: 'corpo', titulo: 'Sono e saúde', sensivel: true, intro: 'O corpo estuda junto. Sem julgamento: é só o ponto de partida.', campos: [
+    { id: 'sono', tipo: 'texto', rotulo: 'Em dias de semana, que horas você dorme e acorda?', ajuda: 'Ex.: 23h30 às 6h.' },
+    { id: 'sono_nota', tipo: 'escolha', rotulo: 'Como acorda, na maioria dos dias?', opcoes: ['Descansado(a)', 'Mais ou menos', 'Cansado(a)'] },
+    { id: 'sono_sinais', tipo: 'checks', rotulo: 'Marque o que acontece com você', itens: ['Ronco alto, ou alguém já viu pausas na minha respiração dormindo', 'Muito sono durante o dia, mesmo dormindo o suficiente', 'Dificuldade para dormir na maioria das noites, há semanas', 'Acordo várias vezes por noite', 'Uso o celular na cama antes de dormir', 'Viro a noite estudando antes de provas'] },
+    { id: 'cafeina', tipo: 'texto', rotulo: 'Café ou energético: quanto por dia, e até que horas?' },
+    { id: 'exercicio', tipo: 'escolha', rotulo: 'Atividade física', opcoes: ['Não faço', '1 a 2 vezes por semana', '3 vezes ou mais por semana'] },
+    { id: 'alimentacao', tipo: 'escolha', rotulo: 'A sua alimentação, na maior parte dos dias…', opcoes: ['Refeições regulares e comida de verdade', 'Pulo refeições ou como correndo', 'Muito lanche, doce ou fast-food'] },
+    { id: 'visao', tipo: 'escolha', rotulo: 'Sente dor de cabeça, vista cansada ou dificuldade para ler de perto?', opcoes: ['Não', 'Às vezes', 'Com frequência'] },
+    { id: 'saude', tipo: 'texto', rotulo: 'Alguma questão de saúde, dor ou remédio que influencie o estudo? (opcional)' }
+  ] },
+  { id: 'mente', titulo: 'Emoções', sensivel: true, intro: 'Para cuidar de você, e não para dar diagnóstico. O projeto não substitui psicólogo nem médico; ele ajuda a perceber quando procurar um.', campos: [
+    { id: 'ansiedade_prova', tipo: 'escolha', rotulo: 'Em provas e simulados, a ansiedade costuma…', opcoes: ['Não atrapalhar', 'Atrapalhar um pouco', 'Atrapalhar muito', 'Já me deu branco ou passei mal em prova'] },
+    { id: 'mente_sinais', tipo: 'checks', rotulo: 'Nas últimas semanas, você tem sentido…', itens: ['Cansaço que não passa com descanso', 'Irritação fácil', 'A cabeça presa nas mesmas preocupações', 'Comparação constante com outras pessoas', 'Medo de que não vai dar certo', 'Tristeza que não passa, ou perda de interesse pelo que gostava', 'Ansiedade que atrapalha a rotina', 'Mudança forte no apetite ou no sono', 'Pensamentos de desistir da vida'] },
+    { id: 'alerta_vida', tipo: 'aviso', classe: 'alerta oculto', html: '<p><b>Obrigado por contar.</b> Isso é sério e tem cuidado. Fale hoje com alguém de confiança e procure ajuda: <b>CVV 188</b> (ligação gratuita, 24 horas, também por chat em cvv.org.br) ou <b>SAMU 192</b>, se houver risco agora. A UBS e o CAPS da sua cidade também atendem.</p><p>Nenhuma prova vale a sua vida. O projeto continua, no seu tempo.</p>' },
+    { id: 'reprovacao', se: temExperiencia, tipo: 'texto', rotulo: 'Como você lidou com os resultados que não vieram?' },
+    { id: 'acompanhamento', tipo: 'escolha', rotulo: 'Faz acompanhamento com psicólogo ou psiquiatra?', opcoes: ['Sim', 'Já fiz', 'Não', 'Prefiro não dizer'] },
+    { id: 'o_que_ajuda', tipo: 'texto', rotulo: 'O que te ajuda num dia ruim?' }
+  ] },
+  { id: 'fe', titulo: 'Fé', sensivel: true, intro: 'O método nasce de uma fé cristã, assumida abertamente. Aqui você diz como quer que ela entre no seu projeto. Tudo é opcional.', campos: [
+    { id: 'fe_vida', tipo: 'texto', rotulo: 'Como está a sua vida de fé hoje?' },
+    { id: 'domingo', tipo: 'escolha', rotulo: 'O seu domingo hoje é…', opcoes: ['Dia de descanso, igreja e família', 'Às vezes descanso, às vezes não', 'Um dia como os outros'] },
+    { id: 'fe_projeto', tipo: 'escolha', rotulo: 'No projeto, você prefere que a fé apareça…', opcoes: ['Abertamente: oração, Bíblia e conselho', 'Com discrição', 'Prefiro que fique de fora'] }
+  ] },
+  { id: 'situacoes', titulo: 'Situações especiais', intro: 'Marque o que vale para você. Cada situação muda alguma coisa no plano.', campos: [
+    { id: 'situacoes', tipo: 'checks', itens: [
+      { t: 'Estou no ensino médio e vou conciliar escola e preparação', se: noMedio },
+      'Vou estudar em tempo integral, só para o vestibular',
+      { t: 'Trabalho e estudo ao mesmo tempo', se: trabalha },
+      'Já faço ou fiz outra faculdade e quero mudar para Medicina',
+      { t: 'Já tentei Medicina mais de uma vez', se: temExperiencia },
+      { t: 'Fiquei perto da nota de corte numa tentativa recente', se: fezEnem },
+      'A minha base do ensino fundamental e médio é fraca',
+      'Tenho pouco dinheiro para cursinho e materiais',
+      'Vou precisar de atendimento especializado na prova (tempo extra, prova ampliada, ledor)',
+      { t: 'Tenho diagnóstico ou suspeita de TDAH, dislexia ou autismo', se: d => (d.consentimento || [])[1] === true },
+      { t: 'Tenho uma condição de saúde crônica', se: d => (d.consentimento || [])[1] === true },
+      'Tenho mais de 25 anos'
+    ] },
+    { id: 'situacoes_obs', tipo: 'texto', rotulo: 'Quer explicar alguma delas?' }
+  ] },
+  { id: 'projeto', titulo: 'O que você espera', intro: 'Para fechar: o que o projeto precisa resolver para você.', campos: [
+    { id: 'dificuldade', tipo: 'longo', rotulo: 'Qual é a sua maior dificuldade hoje para chegar a Medicina?' },
+    { id: 'ja_tentou', se: temExperiencia, tipo: 'texto', rotulo: 'O que você já tentou para resolver isso, e o que aconteceu?' },
+    { id: 'espera', tipo: 'longo', rotulo: 'Daqui a três meses, o que precisa ter acontecido para você dizer que o projeto valeu a pena?' },
+    { id: 'contato_dado', tipo: 'texto', rotulo: 'Seu WhatsApp ou e-mail, para receber o projeto' },
+    { id: 'mais', tipo: 'longo', rotulo: 'Algo mais que eu deveria saber?' }
+  ] },
+  { id: 'envio', titulo: 'Revisar e enviar', intro: '', campos: [] }
+];
+
+/* ---------- Estado ---------- */
+let dados = {};
+let atual = 0;
+try { const s = JSON.parse(localStorage.getItem(CHAVE) || 'null'); if (s) { dados = s.dados || {}; atual = Math.min(s.atual || 0, ETAPAS.length - 1); } } catch (e) {}
+let tSalvar;
+function salvar() {
+  clearTimeout(tSalvar);
+  tSalvar = setTimeout(() => {
+    try { localStorage.setItem(CHAVE, JSON.stringify({ dados, atual, em: new Date().toISOString() })); marcaSalvo('Salvo neste aparelho'); }
+    catch (e) { marcaSalvo('Não foi possível salvar aqui; não feche a página'); }
+  }, 300);
+}
+function marcaSalvo(t) { document.getElementById('salvo').textContent = t; }
+
+const sensivelOk = () => (dados.consentimento || [])[1] === true;
+const geralOk = () => (dados.consentimento || [])[0] === true && (dados.nome || '').trim().length > 1 && (dados.menor !== 'Sim' || (dados.responsavel || '').trim().length > 1);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const txt = v => typeof v === 'function' ? v(dados) : v;
+const ve = x => !x.se || x.se(dados);
+const etapaVisivel = e => ve(e) && !(e.sensivel && !sensivelOk());
+const visiveis = () => ETAPAS.filter(etapaVisivel);
+const itemTexto = it => typeof it === 'string' ? it : it.t;
+const itemVe = it => typeof it === 'string' || ve(it);
+const DIAS = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+
+/* ---------- Desenho dos campos ---------- */
+function rotuloHtml(c) {
+  return c.rotulo ? `<span class="rot" id="r-${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</span>` : '';
+}
+function campoHtml(c) {
+  if (!ve(c)) return '';
+  const v = dados[c.id];
+  const ctl = c.controla ? ' data-controla="1"' : '';
+  switch (c.tipo) {
+    case 'aviso': return `<div class="caixa ${c.classe || ''}" ${c.id ? `id="${c.id}"` : ''}>${c.html}</div>`;
+    case 'texto': case 'numero':
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</label><input type="${c.tipo === 'numero' ? 'number' : 'text'}" id="${c.id}" data-id="${c.id}" value="${esc(v)}" ${c.tipo === 'numero' ? 'inputmode="numeric" min="0"' : ''}></div>`;
+    case 'longo':
+      return `<div class="campo"><label for="${c.id}">${esc(txt(c.rotulo))}${c.ajuda ? `<span class="ajuda">${esc(txt(c.ajuda))}</span>` : ''}</label><textarea id="${c.id}" data-id="${c.id}">${esc(v)}</textarea></div>`;
+    case 'escolha': case 'varias': {
+      const multi = c.tipo === 'varias';
+      return `<div class="campo" role="group" aria-labelledby="r-${c.id}">${rotuloHtml(c)}<div class="opcoes">${c.opcoes.map(o => {
+        const marc = multi ? (v || []).includes(o) : v === o;
+        return `<label><input type="${multi ? 'checkbox' : 'radio'}" name="${c.id}" data-id="${c.id}" data-multi="${multi}"${ctl} value="${esc(o)}" ${marc ? 'checked' : ''}><span>${esc(o)}</span></label>`;
+      }).join('')}</div></div>`;
+    }
+    case 'checks':
+      return `<div class="campo" role="group" ${c.rotulo ? `aria-labelledby="r-${c.id}"` : ''}>${rotuloHtml(c)}<div class="lista-checks">${c.itens.map((it, i) => itemVe(it) ? `<label><input type="checkbox" data-id="${c.id}" data-idx="${i}" data-n="${c.itens.length}"${c.id === 'consentimento' ? ' data-controla="1"' : ''} ${(v || [])[i] ? 'checked' : ''}><span>${esc(itemTexto(it))}</span></label>` : '').join('')}</div></div>`;
+    case 'principios':
+      return `<div class="grupo">${c.itens.map(([nome, frase], i) => `<div class="item" role="group" aria-labelledby="pr-${i}"><h3 id="pr-${i}">${i + 1}. ${esc(nome)}</h3><p>${esc(frase)}</p><div class="opcoes">${[0, 1, 2].map(n => `<label><input type="radio" name="p12-${i}" data-p12="${i}" value="${n}" ${(v || [])[i] === n ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div></div>`).join('')}</div><p class="total" aria-live="polite">Total: <b id="p12-total">${totalP12()}</b> de 24</p>`;
+    case 'esferas':
+      return `<div class="grupo">${c.itens.map(([k, nome, desc, op = {}]) => {
+        if (op.se && !op.se(dados)) return '';
+        if (op.fe && !sensivelOk()) return '';
+        const e = (v || {})[k] || {};
+        return `<div class="item" role="group" aria-labelledby="es-${k}"><h3 id="es-${k}">${esc(nome)}</h3><p>${esc(desc)}</p><div class="opcoes">${NIVEL_VIDA.map(n => `<label><input type="radio" name="es-${k}" data-esfera="${k}" data-campo="nivel" value="${esc(n)}" ${e.nivel === n ? 'checked' : ''}><span>${esc(n)}</span></label>`).join('')}</div><input type="text" aria-label="${esc(nome)}: observação" placeholder="Quer comentar? (opcional)" data-esfera="${k}" data-campo="obs" value="${esc(e.obs)}"></div>`;
+      }).join('')}</div>`;
+    case 'dias':
+      return `<div class="campo">${rotuloHtml(c)}<div class="grupo">${DIAS.map((d, i) => `<div class="item"><label for="dia-${i}"><b>${d}</b></label><input type="text" id="dia-${i}" data-dia="${i}" data-id="${c.id}" value="${esc((v || [])[i])}" placeholder="Ex.: 20h–22h"></div>`).join('')}<div class="item"><b>Domingo</b><p>Dia de descanso: fica fora do estudo.</p></div></div></div>`;
+    case 'repetir': {
+      const linhas = (v && v.length) ? v : (c.fixas ? c.fixas.map(n => ({ nome: n })) : Array.from({ length: c.linhas || 1 }, () => ({})));
+      return `<div class="campo">${rotuloHtml(c)}<div class="rep" id="rep-${c.id}">${linhas.map((l, i) => linhaRep(c, l, i)).join('')}</div><button type="button" class="mais" data-mais="${c.id}">+ Acrescentar linha</button></div>`;
+    }
+  }
+  return '';
+}
+function linhaRep(c, l, i) {
+  return `<div class="rep-linha">${c.colunas.map(([k, nome, ops]) => ops
+    ? `<select aria-label="${esc(nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}"><option value="">${esc(nome)}</option>${ops.map(o => `<option ${l[k] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`
+    : `<input type="text" aria-label="${esc(nome)}" placeholder="${esc(nome)}" data-rep="${c.id}" data-linha="${i}" data-col="${k}" value="${esc(l[k])}">`).join('')}<button type="button" class="tira" data-tira="${c.id}" data-linha="${i}">tirar</button></div>`;
+}
+function totalP12() { return (dados.p12 || []).reduce((s, n) => s + (typeof n === 'number' ? n : 0), 0); }
+
+/* ---------- Telas ---------- */
+function render() {
+  const lista = visiveis();
+  if (!etapaVisivel(ETAPAS[atual])) atual = ETAPAS.indexOf(lista.find(x => ETAPAS.indexOf(x) > atual) || lista[lista.length - 1]);
+  const e = ETAPAS[atual];
+  const pos = lista.indexOf(e);
+  const app = document.getElementById('app');
+  document.getElementById('prog-nome').textContent = e.titulo;
+  document.getElementById('prog-num').textContent = `${pos + 1} de ${lista.length}`;
+  const pct = Math.round(100 * pos / (lista.length - 1));
+  const barra = document.getElementById('barra');
+  barra.querySelector('i').style.width = pct + '%';
+  barra.setAttribute('aria-valuenow', pct);
+
+  let corpo;
+  if (e.id === 'envio') corpo = telaEnvio();
+  else if (e.sensivel && !sensivelOk()) corpo = `<div class="caixa"><p>Esta parte fica fechada, porque a autorização de dados sensíveis não foi marcada. Se quiser responder, volte ao início e marque a segunda autorização.</p></div>`;
+  else corpo = e.campos.map(campoHtml).join('');
+
+  const botoes = `<nav class="mapa" aria-label="Etapas">${lista.map(x => { const i = ETAPAS.indexOf(x); return `<button type="button" data-ir="${i}" class="${i === atual ? 'atual' : (lista.indexOf(x) < pos ? 'feita' : '')}" ${i === atual ? 'aria-current="step"' : ''}>${esc(x.titulo)}</button>`; }).join('')}</nav>`;
+  const mapa = atual === 0 ? '' : (e.id === 'envio' ? botoes : `<details class="etapas"><summary>Ver todas as etapas</summary>${botoes}</details>`);
+  const intro = txt(e.intro);
+  app.innerHTML = `<section class="etapa"><h1 tabindex="-1" id="tit">${esc(e.titulo)}</h1>${intro ? `<p class="intro">${esc(intro)}</p>` : ''}${mapa}${corpo}</section>
+  <div class="nav">${pos > 0 ? '<button type="button" class="btn sec" id="voltar">Voltar</button>' : '<span></span>'}${e.id !== 'envio' ? `<button type="button" class="btn" id="seguir" ${atual === 0 && !geralOk() ? 'disabled' : ''}>${atual === 0 ? 'Começar' : 'Continuar'}</button>` : ''}</div>`;
+  atualizaAlerta();
+}
+function passo(dir) {
+  const lista = visiveis();
+  const pos = lista.indexOf(ETAPAS[atual]);
+  const alvo = lista[Math.max(0, Math.min(lista.length - 1, pos + dir))];
+  ir(ETAPAS.indexOf(alvo));
+}
+function ir(i) {
+  if (i > 0 && !geralOk()) i = 0;
+  atual = Math.max(0, Math.min(ETAPAS.length - 1, i));
+  salvar(); render();
+  window.scrollTo({ top: 0 });
+  document.getElementById('tit')?.focus({ preventScroll: true });
+}
+function atualizaAlerta() {
+  const a = document.getElementById('alerta_vida');
+  if (a) a.classList.toggle('oculto', !(dados.mente_sinais || [])[8]);
+}
+function redesenhaMantendo() {
+  const y = window.scrollY; render(); window.scrollTo({ top: y });
+}
+
+/* ---------- Eventos ---------- */
+const app = document.getElementById('app');
+function aoMudar(ev) {
+  const t = ev.target, d = t.dataset;
+  if (!d) return;
+  if (d.rep) { const c = achaCampo(d.rep); dados[d.rep] = lerRep(c); }
+  else if (d.esfera) { dados.esferas = dados.esferas || {}; (dados.esferas[d.esfera] = dados.esferas[d.esfera] || {})[d.campo] = t.value; }
+  else if (d.dia !== undefined) { const a = dados[d.id] || []; a[+d.dia] = t.value; dados[d.id] = a; }
+  else if (d.p12 !== undefined) { const a = dados.p12 || []; a[+d.p12] = +t.value; dados.p12 = a; const tot = document.getElementById('p12-total'); if (tot) tot.textContent = totalP12(); }
+  else if (d.idx !== undefined) { const a = dados[d.id] || Array(+d.n).fill(false); a[+d.idx] = t.checked; dados[d.id] = a; }
+  else if (d.multi === 'true') { const a = new Set(dados[d.id] || []); t.checked ? a.add(t.value) : a.delete(t.value); dados[d.id] = [...a]; }
+  else if (d.id) { dados[d.id] = t.type === 'number' ? (t.value === '' ? '' : +t.value) : t.value; }
+  if (atual === 0) { const b = document.getElementById('seguir'); if (b) b.disabled = !geralOk(); }
+  atualizaAlerta();
+  salvar();
+  if (ev.type === 'change' && d.controla) redesenhaMantendo();
+}
+app.addEventListener('input', aoMudar);
+app.addEventListener('change', aoMudar);
+app.addEventListener('click', ev => {
+  const t = ev.target.closest('button'); if (!t) return;
+  if (t.id === 'seguir') passo(1);
+  else if (t.id === 'voltar') passo(-1);
+  else if (t.dataset.ir) ir(+t.dataset.ir);
+  else if (t.dataset.mais) { const c = achaCampo(t.dataset.mais); const arr = lerRep(c); arr.push({}); dados[c.id] = arr; salvar(); redesenhaRep(c); }
+  else if (t.dataset.tira) { const c = achaCampo(t.dataset.tira); const arr = lerRep(c); arr.splice(+t.dataset.linha, 1); dados[c.id] = arr; salvar(); redesenhaRep(c); }
+  else if (t.id === 'baixar') baixarFicha();
+  else if (t.id === 'compartilhar') compartilharFicha();
+  else if (t.id === 'apagar') { if (confirm('Apagar todas as respostas deste aparelho? Não há como desfazer.')) { dados = {}; try { localStorage.removeItem(CHAVE); } catch (e) {} ir(0); } }
+});
+function achaCampo(id) { for (const e of ETAPAS) for (const c of e.campos) if (c.id === id) return c; }
+function lerRep(c) {
+  const box = document.getElementById('rep-' + c.id);
+  return [...box.querySelectorAll('.rep-linha')].map(l => Object.fromEntries([...l.querySelectorAll('[data-col]')].map(x => [x.dataset.col, x.value])));
+}
+function redesenhaRep(c) { const box = document.getElementById('rep-' + c.id); const arr = dados[c.id]; box.innerHTML = (arr.length ? arr : [{}]).map((l, i) => linhaRep(c, l, i)).join(''); }
+
+/* ---------- Só o que está visível vai para o arquivo ---------- */
+function etapasRespondiveis() { return visiveis().filter(e => e.id !== 'envio' && !(e.sensivel && !sensivelOk())); }
+function dadosVisiveis() {
+  const out = { nome: dados.nome, como_chamar: dados.como_chamar, consentimento: dados.consentimento };
+  for (const e of etapasRespondiveis()) for (const c of e.campos) {
+    if (!c.id || c.tipo === 'aviso' || !ve(c) || dados[c.id] === undefined) continue;
+    let v = dados[c.id];
+    if (c.tipo === 'checks') v = c.itens.map((it, i) => itemVe(it) ? !!(v || [])[i] : false);
+    if (c.tipo === 'esferas') v = Object.fromEntries(c.itens.filter(([k, , , op = {}]) => (!op.se || op.se(dados)) && (!op.fe || sensivelOk())).map(([k]) => [k, (v || {})[k]]).filter(([, x]) => x));
+    out[c.id] = v;
+  }
+  out.p12 = out.p12 || undefined;
+  return out;
+}
+function valorTexto(c, v) {
+  if (v === undefined || v === '' || v === null) return '';
+  switch (c.tipo) {
+    case 'varias': return (v || []).join('; ');
+    case 'checks': return c.itens.filter((it, i) => v[i] && itemVe(it)).map(itemTexto).join('; ');
+    case 'principios': return c.itens.map(([n], i) => `${i + 1}. ${n}: ${v[i] ?? '–'}`).join('\n') + `\nTotal: ${totalP12()} de 24`;
+    case 'dias': return DIAS.map((d, i) => v[i] ? `${d}: ${v[i]}` : '').filter(Boolean).join('\n');
+    case 'repetir': return v.filter(l => Object.values(l).some(Boolean)).map(l => c.colunas.map(([k]) => l[k]).filter(Boolean).join(' · ')).join('\n');
+    case 'esferas': return c.itens.map(([k, n]) => { const e = v[k]; return e && (e.nivel || e.obs) ? `${n}: ${e.nivel || '–'}${e.obs ? ` (${e.obs})` : ''}` : ''; }).filter(Boolean).join('\n');
+    default: return String(v);
+  }
+}
+function resumoHtml() {
+  const dv = dadosVisiveis();
+  return etapasRespondiveis().filter(e => e.id !== 'inicio').map(e => {
+    const linhas = e.campos.filter(c => c.id && c.tipo !== 'aviso' && ve(c)).map(c => {
+      const t = valorTexto(c, dv[c.id]); if (!t) return '';
+      return `<dt>${esc(txt(c.rotulo) || e.titulo)}</dt><dd>${esc(t)}</dd>`;
+    }).join('');
+    return `<h3>${esc(e.titulo)}</h3>${linhas ? `<dl>${linhas}</dl>` : '<p>Sem respostas.</p>'}`;
+  }).join('');
+}
+function telaEnvio() {
+  const partes = etapasRespondiveis().filter(e => e.id !== 'inicio');
+  const respondidas = partes.filter(e => e.campos.some(c => c.id && ve(c) && valorTexto(c, dadosVisiveis()[c.id]))).length;
+  const zap = WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá, Gullit! Sou ${dados.nome || ''}. Terminei a anamnese do projeto Medicina e vou enviar o arquivo agora.`)}` : '';
+  return `<p class="intro">Você respondeu ${respondidas} de ${partes.length} partes. Confira abaixo. Se quiser mudar algo, toque na etapa.</p>
+  <div class="caixa"><p><b>Como enviar:</b> gere o arquivo da sua anamnese (um arquivo só, que abre em qualquer celular) e envie pelo WhatsApp da mentoria, como documento.</p></div>
+  <div class="acoes">
+    <button type="button" class="btn" id="compartilhar">Gerar e enviar o arquivo</button>
+    <button type="button" class="btn sec" id="baixar">Só baixar o arquivo</button>
+    ${zap ? `<a class="btn zap" href="${zap}" target="_blank" rel="noopener">Abrir o WhatsApp da mentoria</a>` : `<p class="caixa"><b>Rascunho:</b> o número de WhatsApp da mentoria ainda não foi definido.</p>`}
+  </div>
+  <div class="resumo">${resumoHtml()}</div>
+  <div class="caixa"><p>Depois de enviar, você pode apagar as respostas deste aparelho.</p><p><button type="button" class="btn sec" id="apagar">Apagar respostas deste aparelho</button></p></div>`;
+}
+
+/* O arquivo enviado: uma página legível que leva os dados completos embutidos. */
+function nomeArquivo() {
+  const n = (dados.nome || 'mentoreado').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+  return `anamnese-${n}-${new Date().toISOString().slice(0, 10)}.html`;
+}
+function fichaHtml() {
+  const pacote = { tipo: 'anamnese-medicina-gb', versao: VERSAO, enviado_em: new Date().toISOString(), sensivel_autorizado: sensivelOk(), dados: dadosVisiveis() };
+  const json = JSON.stringify(pacote).replace(/</g, '\\u003c');
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anamnese · ${esc(dados.nome || '')}</title>
+<style>body{margin:0;background:#FCFCFA;color:#23262D;font:16px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}main{max-width:720px;margin:0 auto;padding:24px 16px 48px}h1{font:650 30px/1.15 Georgia,serif;margin:0}h3{font:650 19px/1.3 Georgia,serif;margin:28px 0 6px;padding-top:16px;border-top:1px solid #D6DFEA}dt{color:#626873;margin-top:8px}dd{margin:0;white-space:pre-wrap;text-align:justify;hyphens:auto}.meta{color:#626873;margin-top:6px}</style></head>
+<body><main><p class="meta">Projeto Medicina · Gullit Belo</p><h1>Anamnese de ${esc(dados.nome || '')}</h1><p class="meta">Enviada em ${new Date().toLocaleDateString('pt-BR')}. Documento pessoal e confidencial.</p>${resumoHtml()}</main>
+<script type="application/json" id="dados-anamnese">${json}<\/script></body></html>`;
+}
+function baixarFicha() {
+  const blob = new Blob([fichaHtml()], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = nomeArquivo();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function compartilharFicha() {
+  const arquivo = new File([fichaHtml()], nomeArquivo(), { type: 'text/html' });
+  if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+    try { await navigator.share({ files: [arquivo], title: 'Anamnese do projeto Medicina', text: `Anamnese de ${dados.nome || ''}` }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  baixarFicha();
+  alert('O arquivo foi baixado. Agora abra o WhatsApp da mentoria e envie esse arquivo como documento.');
+}
+
+render();
+if (Object.keys(dados).length) marcaSalvo('Respostas recuperadas');
+</script>
+</body>
+</html>
