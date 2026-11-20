@@ -21,7 +21,7 @@ window.BONUS = {
     tjpb: 10,
     trt8: 10,
     trt4: 10,
-    dpepb: 10,
+    dpepb: 9,
     'dpepb-analista': 10,
     'oab-100dias': 10
   }
