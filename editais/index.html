@@ -97,7 +97,8 @@ p{margin:0}
 .cad .cargo{font-size:21px;margin-top:10px;line-height:1.35}
 .cad .prova{font-family:var(--sans);font-weight:600;font-size:14.5px;margin-top:14px;line-height:1.5;color:rgba(255,255,255,.92)}
 .cad .prova b{font-weight:700;color:#fff}
-.cad .prova .faltam{display:inline-block;margin-left:6px;padding:1px 7px;background:rgba(255,255,255,.16);font-size:13px}
+.cad .prova .faltam{display:table;margin:10px 0 0;padding:3px 10px;background:var(--ouro);color:#1F2833;font-family:var(--sans);font-weight:800;font-size:17px;line-height:1.3;letter-spacing:.01em;box-shadow:3px 3px 0 rgba(0,0,0,.28);vertical-align:middle}
+.cad .prova .faltam b{font-size:21px;color:inherit}
 .cad .pg{font-size:18px;line-height:1.4;color:rgba(255,255,255,.9);grid-column:2;align-self:start}
 .cad .extra{font-size:17px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.28);line-height:1.4}
 .cad .extra a{font-family:var(--sans);font-weight:700;font-size:14.5px;white-space:nowrap;color:#fff}
@@ -174,7 +175,8 @@ footer .w{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wra
   .cad h2{font-size:31px}
   .cad .cargo{font-size:17px;margin-top:8px}
   .cad .prova{font-size:13px;margin-top:10px}
-  .cad .prova .faltam{margin-left:0;margin-top:4px}
+  .cad .prova .faltam{margin-top:8px;font-size:15.5px}
+  .cad .prova .faltam b{font-size:19px}
   .cad .pg{grid-column:1 / -1;font-size:17px}
   .cad .direita{display:block;margin-top:4px}
   .cad .valor .preco{font-size:34px}
@@ -403,7 +405,7 @@ fbq('track','ViewContent',{content_name:'Materiais por prova'});
     var n=Math.ceil((dia(el.getAttribute("data-prova"))-hoje)/864e5);
     if(n<1)return;
     var t=document.createElement("span");t.className="faltam";
-    t.textContent=n===1?"amanhã":"daqui a "+n+" dias";
+    t.innerHTML=n===1?"<b>amanhã</b> é a prova":"faltam <b>"+n+"</b> dias";
     el.appendChild(document.createTextNode(" "));el.appendChild(t);
   });
 })();
