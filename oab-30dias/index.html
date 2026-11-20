@@ -62,6 +62,8 @@ mark{background:var(--ouro);color:var(--texto);padding:0 .12em;box-decoration-br
 
 /* botões e preços */
 .btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:700;font-size:16px;text-decoration:none;background:var(--tinta);color:#fff;padding:15px 26px;border:2px solid var(--tinta);border-radius:0;cursor:pointer}
+.agora{font-family:var(--sans);font-weight:700;font-size:17px;line-height:1.45;color:var(--texto);text-align:center;max-width:640px;margin:6px auto 16px}
+.agora mark{background:linear-gradient(transparent 55%,var(--ouro) 55%);color:inherit;padding:0 2px}
 .btn:hover{background:var(--escuro);border-color:var(--escuro)}
 .btn.vazado{background:transparent;color:var(--tinta)}
 .btn.vazado:hover{background:var(--papel)}
@@ -223,8 +225,9 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
   <div class="faixa-capa"><div class="capa"><img src="amostra/capa.webp" alt="Capa da Semana 1 do OAB 1ª fase em 30 dias" width="1100" height="1556" fetchpriority="high"></div></div>
   <div class="w">
     <div class="acao"><a class="btn" data-comprar data-local="topo" href="#oferta" id="cta1">Quero o plano por R$ 147</a><a class="btn vazado" data-origem href="amostra/">Ler o Dia 1 grátis</a></div>
-    <p class="quando">A objetiva está marcada para 10 de janeiro (data provável). Começando em 30 de novembro, os 30 dias cabem com folga no Natal e no Ano-Novo.</p>
-    <p class="discreto">Um PDF por semana · Semana 1 e 4 bônus liberados na compra</p>
+    <p class="agora"><mark>Você recebe agora: Semana 1 + 4 bônus.</mark> Dá para fazer a triagem do Dia 1 antes de o plano começar, em 30 de novembro.</p>
+    <p class="quando">A objetiva está marcada para 10 de janeiro (data provável). Os 30 dias cabem com folga no Natal e no Ano-Novo.</p>
+    <p class="discreto">Um PDF por semana · as outras semanas chegam às segundas</p>
     <p class="discreto bcron-linha" data-bonus-linha hidden>Bônus: cronograma personalizado para 10 compradores (<span>restam 10</span>)</p>
   </div>
 </div>
@@ -284,6 +287,7 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
     <p class="bcron-nota">O link da anamnese chega com a sua compra. As vagas vão para os 10 primeiros que a enviarem, em até 7 dias após a compra. Entrega em até 5 dias úteis. Sem acompanhamento: é o seu plano, para executar.</p>
   </aside>
   <div class="valor"><s>R$ 197</s><span class="preco">R$ 147</span></div>
+  <p class="agora"><mark>Na compra você já recebe a Semana 1 e os 4 bônus.</mark></p>
   <div class="acao"><a class="btn" data-comprar data-local="oferta" href="#oferta">Comprar o plano de 30 dias</a></div>
   <p class="discreto">Semana 1 e os 4 bônus na compra · as outras semanas às segundas: 07/12, 14/12, 21/12 e 28/12 · Premonitório no início de janeiro</p>
   <p class="cruzado" style="margin-top:22px;font-size:18px;color:var(--suave)">Vai fazer o 49º Exame, em maio? <a data-origem href="../oab-100dias/">Veja o plano de 100 dias</a>.</p>
@@ -298,7 +302,7 @@ fbq('track','ViewContent',{content_name:'OAB 30 dias · página de vendas'});
 </div></section>
 </main>
 
-<div class="barra" id="barra"><p>OAB 1ª fase em 30 dias<span class="preco">de R$ 197 por R$ 147</span></p><a class="btn" data-comprar data-local="barra" href="#oferta">Comprar</a></div>
+<div class="barra" id="barra"><p>Semana 1 e bônus na hora<span class="preco">de R$ 197 por R$ 147</span></p><a class="btn" data-comprar data-local="barra" href="#oferta">Comprar</a></div>
 
 <footer><div class="w"><span>Material independente, sem vínculo com o Conselho Federal da OAB ou com a FGV.</span><span><a href="../">@mentoriagb</a> · <a href="../privacidade/">Privacidade</a></span></div></footer>
 
