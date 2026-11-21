@@ -9,10 +9,10 @@
   - A cada anamnese do bônus recebida de um comprador, diminua 1 no número do material dele e publique o arquivo.
   - Quando chegar a 0, a página do material mostra que as vagas do bônus se encerraram
     e deixa de prometer o bônus. Para fechar o bônus de um material antes disso, ponha 0.
-  - Não mude os nomes (oab, tjpb, trt8, trt4, dpepb, 'dpepb-analista'): as páginas leem por eles.
+  - Não mude os nomes (oab, tjsp, tjpb, trt8, trt4, dpepb, 'dpepb-analista'): as páginas leem por eles.
     trt8 e trt4 contam os dois cargos juntos (uma vaga a menos por anamnese de qualquer cargo).
 
-  Este arquivo é lido por: oab-30dias/, oab-100dias/, tjpb/, trt8/, trt4/, dpepb/, dpepb-analista/ e editais/.
+  Este arquivo é lido por: oab-30dias/, oab-100dias/, tjsp/, tjpb/, trt8/, trt4/, dpepb/, dpepb-analista/ e editais/.
 */
 window.BONUS = {
   desde: '20/11/2026',
@@ -23,6 +23,7 @@ window.BONUS = {
     trt4: 10,
     dpepb: 9,
     'dpepb-analista': 10,
-    'oab-100dias': 10
+    'oab-100dias': 10,
+    tjsp: 10
   }
 };
